@@ -10,13 +10,8 @@ class CurrentSong extends React.Component {
   constructor() {
     super();
     const params = this.getHashParams();
-    console.log(params);
-
-    // spotifyApi.clientCredentialsGrant();
-
     const accessToken = params.access_token;
     if (accessToken) {
-      console.log(!!accessToken);
       spotifyApi.setAccessToken(accessToken);
     }
 
@@ -25,15 +20,6 @@ class CurrentSong extends React.Component {
       currentSong: '',
       songImg: ''
     };
-
-    spotifyApi.getUserPlaylists('jmperezperez').then(
-      function(data) {
-        console.log('User playlists', data);
-      },
-      function(err) {
-        console.error(err);
-      }
-    );
   }
 
   getHashParams() {
@@ -50,15 +36,15 @@ class CurrentSong extends React.Component {
   }
 
   getCurrentSong() {
-    spotifyApi.getMyCurrentPlaybackState().then(response => {
+    spotifyApi.getMyCurrentPlaybackState((err, res) => {
       this.setState({
-        currentSong: response.item.name,
-        songImg: response.item.album.images[0].url
+        currentSong: res.item.name,
+        songImg: res.item.album.images[0].url
       });
     });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getCurrentSong();
   }
 
@@ -66,16 +52,20 @@ class CurrentSong extends React.Component {
     const { currentSong, songImg } = this.state;
 
     return (
-      <Card raised className="currentSong-card">
-        <Image src={songImg} wrapped className="currentSong-img" />
-        <Card.Content>
-          <Button as="a" href="http://localhost:8888" primary>
-            Log in to Spotify
-          </Button>
+      <React.Fragment>
+        {currentSong && songImg && (
+          <Card raised className="currentSong-card">
+            <Image src={songImg} wrapped className="currentSong-img" />
+            <Card.Content>
+              <Button as="a" href="http://localhost:8888" primary>
+                Log in to Spotify
+              </Button>
 
-          {this.state.isLoggedIn ? <Header>{currentSong}</Header> : ''}
-        </Card.Content>
-      </Card>
+              {this.state.isLoggedIn ? <Header>{currentSong}</Header> : ''}
+            </Card.Content>
+          </Card>
+        )}
+      </React.Fragment>
     );
   }
 }
