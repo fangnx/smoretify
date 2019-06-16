@@ -9,7 +9,9 @@ class CurrentSong extends React.Component {
       <Card className="login-card">
         <Image src={spotifyIcon} wrapped className="login-logo" />
         <Card.Content>
-          <Button primary>Log in to Spotify</Button>
+          <Button as="a" href="http://localhost:8888" primary>
+            Log in to Spotify
+          </Button>
         </Card.Content>
       </Card>
     );

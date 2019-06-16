@@ -9,7 +9,6 @@ import clientInfo from '../config/clientAuthInfo';
 const clientId = clientInfo.CLIENT_ID;
 const clientSecret = clientInfo.CLIENT_SECRET;
 const redirectUri = 'http://localhost:8888/callback';
-const scope = 'user-read-private user-read-email user-read-playback-state';
 
 var generateRandomString = function(length) {
   var text = '';
@@ -36,7 +35,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email';
+  const scope = 'user-read-private user-read-email user-read-playback-state';
   res.redirect(
     'https://accounts.spotify.com/authorize?' +
       querystring.stringify({
