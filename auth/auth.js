@@ -1,10 +1,10 @@
-import { express } from 'express';
+import express from 'express';
 import { request } from 'request';
-import { cors } from 'cors';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import { querystring } from 'querystring';
-import { cookieParser } from 'cookie-parser';
 
-import { clientInfo } from '../config/clientAuthInfo';
+import clientInfo from '../config/clientAuthInfo';
 
 const clientId = clientInfo.CLIENT_ID;
 const clientSecret = clientInfo.CLIENT_SECRET;
