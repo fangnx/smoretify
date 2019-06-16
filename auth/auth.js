@@ -1,14 +1,15 @@
 import express from 'express';
-import { request } from 'request';
+import request from 'request';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { querystring } from 'querystring';
+import querystring from 'querystring';
 
 import clientInfo from '../config/clientAuthInfo';
 
 const clientId = clientInfo.CLIENT_ID;
 const clientSecret = clientInfo.CLIENT_SECRET;
 const redirectUri = 'http://localhost:8888/callback';
+const scope = 'user-read-private user-read-email user-read-playback-state';
 
 var generateRandomString = function(length) {
   var text = '';
@@ -98,7 +99,7 @@ app.get('/callback', function(req, res) {
 
         // we can also pass the token to the browser to make requests from there
         res.redirect(
-          '/#' +
+          'http://localhost:3000/#' +
             querystring.stringify({
               access_token: access_token,
               refresh_token: refresh_token
