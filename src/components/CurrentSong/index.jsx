@@ -63,11 +63,11 @@ class CurrentSong extends React.Component {
   }
 
   render() {
-    const { currentSong, songName } = this.state;
+    const { currentSong, songImg } = this.state;
 
     return (
       <Card raised className="currentSong-card">
-        <Image src={spotifyIcon} wrapped className="currentSong-logo" />
+        <Image src={songImg} wrapped className="currentSong-img" />
         <Card.Content>
           <Button as="a" href="http://localhost:8888" primary>
             Log in to Spotify
