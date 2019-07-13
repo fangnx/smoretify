@@ -1,6 +1,6 @@
 import React from 'react';
 import './CurrentSong.css';
-import { Card, Label, Button, Image, Header } from 'semantic-ui-react';
+import { Card, Button, Image, Header, Transition } from 'semantic-ui-react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import spotifyIcon from '../../assets/icons/02_CMYK/02_PNG/Spotify_Icon_CMYK_Green.png';
 
@@ -13,10 +13,13 @@ class CurrentSong extends React.Component {
     const accessToken = params.access_token;
     if (accessToken) {
       spotifyApi.setAccessToken(accessToken);
+    } else {
+      console.log('No Spotify access token present');
     }
 
     this.state = {
       isLoggedIn: !!accessToken,
+      isReady: false,
       currentSong: '',
       songImg: ''
     };
@@ -36,11 +39,20 @@ class CurrentSong extends React.Component {
   }
 
   getCurrentSong() {
-    spotifyApi.getMyCurrentPlaybackState((err, res) => {
-      this.setState({
-        currentSong: res.item.name,
-        songImg: res.item.album.images[0].url
-      });
+    spotifyApi.getMyCurrentPlaybackState((_, res) => {
+      if (res) {
+        this.setState({
+          isReady: true,
+          currentSong: res.item.name,
+          songImg: res.item.album.images[0].url
+        });
+      } else {
+        this.setState({
+          isReady: true,
+          currentSong: 'No Song',
+          songImg: spotifyIcon
+        });
+      }
     });
   }
 
@@ -49,22 +61,27 @@ class CurrentSong extends React.Component {
   }
 
   render() {
-    const { currentSong, songImg } = this.state;
+    const { isReady, currentSong, songImg } = this.state;
+    console.log(this.state);
 
     return (
       <React.Fragment>
-        {currentSong && songImg && (
-          <Card raised className="currentSong-card">
-            <Image src={songImg} wrapped className="currentSong-img" />
-            <Card.Content>
-              <Button as="a" href="http://localhost:8888" primary>
-                Log in to Spotify
-              </Button>
+        <Transition visible={isReady} animation="fade">
+          {isReady ? (
+            <Card className="currentSong-card">
+              <Image src={songImg} wrapped className="currentSong-img" />
+              <Card.Content>
+                {/* <Button as="a" href="http://localhost:8888" primary>
+                  Log in to Spotify
+                </Button> */}
 
-              {this.state.isLoggedIn ? <Header>{currentSong}</Header> : ''}
-            </Card.Content>
-          </Card>
-        )}
+                <Header>{currentSong}</Header>
+              </Card.Content>
+            </Card>
+          ) : (
+            ''
+          )}
+        </Transition>
       </React.Fragment>
     );
   }
