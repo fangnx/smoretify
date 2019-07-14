@@ -2,7 +2,7 @@ import React from 'react';
 import './CurrentSong.css';
 import { Card, Button, Image, Header, Transition } from 'semantic-ui-react';
 import SpotifyWebApi from 'spotify-web-api-js';
-import spotifyIcon from '../../assets/icons/02_CMYK/02_PNG/Spotify_Icon_CMYK_Green.png';
+import spotifyIcon from '../../assets/Spotify_Icon_CMYK_Green.png';
 
 const spotifyApi = new SpotifyWebApi();
 
