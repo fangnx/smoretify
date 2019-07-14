@@ -2,7 +2,6 @@
 
 # dependencies
 node_modules/
-client/node_modules/electron/dist/Electron.app/Contents/Frameworks/
 /.pnp
 .pnp.js
 
