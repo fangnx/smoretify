@@ -1,6 +1,16 @@
+/**
+ * App.js
+ *
+ * @author nxxinf
+ * @github https://github.com/fangnx
+ * @created 2019-07-14 11:17:55
+ * @last-modified 2019-07-14 16:24:01
+ */
+
 import React from 'react';
 import './App.css';
 import CurrentSong from './components/CurrentSong/CurrentSong';
+import SongLyrics from './components/SongLyrics/SongLyrics';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { getUserSpotifyInfo } from './actions/authActions';
 
@@ -24,6 +34,7 @@ const App = () => {
   return (
     <div className="App">
       <CurrentSong />
+      <SongLyrics />
     </div>
   );
 };

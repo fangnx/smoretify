@@ -1,3 +1,12 @@
+/**
+ * electron-main.js
+ *
+ * @author nxxinf
+ * @github https://github.com/fangnx
+ * @created 2019-06-15 15:18:20
+ * @last-modified 2019-07-14 15:34:45
+ */
+
 const electron = require('electron');
 // Module to control application life.
 const app = electron.app;

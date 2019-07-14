@@ -1,3 +1,12 @@
+/**
+ * CurrentSong.jsx
+ *
+ * @author nxxinf
+ * @github https://github.com/fangnx
+ * @created 2019-06-16 01:45:13
+ * @last-modified 2019-07-14 15:34:14
+ */
+
 import React from 'react';
 import './CurrentSong.css';
 import { Card, Image, Header, Transition } from 'semantic-ui-react';

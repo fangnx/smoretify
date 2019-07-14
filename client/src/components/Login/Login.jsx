@@ -1,3 +1,12 @@
+/**
+ * Login.jsx
+ *
+ * @author nxxinf
+ * @github https://github.com/fangnx
+ * @created 2019-07-14 11:17:55
+ * @last-modified 2019-07-14 15:34:18
+ */
+
 import React from 'react';
 import './Login.css';
 import { Card, Label, Button, Image } from 'semantic-ui-react';
