@@ -1,6 +1,6 @@
 import React from 'react';
 import './CurrentSong.css';
-import { Card, Button, Image, Header, Transition } from 'semantic-ui-react';
+import { Card, Image, Header, Transition } from 'semantic-ui-react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import spotifyIcon from '../../assets/Spotify_Icon_CMYK_Green.png';
 

@@ -4,7 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import querystring from 'querystring';
 
-import clientInfo from '../config/clientAuthInfo';
+import clientInfo from '../config/spotifyAuthInfo';
 
 const clientId = clientInfo.CLIENT_ID;
 const clientSecret = clientInfo.CLIENT_SECRET;
