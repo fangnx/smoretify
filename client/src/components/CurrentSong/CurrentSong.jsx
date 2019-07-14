@@ -1,30 +1,22 @@
 import React from 'react';
 import './CurrentSong.css';
 import { Card, Image, Header, Transition } from 'semantic-ui-react';
-import SpotifyWebApi from 'spotify-web-api-js';
 import spotifyIcon from '../../assets/Spotify_Icon_CMYK_Green.png';
-
-const spotifyApi = new SpotifyWebApi();
+import { initSpotifyApi } from '../../App';
 
 class CurrentSong extends React.Component {
   constructor() {
     super();
-    const params = this.getHashParams();
-    const accessToken = params.access_token;
-    if (accessToken) {
-      spotifyApi.setAccessToken(accessToken);
-    } else {
-      console.log('No Spotify access token present');
-    }
-
     this.state = {
-      isLoggedIn: !!accessToken,
       isReady: false,
       currentSong: '',
       songImg: ''
     };
   }
 
+  /**
+   * @deprecated
+   */
   getHashParams() {
     var hashParams = {};
     var e,
@@ -38,22 +30,28 @@ class CurrentSong extends React.Component {
     return hashParams;
   }
 
-  getCurrentSong() {
-    spotifyApi.getMyCurrentPlaybackState((_, res) => {
-      if (res) {
-        this.setState({
-          isReady: true,
-          currentSong: res.item.name,
-          songImg: res.item.album.images[0].url
-        });
-      } else {
-        this.setState({
-          isReady: true,
-          currentSong: 'No Song',
-          songImg: spotifyIcon
-        });
-      }
-    });
+  async getCurrentSong() {
+    const spotifyApi = await initSpotifyApi();
+
+    spotifyApi
+      .getMyCurrentPlaybackState()
+      .then(res => {
+        if (res) {
+          console.log(res);
+          this.setState({
+            isReady: true,
+            currentSong: res.item.name,
+            songImg: res.item.album.images[0].url
+          });
+        } else {
+          this.setState({
+            isReady: true,
+            currentSong: 'No Song',
+            songImg: spotifyIcon
+          });
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   componentWillMount() {
@@ -71,10 +69,6 @@ class CurrentSong extends React.Component {
             <Card className="currentSong-card">
               <Image src={songImg} wrapped className="currentSong-img" />
               <Card.Content>
-                {/* <Button as="a" href="http://localhost:8888" primary>
-                  Log in to Spotify
-                </Button> */}
-
                 <Header>{currentSong}</Header>
               </Card.Content>
             </Card>

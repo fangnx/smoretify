@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "dependencies": {
+    "axios": "^0.19.0",
     "electron": "^5.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -17,6 +18,7 @@
     "electron": "electron .",
     "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron ."
   },
+  "proxy": "http://localhost:8888/",
   "eslintConfig": {
     "extends": "react-app"
   },

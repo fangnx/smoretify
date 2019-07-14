@@ -28,7 +28,7 @@ passport.use(
       callbackURL: 'http://localhost:8888/callback'
     },
     (accessToken, refreshToken, expires_in, profile, done) => {
-      console.log(profile);
+      profile.accessToken = accessToken;
       return done(null, profile);
     }
   )
@@ -45,10 +45,20 @@ app.use(passport.session());
 app.get(
   '/auth/spotify',
   passport.authenticate('spotify', {
-    scope: ['user-read-email', 'user-read-private'],
+    scope: [
+      'user-read-email',
+      'user-read-private',
+      'user-modify-playback-state',
+      'user-top-read',
+      'user-read-playback-state',
+      'user-read-currently-playing',
+      'user-read-recently-played'
+    ],
     showDialog: true
   }),
-  (req, res) => {}
+  (req, res) => {
+    res.redirect('/');
+  }
 );
 
 app.get(
@@ -59,15 +69,19 @@ app.get(
   }
 );
 
-app.get('/info', (req, res) => {
-  console.log(req.isAuthenticated());
+app.get('/user/spotify', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.json(req.user);
+  } else {
+    res.json({ error: 'Not Authentificated yet.' });
+  }
 });
 
-function checkIsSpotifyAuthenticated(req, res) {
+function isSpotifyAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    // console.log(req.user);
+    return next();
   }
-  //   return;
+  res.redirect('/auth');
 }
 
 const port = config.port;
