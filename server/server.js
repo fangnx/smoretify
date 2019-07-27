@@ -2,13 +2,20 @@ import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
 import path from 'path';
+import bodyParser from 'body-parser';
 import config from '../config/config';
 import spotifyAuthInfo from '../config/spotifyAuthInfo';
-
+import { geniusRouter } from './routes/geniusAPI';
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
 const app = new express();
 app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+app.use(bodyParser.json());
 
 // Passport.js session setup.
 passport.serializeUser(function(user, done) {
@@ -83,6 +90,9 @@ function isSpotifyAuthenticated(req, res, next) {
   }
   res.redirect('/auth');
 }
+
+// API routes.
+app.use('/api/genius', geniusRouter);
 
 const port = config.port;
 app.listen(port, () => console.log(`App listening on port ${port} !`));
