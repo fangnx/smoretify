@@ -4,14 +4,14 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-07-27 22:32:39
+ * @last-modified 2019-07-28 13:13:06
  */
 
 import React from 'react';
 import { Grid, Transition } from 'semantic-ui-react';
 import './MainBoard.css';
 import CurrentSong from '../CurrentSong/CurrentSong';
-import SongLyrics from '../SongLyrics/SongLyrics';
+import SongInfo from '../SongInfo/SongInfo';
 import ArtistInfo from '../ArtistInfo/ArtistInfo';
 
 class MainBoard extends React.Component {
@@ -30,7 +30,7 @@ class MainBoard extends React.Component {
             <CurrentSong />
           </Grid.Column>
           <Grid.Column className="panel mainBoard-mid">
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            <SongInfo />
           </Grid.Column>
           <Grid.Column className="panel mainBoard-right">
             <ArtistInfo />

@@ -1,17 +1,17 @@
 /**
-* ArtistInfo.css
+* SongInfo.css
 *
 * @author nxxinf
 * @github https://github.com/fangnx
-* @created 2019-07-27 21:01:25
-* @last-modified 2019-07-28 13:37:30
+* @created 2019-07-14 16:12:07
+* @last-modified 2019-07-28 14:10:17
 */
 
-.artistInfo-panel {
+.songInfo-panel {
   width: 100%;
 }
 
-.artistInfo-container {
+.songInfo-container {
   font-size: 1em;
   margin-top: 15px;
   margin-bottom: 15px;

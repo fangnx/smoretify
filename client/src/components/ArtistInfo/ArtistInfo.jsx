@@ -4,11 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-07-27 23:54:36
+ * @last-modified 2019-07-28 13:34:51
  */
 
 import React from 'react';
-import { Segment, Image, Container, Header, Icon } from 'semantic-ui-react';
+import { Image, Container, Header, Icon } from 'semantic-ui-react';
 import './ArtistInfo.css';
 import { getArtistInfoFromGenius } from '../../actions/geniusActions';
 
@@ -29,17 +29,14 @@ class ArtistInfo extends React.Component {
   }
 
   async getArtistInfo() {
-    await getArtistInfoFromGenius({ artistId: 34778 })
+    await getArtistInfoFromGenius({ artistId: 723 })
       .then(async res => {
         if (res.status === 200) {
           console.log(res);
-          this.setState({
-            name: res.data.name,
-            altNames: res.data.alternate_names,
-            artistMainImg: res.data.image_url
-          });
           const rawDescription = res.data.description.dom.children;
-          if (rawDescription.length > 0) {
+          let pureTextDescription = '';
+          // Note: Genius API returns string literal '?' for non-existing description.
+          if (rawDescription.length > 0 && rawDescription.indexOf('?') === -1) {
             const flattenDom = arr => {
               const tempArr = arr
                 .flat()
@@ -55,10 +52,15 @@ class ArtistInfo extends React.Component {
                 ? flattenDom(tempArr)
                 : tempArr;
             };
-            const pureTextDescription = flattenDom(rawDescription).reduce(
+            pureTextDescription = flattenDom(rawDescription).reduce(
               (str0, str1) => str0 + str1
             );
-            this.setState({ summary: pureTextDescription });
+            await this.setState({
+              name: res.data.name,
+              altNames: res.data.alternate_names,
+              artistMainImg: res.data.image_url,
+              summary: pureTextDescription
+            });
           }
         }
       })

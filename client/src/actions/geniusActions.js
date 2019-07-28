@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 15:30:28
- * @last-modified 2019-07-27 22:50:40
+ * @last-modified 2019-07-28 14:18:08
  */
 
 import axios from 'axios';
@@ -26,6 +26,28 @@ export const searchFromGenius = async params => {
 export const getArtistInfoFromGenius = async params => {
   return axios
     .post('/api/genius/getArtist', params)
+    .then(res => res)
+    .catch(err => err);
+};
+
+/**
+ * Get Song info from Genius.
+ * @param songId
+ */
+export const getSongInfoFromGenius = async params => {
+  return axios
+    .post('/api/genius/getSong', params)
+    .then(res => res)
+    .catch(err => err);
+};
+
+/**
+ * Get Referents by Song from Genius.
+ * @param songId
+ */
+export const getReferentsBySongFromGenius = async params => {
+  return axios
+    .post('/api/genius/getReferentsBySong', params)
     .then(res => res)
     .catch(err => err);
 };
