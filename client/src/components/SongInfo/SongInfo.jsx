@@ -4,12 +4,13 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-07-28 14:56:01
+ * @last-modified 2019-07-28 16:25:56
  */
 
 import React from 'react';
 import './SongInfo.css';
-import { Container, Image, Header, Transition } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
+import TrackArtistsInfo from './TrackArtistsInfo';
 import {
   getSongInfoFromGenius,
   getReferentsBySongFromGenius
@@ -21,7 +22,7 @@ class SongLyrics extends React.Component {
     this.state = {
       songMainImg: '',
       geniusDescription: '',
-      trackInfo: '',
+      trackInfo: [],
       annotations: [],
       geniusPageUrl: '',
       youtubeUrl: ''
@@ -92,14 +93,14 @@ class SongLyrics extends React.Component {
         }
       })
       .catch();
-
-    // Parse referents info (annotations to the song lyrics).
   }
 
   parseTrackInfo(rawData) {
     return rawData.map(category => {
-      const map = new Map();
-      return map.set(category.label, category.artists);
+      return [
+        category.label,
+        category.artists.map(obj => obj.name).reduce((a0, a1) => a0 + ', ' + a1)
+      ];
     });
   }
 
@@ -128,7 +129,7 @@ class SongLyrics extends React.Component {
         <Container className="songInfo-container annotations">aaa</Container>
 
         <Container className="songInfo-container trackInfo">
-          track info goes here
+          <TrackArtistsInfo data={this.state.trackInfo} />
         </Container>
       </div>
     );

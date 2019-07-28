@@ -4,11 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-07-28 13:34:51
+ * @last-modified 2019-07-28 15:54:27
  */
 
 import React from 'react';
-import { Image, Container, Header, Icon } from 'semantic-ui-react';
+import { Image, Container, Grid, Header, Icon } from 'semantic-ui-react';
 import './ArtistInfo.css';
 import { getArtistInfoFromGenius } from '../../actions/geniusActions';
 
@@ -77,24 +77,34 @@ class ArtistInfo extends React.Component {
     console.log(this.state);
     return (
       <div className="artistInfo-panel">
-        <Image src={this.state.artistMainImg} className="artistInfo-topImage" />
-        <Container className="artistInfo-container summary">
+        <div className="topImages-wrapper">
+          <Grid columns={2}>
+            <Grid.Column>
+              <Image src={this.state.artistMainImg} className="topImage" />
+            </Grid.Column>
+            <Grid.Column>
+              <Image src={this.state.artistMainImg} className="topImage" />
+            </Grid.Column>
+          </Grid>
+        </div>
+
+        <Container className="artistInfo-container header">
           <Header as="h1" className="artistInfo-name">
             {this.state.name}
           </Header>
-          {this.state.summary}
+          <div className="socialMedia">
+            <Icon
+              name="facebook square"
+              size="large"
+              onClick={this.directToSocialMedia}
+            />
+            <Icon name="twitter square" size="large" />
+            <Icon name="instagram" size="large" />
+          </div>
         </Container>
 
-        <Container className="artistInfo-container more" />
-
-        <Container className="artistInfo-container socialMedia">
-          <Icon
-            name="facebook square"
-            size="large"
-            onClick={this.directToSocialMedia}
-          />
-          <Icon name="twitter square" size="large" />
-          <Icon name="instagram" size="large" />
+        <Container className="artistInfo-container summary">
+          {this.state.summary}
         </Container>
       </div>
     );

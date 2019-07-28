@@ -1,0 +1,23 @@
+/**
+* TrackArtistsInfo.css
+*
+* @author nxxinf
+* @github https://github.com/fangnx
+* @created 2019-07-28 16:27:03
+* @last-modified 2019-07-28 16:44:45
+*/
+
+.ui.table {
+  color: var(--text-color-1) !important;
+  background-color: var(--background-color-grey) !important;
+}
+
+.category-label-0 {
+  background-color: var(--color-theme-indigo-0) !important;
+  border-color: var(--color-spotify-indigo-0) !important;
+}
+
+.category-label-1 {
+  background-color: var(--color-theme-indigo-1) !important;
+  border-color: var(--color-spotify-indigo-1) !important;
+}
