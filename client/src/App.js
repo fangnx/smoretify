@@ -4,13 +4,12 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 11:17:55
- * @last-modified 2019-07-14 16:24:01
+ * @last-modified 2019-07-27 20:37:52
  */
 
 import React from 'react';
 import './App.css';
-import CurrentSong from './components/CurrentSong/CurrentSong';
-import SongLyrics from './components/SongLyrics/SongLyrics';
+import MainBoard from './components/MainBoard/MainBoard';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { getUserSpotifyInfo } from './actions/authActions';
 
@@ -33,8 +32,7 @@ export const initSpotifyApi = async () => {
 const App = () => {
   return (
     <div className="App">
-      <CurrentSong />
-      <SongLyrics />
+      <MainBoard />
     </div>
   );
 };

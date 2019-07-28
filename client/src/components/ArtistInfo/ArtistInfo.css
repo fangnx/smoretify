@@ -1,0 +1,18 @@
+/**
+* ArtistInfo.css
+*
+* @author nxxinf
+* @github https://github.com/fangnx
+* @created 2019-07-27 21:01:25
+* @last-modified 2019-07-27 21:42:30
+*/
+
+.artistInfo-panel {
+  width: 100%;
+}
+
+.artistInfo-container {
+  font-size: 1.2em;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

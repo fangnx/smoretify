@@ -1,0 +1,32 @@
+/**
+* MainBoard.css
+*
+* @author nxxinf
+* @github https://github.com/fangnx
+* @created 2019-07-27 20:48:17
+* @last-modified 2019-07-27 21:18:14
+*/
+
+.mainBoard {
+  height: 100%;
+}
+
+.panel {
+  padding: 0 0 0 0 !important;
+}
+
+.mainBoard-grid {
+  height: 100%;
+}
+
+.mainBoard-left {
+  background: rgba(100, 200, 100, 1);
+}
+
+.mainBoard-mid {
+  background: rgba(100, 100, 200, 1);
+}
+
+.mainBoard-right {
+  background: rgba(200, 100, 100, 1);
+}

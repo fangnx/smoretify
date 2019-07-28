@@ -4,12 +4,12 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-07-14 15:34:14
+ * @last-modified 2019-07-27 20:47:22
  */
 
 import React from 'react';
 import './CurrentSong.css';
-import { Card, Image, Header, Transition } from 'semantic-ui-react';
+import { Card, Image, Header } from 'semantic-ui-react';
 import spotifyIcon from '../../assets/Spotify_Icon_CMYK_Green.png';
 import { initSpotifyApi } from '../../App';
 
@@ -73,18 +73,16 @@ class CurrentSong extends React.Component {
 
     return (
       <React.Fragment>
-        <Transition visible={isReady} animation="fade">
-          {isReady ? (
-            <Card className="currentSong-card">
-              <Image src={songImg} wrapped className="currentSong-img" />
-              <Card.Content>
-                <Header>{currentSong}</Header>
-              </Card.Content>
-            </Card>
-          ) : (
-            ''
-          )}
-        </Transition>
+        {isReady ? (
+          <Card className="currentSong-card">
+            <Image src={songImg} wrapped className="currentSong-img" />
+            <Card.Content>
+              <Header>{currentSong}</Header>
+            </Card.Content>
+          </Card>
+        ) : (
+          <Card className="currentSong-card" />
+        )}
       </React.Fragment>
     );
   }
