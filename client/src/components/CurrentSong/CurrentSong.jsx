@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-07-27 20:47:22
+ * @last-modified 2019-07-28 17:10:34
  */
 
 import React from 'react';
@@ -81,7 +81,8 @@ class CurrentSong extends React.Component {
             </Card.Content>
           </Card>
         ) : (
-          <Card className="currentSong-card" />
+          ''
+          // <Card className="currentSong-card" />
         )}
       </React.Fragment>
     );

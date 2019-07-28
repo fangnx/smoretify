@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-07-28 15:54:27
+ * @last-modified 2019-07-28 17:15:43
  */
 
 import React from 'react';
@@ -53,7 +53,7 @@ class ArtistInfo extends React.Component {
                 : tempArr;
             };
             pureTextDescription = flattenDom(rawDescription).reduce(
-              (str0, str1) => str0 + str1
+              (str0, str1) => str0 + ' ' + str1
             );
             await this.setState({
               name: res.data.name,

@@ -5,10 +5,12 @@
   --text-color-1: rgb(213, 213, 213);
   --text-color-2: rgb(180, 180, 180);
   --text-color-3: rgb(160, 160, 160);
-  --background-color-grey: rgb(48, 48, 48);
+  --background-color-grey: rgb(45, 45, 45);
   --color-spotify-green: #1db954;
   --color-theme-indigo-0: #7986cb;
   --color-theme-indigo-1: #9fa8da;
+  --color-theme-indigo-2: #c5cae9;
+  --color-theme-indigo-3: #e8eaf6;
   --font-serif: 'Merriweather', serif;
   --font-sansserif: 'Titillium Web', sans-serif;
 }

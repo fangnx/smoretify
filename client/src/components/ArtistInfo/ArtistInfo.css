@@ -4,11 +4,13 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-27 21:01:25
-* @last-modified 2019-07-28 16:35:45
+* @last-modified 2019-07-28 16:56:23
 */
 
 .artistInfo-panel {
-  width: 100%;
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .artistInfo-container {

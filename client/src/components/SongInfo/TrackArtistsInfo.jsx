@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-28 15:57:18
- * @last-modified 2019-07-28 16:47:18
+ * @last-modified 2019-07-28 17:00:44
  */
 
 import React from 'react';
@@ -24,13 +24,13 @@ class TrackArtistsInfo extends React.Component {
                 <Table.Cell>
                   <Label
                     className={
-                      index % 2 == 0 ? 'category-label-0' : 'category-label-1'
+                      index % 2 === 0 ? 'category-label-0' : 'category-label-1'
                     }
                   >
                     {row[0]}
                   </Label>
                 </Table.Cell>
-                <Table.Cell>{row[1]}</Table.Cell>
+                <Table.Cell className="name-cell">{row[1]}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

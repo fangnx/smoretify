@@ -4,12 +4,21 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-28 16:27:03
-* @last-modified 2019-07-28 16:44:45
+* @last-modified 2019-07-28 17:16:29
 */
 
 .ui.table {
   color: var(--text-color-1) !important;
-  background-color: var(--background-color-grey) !important;
+  background-color: rgba(20, 20, 20, 0.1) !important;
+}
+
+.ui.table td {
+  border: none !important;
+  border-color: var(--color-theme-indigo-3) !important;
+}
+
+.ui.label {
+  font-size: 0.9em;
 }
 
 .category-label-0 {
@@ -20,4 +29,9 @@
 .category-label-1 {
   background-color: var(--color-theme-indigo-1) !important;
   border-color: var(--color-spotify-indigo-1) !important;
+}
+
+.name-cell {
+  /* font-family: var(--font-serif) !important; */
+  color: var(--color-theme-indigo-3);
 }

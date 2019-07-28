@@ -4,12 +4,12 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-07-28 16:25:56
+ * @last-modified 2019-07-28 17:23:13
  */
 
 import React from 'react';
 import './SongInfo.css';
-import { Container } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 import TrackArtistsInfo from './TrackArtistsInfo';
 import {
   getSongInfoFromGenius,
@@ -20,6 +20,7 @@ class SongLyrics extends React.Component {
   constructor() {
     super();
     this.state = {
+      title: 'Tender is the Night',
       songMainImg: '',
       geniusDescription: '',
       trackInfo: [],
@@ -54,7 +55,7 @@ class SongLyrics extends React.Component {
                 : tempArr;
             };
             pureTextDescription = flattenDom(rawDescription).reduce(
-              (str0, str1) => str0 + str1
+              (str0, str1) => str0 + ' ' + str1
             );
           }
           // Check if there are available media links.
@@ -122,11 +123,22 @@ class SongLyrics extends React.Component {
     return (
       <div className="songInfo-panel">
         {/* <Image src={this.state.songMainImg} className="songInfo-topImage" /> */}
+        <Container className="songInfo-container title">
+          <Header as="h1" className="songInfo-title">
+            {this.state.title}
+          </Header>
+        </Container>
+
+        <Container className="songInfo-container lyrics">
+          Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics
+          Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics
+        </Container>
+
         <Container className="songInfo-container description">
           {this.state.geniusDescription}
         </Container>
 
-        <Container className="songInfo-container annotations">aaa</Container>
+        <Container className="songInfo-container annotations" />
 
         <Container className="songInfo-container trackInfo">
           <TrackArtistsInfo data={this.state.trackInfo} />
