@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-07-28 14:34:55
+ * @last-modified 2019-07-28 14:56:01
  */
 
 import React from 'react';
@@ -105,9 +105,10 @@ class SongLyrics extends React.Component {
 
   parseReferents(rawData) {
     return rawData.map(referent => {
-      return referent.annotations
-        .map(anno => anno.body.html)
-        .reduce((html0, html1) => html0 + html1);
+      // For simplicity and display, get the fisrt annotation of a referent.
+      const anno = referent.annotations[0];
+      const map = new Map();
+      return map.set(anno.url, anno.body.html);
     });
   }
 
