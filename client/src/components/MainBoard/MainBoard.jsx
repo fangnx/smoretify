@@ -4,11 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-07-27 21:17:54
+ * @last-modified 2019-07-27 22:32:39
  */
 
 import React from 'react';
-import { Grid, Segment, Image, Header, Transition } from 'semantic-ui-react';
+import { Grid, Transition } from 'semantic-ui-react';
 import './MainBoard.css';
 import CurrentSong from '../CurrentSong/CurrentSong';
 import SongLyrics from '../SongLyrics/SongLyrics';
@@ -30,7 +30,7 @@ class MainBoard extends React.Component {
             <CurrentSong />
           </Grid.Column>
           <Grid.Column className="panel mainBoard-mid">
-            <Image src="/images/wireframe/paragraph.png" />
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
           </Grid.Column>
           <Grid.Column className="panel mainBoard-right">
             <ArtistInfo />

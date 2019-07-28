@@ -4,38 +4,65 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-07-27 22:18:57
+ * @last-modified 2019-07-27 23:54:36
  */
 
 import React from 'react';
 import { Segment, Image, Container, Header, Icon } from 'semantic-ui-react';
 import './ArtistInfo.css';
-import { searchFromGenius } from '../../actions/geniusActions';
+import { getArtistInfoFromGenius } from '../../actions/geniusActions';
 
 class ArtistInfo extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: 'Pulp',
+      name: 'Artist Name',
+      altNames: [],
       artistMainImg:
         'https://images.genius.com/6bcd2bd1708eeae7282400f1e4be633f.600x600x1.jpg',
       summary:
-        'Sia Kate Isobelle Furler (born December 18, 1975), popularly known as Sia, is an Australian pop singer and songwriter. She is also part of the supergroup, LSD alongside, British singer, Labrinth and American DJ, Diplo. Before her solo debut, Sia also lended vocals to British acid-jazz duo,',
+        'Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary  ',
       facebookUrl: '',
       twitterUrl: '',
       instagramUrl: ''
     };
   }
-  // async getLyrics() {
-  //   searchFromGenius({
-  //     query: 'Common People pulp'
-  //   }).then(res => res);
-  // }
 
   async getArtistInfo() {
-    await searchFromGenius({ searchTerm: 'common people' }).then(async res =>
-      console.log(res)
-    );
+    await getArtistInfoFromGenius({ artistId: 34778 })
+      .then(async res => {
+        if (res.status === 200) {
+          console.log(res);
+          this.setState({
+            name: res.data.name,
+            altNames: res.data.alternate_names,
+            artistMainImg: res.data.image_url
+          });
+          const rawDescription = res.data.description.dom.children;
+          if (rawDescription.length > 0) {
+            const flattenDom = arr => {
+              const tempArr = arr
+                .flat()
+                .filter(node => !!node)
+                .map(node => {
+                  if (node.children) {
+                    return node.children;
+                  } else {
+                    return node;
+                  }
+                });
+              return tempArr.some(e => Array.isArray(e))
+                ? flattenDom(tempArr)
+                : tempArr;
+            };
+            const pureTextDescription = flattenDom(rawDescription).reduce(
+              (str0, str1) => str0 + str1
+            );
+            this.setState({ summary: pureTextDescription });
+          }
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   directToSocialMedia() {}
@@ -45,6 +72,7 @@ class ArtistInfo extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="artistInfo-panel">
         <Image src={this.state.artistMainImg} className="artistInfo-topImage" />
@@ -52,11 +80,7 @@ class ArtistInfo extends React.Component {
           <Header as="h1" className="artistInfo-name">
             {this.state.name}
           </Header>
-          Sia Kate Isobelle Furler (born December 18, 1975), popularly known as
-          Sia, is an Australian pop singer and songwriter. She is also part of
-          the supergroup, LSD alongside, British singer, Labrinth and American
-          DJ, Diplo. Before her solo debut, Sia also lended vocals to British
-          acid-jazz duo,
+          {this.state.summary}
         </Container>
 
         <Container className="artistInfo-container more" />
