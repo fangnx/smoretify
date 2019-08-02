@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-27 20:48:17
-* @last-modified 2019-07-28 15:48:18
+* @last-modified 2019-08-02 01:29:20
 */
 
 .mainBoard {
@@ -20,13 +20,13 @@
 }
 
 .mainBoard-left {
-  background: rgb(32, 32, 32);
+  background: rgb(30, 30, 30);
 }
 
 .mainBoard-mid {
-  background: rgb(40, 40, 40);
+  background: rgb(36, 36, 36);
 }
 
 .mainBoard-right {
-  background: rgb(36, 36, 36);
+  background: rgb(33, 33, 33);
 }

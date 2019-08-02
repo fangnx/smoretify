@@ -4,10 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-02 00:22:19
- * @last-modified 2019-08-02 00:46:37
+ * @last-modified 2019-08-02 01:08:06
  */
 
 import React from 'react';
+import './SongLyrics.css';
 import { List, Placeholder } from 'semantic-ui-react';
 import { getLyricsFromGenius } from '../../../actions/geniusActions';
 

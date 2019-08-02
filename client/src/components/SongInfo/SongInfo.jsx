@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-08-02 00:33:46
+ * @last-modified 2019-08-02 01:21:44
  */
 
 import React from 'react';
@@ -15,8 +15,7 @@ import TrackArtistsInfo from './TrackArtistsInfo/TrackArtistsInfo';
 import MiniYoutube from './MiniYoutube/MiniYoutube';
 import {
   getSongInfoFromGenius,
-  getReferentsBySongFromGenius,
-  getLyricsFromGenius
+  getReferentsBySongFromGenius
 } from '../../actions/geniusActions';
 
 class SongInfo extends React.Component {
@@ -99,17 +98,6 @@ class SongInfo extends React.Component {
       .catch();
   }
 
-  async getLyrics() {
-    await getLyricsFromGenius({
-      url:
-        'https://genius.com/Arctic-monkeys-i-bet-you-look-good-on-the-dancefloor-lyrics'
-    }).then(async res => {});
-  }
-
-  parseLyrics(rawLyrics) {
-    return rawLyrics.split('\n').filter(line => !!line);
-  }
-
   parseTrackInfo(rawData) {
     return rawData.map(category => {
       return [
@@ -136,13 +124,13 @@ class SongInfo extends React.Component {
   render() {
     return (
       <div className="songInfo-panel">
-        <MiniYoutube />
-        {/* <Image src={this.state.songMainImg} className="songInfo-topImage" /> */}
-        <Container className="songInfo-container title">
+        {/* <MiniYoutube /> */}
+
+        {/* <Container className="songInfo-container title">
           <Header as="h1" className="songInfo-title">
             {this.state.title}
           </Header>
-        </Container>
+        </Container> */}
 
         <Container className="songInfo-container lyrics">
           <SongLyrics />

@@ -1,0 +1,21 @@
+/**
+* SongLyrics.css
+*
+* @author nxxinf
+* @github https://github.com/fangnx
+* @created 2019-08-02 00:50:08
+* @last-modified 2019-08-02 01:20:41
+*/
+
+a {
+  font-size: 1.2em;
+  font-weight: normal;
+  color: var(--text-color-0) !important;
+  padding-bottom: 0.5em !important;
+}
+
+a:hover {
+  /* font-size: 1.5em; */
+  font-weight: bold;
+  color: var(--color-theme-indigo-0) !important;
+}

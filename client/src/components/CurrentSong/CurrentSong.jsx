@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-07-28 17:10:34
+ * @last-modified 2019-08-02 01:47:48
  */
 
 import React from 'react';
@@ -72,19 +72,21 @@ class CurrentSong extends React.Component {
     console.log(this.state);
 
     return (
-      <React.Fragment>
-        {isReady ? (
-          <Card className="currentSong-card">
-            <Image src={songImg} wrapped className="currentSong-img" />
-            <Card.Content>
-              <Header>{currentSong}</Header>
-            </Card.Content>
-          </Card>
-        ) : (
-          ''
-          // <Card className="currentSong-card" />
-        )}
-      </React.Fragment>
+      <div className="currentSong-panel">
+        <React.Fragment>
+          {isReady ? (
+            <div className="currentSong-widget">
+              <Image src={songImg} wrapped className="currentSong-img" />
+              <div className="currentSong-text">
+                <Header>{currentSong}</Header>
+              </div>
+            </div>
+          ) : (
+            ''
+            // <Card className="currentSong-card" />
+          )}
+        </React.Fragment>
+      </div>
     );
   }
 }

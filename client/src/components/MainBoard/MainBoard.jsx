@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-07-28 13:13:06
+ * @last-modified 2019-08-02 01:25:16
  */
 
 import React from 'react';
@@ -25,14 +25,14 @@ class MainBoard extends React.Component {
   render() {
     return (
       <div className="mainBoard">
-        <Grid columns={3} divided className="mainBoard-grid">
-          <Grid.Column className="panel mainBoard-left">
+        <Grid columns={3} className="mainBoard-grid">
+          <Grid.Column width={4} className="panel mainBoard-left">
             <CurrentSong />
           </Grid.Column>
-          <Grid.Column className="panel mainBoard-mid">
+          <Grid.Column width={7} className="panel mainBoard-mid">
             <SongInfo />
           </Grid.Column>
-          <Grid.Column className="panel mainBoard-right">
+          <Grid.Column width={5} className="panel mainBoard-right">
             <ArtistInfo />
           </Grid.Column>
         </Grid>
