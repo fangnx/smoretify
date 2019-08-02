@@ -4,20 +4,22 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-07-28 18:03:26
+ * @last-modified 2019-08-02 00:33:46
  */
 
 import React from 'react';
 import './SongInfo.css';
 import { Container, Header, Icon } from 'semantic-ui-react';
-import TrackArtistsInfo from './TrackArtistsInfo';
-import MiniYoutube from './MiniYoutube';
+import SongLyrics from './SongLyrics/SongLyrics';
+import TrackArtistsInfo from './TrackArtistsInfo/TrackArtistsInfo';
+import MiniYoutube from './MiniYoutube/MiniYoutube';
 import {
   getSongInfoFromGenius,
-  getReferentsBySongFromGenius
+  getReferentsBySongFromGenius,
+  getLyricsFromGenius
 } from '../../actions/geniusActions';
 
-class SongLyrics extends React.Component {
+class SongInfo extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -97,6 +99,17 @@ class SongLyrics extends React.Component {
       .catch();
   }
 
+  async getLyrics() {
+    await getLyricsFromGenius({
+      url:
+        'https://genius.com/Arctic-monkeys-i-bet-you-look-good-on-the-dancefloor-lyrics'
+    }).then(async res => {});
+  }
+
+  parseLyrics(rawLyrics) {
+    return rawLyrics.split('\n').filter(line => !!line);
+  }
+
   parseTrackInfo(rawData) {
     return rawData.map(category => {
       return [
@@ -132,8 +145,7 @@ class SongLyrics extends React.Component {
         </Container>
 
         <Container className="songInfo-container lyrics">
-          Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics
-          Lyrics Lyrics Lyrics Lyrics Lyrics Lyrics
+          <SongLyrics />
         </Container>
 
         <Container className="songInfo-container description">
@@ -153,4 +165,4 @@ class SongLyrics extends React.Component {
   }
 }
 
-export default SongLyrics;
+export default SongInfo;
