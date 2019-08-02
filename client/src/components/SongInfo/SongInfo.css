@@ -4,13 +4,15 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-14 16:12:07
-* @last-modified 2019-07-28 16:56:43
+* @last-modified 2019-07-28 17:47:21
 */
 
 .songInfo-panel {
   width: 96%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .songInfo-container {

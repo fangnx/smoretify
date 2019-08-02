@@ -4,13 +4,14 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-07-28 17:23:13
+ * @last-modified 2019-07-28 18:03:26
  */
 
 import React from 'react';
 import './SongInfo.css';
-import { Container, Header } from 'semantic-ui-react';
+import { Container, Header, Icon } from 'semantic-ui-react';
 import TrackArtistsInfo from './TrackArtistsInfo';
+import MiniYoutube from './MiniYoutube';
 import {
   getSongInfoFromGenius,
   getReferentsBySongFromGenius
@@ -122,6 +123,7 @@ class SongLyrics extends React.Component {
   render() {
     return (
       <div className="songInfo-panel">
+        <MiniYoutube />
         {/* <Image src={this.state.songMainImg} className="songInfo-topImage" /> */}
         <Container className="songInfo-container title">
           <Header as="h1" className="songInfo-title">
@@ -141,6 +143,9 @@ class SongLyrics extends React.Component {
         <Container className="songInfo-container annotations" />
 
         <Container className="songInfo-container trackInfo">
+          <Header as="h2" className="songInfo-title">
+            Track Info
+          </Header>
           <TrackArtistsInfo data={this.state.trackInfo} />
         </Container>
       </div>

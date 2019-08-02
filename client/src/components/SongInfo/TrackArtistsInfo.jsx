@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-28 15:57:18
- * @last-modified 2019-07-28 17:00:44
+ * @last-modified 2019-07-28 17:28:34
  */
 
 import React from 'react';
@@ -16,7 +16,7 @@ class TrackArtistsInfo extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="trackArtistsInfo-widget">
         <Table inverted>
           <Table.Body>
             {this.props.data.map((row, index) => (
