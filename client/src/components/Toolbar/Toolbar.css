@@ -1,0 +1,24 @@
+/**
+* Toolbar.css
+*
+* @author nxxinf
+* @github https://github.com/fangnx
+* @created 2019-08-04 11:21:26
+* @last-modified 2019-08-04 11:35:47
+*/
+
+.toolbar {
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.ui.inverted.menu {
+  background-color: var(--color-theme-indigo-0);
+  border-radius: 0;
+  border: none;
+  min-height: 2rem;
+  height: 2rem;
+}

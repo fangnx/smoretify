@@ -4,11 +4,12 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-27 20:48:17
-* @last-modified 2019-08-04 02:10:37
+* @last-modified 2019-08-04 11:26:05
 */
 
 .mainBoard {
   height: 100%;
+  z-index: 0;
 }
 
 .panel {
