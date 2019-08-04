@@ -4,11 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-03 23:45:18
+ * @last-modified 2019-08-04 01:41:30
  */
 
 import React from 'react';
-import { Image, Container, Divider, Header, Icon } from 'semantic-ui-react';
+import { Image, Container, Header, Icon } from 'semantic-ui-react';
 import './ArtistInfo.css';
 import { getArtistInfoFromGenius } from '../../actions/geniusActions';
 
@@ -20,8 +20,7 @@ class ArtistInfo extends React.Component {
       altNames: [],
       artistMainImg:
         'https://images.genius.com/6bcd2bd1708eeae7282400f1e4be633f.600x600x1.jpg',
-      summary:
-        'Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary  ',
+      summary: '',
       facebookUrl: '',
       twitterUrl: '',
       instagramUrl: ''
@@ -29,7 +28,7 @@ class ArtistInfo extends React.Component {
   }
 
   async getArtistInfo() {
-    await getArtistInfoFromGenius({ artistId: 723 })
+    await getArtistInfoFromGenius({ artistId: 21128 })
       .then(async res => {
         if (res.status === 200) {
           console.log(res);
@@ -81,24 +80,20 @@ class ArtistInfo extends React.Component {
           <Image src={this.state.artistMainImg} className="topImage" />
         </div>
 
-        <Container className="artistInfo-container header">
+        <Container className="artistInfo-container title">
           <Header as="h1" className="artistInfo-name">
             {this.state.name}
           </Header>
           <div className="socialMedia">
-            <Icon
-              name="facebook square"
-              size="large"
-              onClick={this.directToSocialMedia}
-            />
-            <Icon name="twitter square" size="large" />
-            <Icon name="instagram" size="large" />
+            <Icon name="facebook square" onClick={this.directToSocialMedia} />
+            <Icon name="twitter square" />
+            <Icon name="instagram" />
           </div>
-          <Divider />
         </Container>
 
         <Container className="artistInfo-container summary">
-          {this.state.summary}
+          <Header as="h3">Bio</Header>
+          <div>{this.state.summary}</div>
         </Container>
       </div>
     );

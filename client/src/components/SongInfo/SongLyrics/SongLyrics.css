@@ -4,11 +4,12 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-02 00:50:08
-* @last-modified 2019-08-04 00:35:05
+* @last-modified 2019-08-04 11:14:03
 */
 
 .songLyrics-widget {
-  font-size: 1em;
+  font-size: 1.1em;
+  font-family: var(--font-stylish);
 }
 
 a {
@@ -19,5 +20,5 @@ a {
 
 a:hover {
   font-weight: bold;
-  color: var(--color-theme-indigo-1) !important;
+  color: var(--color-theme-indigo-0) !important;
 }

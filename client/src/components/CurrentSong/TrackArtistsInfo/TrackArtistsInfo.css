@@ -4,8 +4,11 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-28 16:27:03
-* @last-modified 2019-08-02 00:22:09
+* @last-modified 2019-08-04 11:10:24
 */
+
+.trackArtistsInfo-widget {
+}
 
 .ui.table {
   color: var(--text-color-1) !important;
@@ -13,12 +16,9 @@
 }
 
 .ui.table td {
+  padding: 0.25em 0.5em 0.25em 0 !important;
   border: none !important;
   border-color: var(--color-theme-indigo-3) !important;
-}
-
-.ui.label {
-  font-size: 0.9em;
 }
 
 .category-label-0 {
@@ -32,6 +32,5 @@
 }
 
 .name-cell {
-  /* font-family: var(--font-serif) !important; */
   color: var(--color-theme-indigo-3);
 }

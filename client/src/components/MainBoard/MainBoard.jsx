@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-04 00:42:13
+ * @last-modified 2019-08-04 01:47:25
  */
 
 import React from 'react';
@@ -124,15 +124,15 @@ class MainBoard extends React.Component {
       <div className="mainBoard">
         <Grid columns={3} className="mainBoard-grid">
           <Grid.Column width={4} className="panel mainBoard-left">
-            <CurrentSong trackInfo={this.state.geniusTrackInfo} />
-          </Grid.Column>
-          <Grid.Column width={7} className="panel mainBoard-mid">
-            <SongInfo
+            <CurrentSong
               description={this.state.geniusDescription}
               trackInfo={this.state.geniusTrackInfo}
             />
           </Grid.Column>
-          <Grid.Column width={5} className="panel mainBoard-right">
+          <Grid.Column width={8} className="panel mainBoard-mid">
+            <SongInfo description={this.state.geniusDescription} />
+          </Grid.Column>
+          <Grid.Column width={4} className="panel mainBoard-right">
             <ArtistInfo />
           </Grid.Column>
         </Grid>

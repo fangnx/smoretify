@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-06-16 13:27:10
-* @last-modified 2019-08-04 00:13:04
+* @last-modified 2019-08-04 11:10:40
 */
 
 .currentSong-panel {
@@ -19,6 +19,12 @@
   background: transparent !important;
 }
 
+.currentSong-container {
+  padding: 0 !important;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
 .currentSong-img {
 }
 
@@ -27,7 +33,8 @@
 }
 
 .currentSong-text {
-  width: 92.5%;
+  font-size: 0.9em;
+  width: 85%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 25px;
@@ -35,13 +42,26 @@
 }
 
 .songName {
+  font-family: var(--font-stylish);
   font-size: 30px;
-  white-space: nowrap;
   padding-bottom: 15px;
 }
 
 .artistNames {
+  font-family: var(--font-stylish);
   font-size: 24px;
-  white-space: nowrap;
   color: var(--text-color-2);
+}
+
+.spotifySource {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.spotify-icon {
+  font-size: 1.4em !important;
+}
+
+.spotify-icon:before {
+  display: none;
 }

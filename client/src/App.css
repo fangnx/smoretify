@@ -48,24 +48,31 @@
   background-color: var(--color-theme-indigo-0) !important;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-stylish) !important;
+}
+
 h1 {
-  font-size: 45px !important;
+  font-size: 40px !important;
 }
 
 h2 {
   font-size: 40px !important;
-  padding-bottom: 5px !important;
-  border-bottom: 5px solid var(--color-theme-indigo-0) !important;
-  display: inline-block;
 }
 
 h3 {
-  font-size: 30px !important;
+  font-size: 27.5px !important;
 }
 
 h2,
 h3,
 h4,
 h5 {
-  font-family: var(--font-sansserif) !important;
+  padding-bottom: 5px !important;
+  border-bottom: 5px solid var(--color-theme-indigo-0) !important;
+  display: inline-block;
 }
