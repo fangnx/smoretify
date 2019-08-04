@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-27 20:48:17
-* @last-modified 2019-08-04 11:26:05
+* @last-modified 2019-08-04 14:45:35
 */
 
 .mainBoard {
@@ -17,7 +17,7 @@
 }
 
 .mainBoard-grid {
-  height: 100%;
+  padding-bottom: 2rem !important;
 }
 
 .mainBoard-left {

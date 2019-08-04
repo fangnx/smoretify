@@ -44,8 +44,8 @@
 }
 
 .ui.divider {
-  border-bottom: 5px solid var(--color-theme-indigo-0) !important;
-  background-color: var(--color-theme-indigo-0) !important;
+  border-bottom: 2.5px solid var(--text-color-1) !important;
+  background-color: var(--text-color-1) !important;
 }
 
 h1,

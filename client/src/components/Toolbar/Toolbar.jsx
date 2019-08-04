@@ -4,11 +4,12 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-08-04 11:28:40
+ * @last-modified 2019-08-04 14:40:34
  */
 
 import React from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Image } from 'semantic-ui-react';
+import biscuitIcon from '../../assets/biscuit.svg';
 import './Toolbar.css';
 
 class Toolbar extends React.Component {
@@ -16,7 +17,10 @@ class Toolbar extends React.Component {
     return (
       <div className="toolbar">
         <Menu inverted className="toolbar-menu">
-          <Menu.Item>asdsa</Menu.Item>
+          <Menu.Item>
+            <Image src={biscuitIcon} className="toolbar-logo" />
+            Smoretify
+          </Menu.Item>
         </Menu>
       </div>
     );

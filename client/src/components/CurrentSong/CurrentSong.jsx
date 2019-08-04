@@ -4,12 +4,12 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-04 01:55:03
+ * @last-modified 2019-08-04 14:16:25
  */
 
 import React from 'react';
 import './CurrentSong.css';
-import { Container, Image, Icon, Header } from 'semantic-ui-react';
+import { Container, Image, Icon, Header, Divider } from 'semantic-ui-react';
 import spotifyGreenIcon from '../../assets/Spotify_Icon_CMYK_Green.png';
 import spotifyWhiteIcon from '../../assets/Spotify_Icon_CMYK_White.png';
 import TrackArtistsInfo from './TrackArtistsInfo/TrackArtistsInfo';
@@ -83,14 +83,14 @@ class CurrentSong extends React.Component {
               <div className="currentSong-text">
                 <div className="songName">{currentSong}</div>
                 <div className="artistNames">{currentArtists[0]}</div>
-                <div className="spotifySource">
+                {/* <div className="spotifySource">
                   <Image
                     as={Icon}
                     src={spotifyWhiteIcon}
                     wrapped
                     className="spotify-icon"
                   />
-                </div>
+                </div> */}
 
                 <Container className="currentSong-container aboutTheSong">
                   <Header as="h3" className="aboutTheSong-header">
