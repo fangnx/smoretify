@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-27 21:01:25
-* @last-modified 2019-08-04 11:03:11
+* @last-modified 2019-08-04 15:29:31
 */
 
 .artistInfo-panel {
@@ -18,16 +18,16 @@
 .artistInfo-container {
   font-size: 1em;
   padding: 0 !important;
-  margin-top: 25px;
   margin-bottom: 25px;
 }
 
-.topImage-wrapper img {
-  /* border-radius: 5px !important; */
+.topImage-wrapper {
+  height: 275px;
+  margin-bottom: 10px;
 }
 
 .topImage {
-  max-height: 400px;
+  max-height: 275px;
   margin-left: auto;
   margin-right: auto;
 }

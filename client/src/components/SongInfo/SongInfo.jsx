@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-08-04 02:12:05
+ * @last-modified 2019-08-04 15:05:39
  */
 
 import React from 'react';
@@ -33,7 +33,7 @@ class SongInfo extends React.Component {
           <Header as="h2" className="songInfo-title">
             Lyrics
           </Header>
-          <SongLyrics />
+          <SongLyrics url={this.props.url} />
         </Container>
 
         <Container className="songInfo-container annotations" />

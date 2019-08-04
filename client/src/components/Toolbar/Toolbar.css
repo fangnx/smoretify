@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-04 11:21:26
-* @last-modified 2019-08-04 14:45:18
+* @last-modified 2019-08-04 14:52:47
 */
 
 .toolbar {
@@ -18,8 +18,8 @@
 .toolbar-logo {
   width: 1.5rem;
   margin-right: 0.5rem;
-  -webkit-filter: invert(100%);
-  filter: invert(100%);
+  -webkit-filter: var(--svg-filter-white);
+  filter: var(--svg-filter-white);
 }
 
 .ui.inverted.menu {
@@ -32,6 +32,7 @@
 }
 
 .ui.inverted.menu .item {
+  color: var(--text-color-1);
   font-weight: bold;
   padding-left: 0.5rem;
   padding-right: 0.5rem;

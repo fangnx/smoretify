@@ -11,6 +11,10 @@
   --color-theme-indigo-1: #9fa8da;
   --color-theme-indigo-2: #c5cae9;
   --color-theme-indigo-3: #e8eaf6;
+  --svg-filter-white: invert(100%) sepia(4%) saturate(339%) hue-rotate(210deg)
+    brightness(113%) contrast(83%);
+  --svg-filter-indigo: invert(64%) sepia(9%) saturate(2180%) hue-rotate(194deg)
+    brightness(83%) contrast(90%);
   --font-serif: 'Merriweather', serif;
   --font-sansserif: 'Muli', sans-serif;
   --font-stylish: 'Cairo', sans-serif;

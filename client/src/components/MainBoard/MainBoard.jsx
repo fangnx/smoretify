@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-04 01:47:25
+ * @last-modified 2019-08-04 15:04:54
  */
 
 import React from 'react';
@@ -130,7 +130,10 @@ class MainBoard extends React.Component {
             />
           </Grid.Column>
           <Grid.Column width={8} className="panel mainBoard-mid">
-            <SongInfo description={this.state.geniusDescription} />
+            <SongInfo
+              description={this.state.geniusDescription}
+              url={this.state.geniusPageUrl}
+            />
           </Grid.Column>
           <Grid.Column width={4} className="panel mainBoard-right">
             <ArtistInfo />

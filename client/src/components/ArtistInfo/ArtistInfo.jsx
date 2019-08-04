@@ -4,11 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-04 01:41:30
+ * @last-modified 2019-08-04 15:34:49
  */
 
 import React from 'react';
-import { Image, Container, Header, Icon } from 'semantic-ui-react';
+import { Image, Container, Header, Icon, Placeholder } from 'semantic-ui-react';
 import './ArtistInfo.css';
 import { getArtistInfoFromGenius } from '../../actions/geniusActions';
 
@@ -16,14 +16,14 @@ class ArtistInfo extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: 'Artist Name',
+      name: '\u00a0',
       altNames: [],
-      artistMainImg:
-        'https://images.genius.com/6bcd2bd1708eeae7282400f1e4be633f.600x600x1.jpg',
+      artistMainImg: '',
       summary: '',
       facebookUrl: '',
       twitterUrl: '',
-      instagramUrl: ''
+      instagramUrl: '',
+      isReady: false
     };
   }
 
@@ -58,7 +58,8 @@ class ArtistInfo extends React.Component {
               name: res.data.name,
               altNames: res.data.alternate_names,
               artistMainImg: res.data.image_url,
-              summary: pureTextDescription
+              summary: pureTextDescription,
+              isReady: true
             });
           }
         }
@@ -73,11 +74,17 @@ class ArtistInfo extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    const { isReady } = this.state;
     return (
       <div className="artistInfo-panel">
         <div className="topImage-wrapper">
-          <Image src={this.state.artistMainImg} className="topImage" />
+          {isReady ? (
+            <Image src={this.state.artistMainImg} className="topImage" />
+          ) : (
+            <Placeholder inverted>
+              <Placeholder.Image style={{ height: 275, width: 275 }} />
+            </Placeholder>
+          )}
         </div>
 
         <Container className="artistInfo-container title">
