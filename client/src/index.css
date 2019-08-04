@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather|Titillium+Web&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cairo|Merriweather|Titillium+Web&display=swap');
 
 :root {
   --text-color-0: rgb(233, 233, 233);
@@ -12,7 +12,7 @@
   --color-theme-indigo-2: #c5cae9;
   --color-theme-indigo-3: #e8eaf6;
   --font-serif: 'Merriweather', serif;
-  --font-sansserif: 'Titillium Web', sans-serif;
+  --font-sansserif: 'Cairo', sans-serif;
 }
 
 body {
@@ -22,7 +22,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
   font-family: var(--font-sansserif) !important;
-  font-size: 16px !important;
+  font-size: 20px !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-color-0) !important;

@@ -4,13 +4,14 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-02 01:47:48
+ * @last-modified 2019-08-04 00:43:40
  */
 
 import React from 'react';
 import './CurrentSong.css';
 import { Card, Image, Header } from 'semantic-ui-react';
 import spotifyIcon from '../../assets/Spotify_Icon_CMYK_Green.png';
+import TrackArtistsInfo from '../TrackArtistsInfo/TrackArtistsInfo';
 import { initSpotifyApi } from '../../App';
 
 class CurrentSong extends React.Component {
@@ -19,6 +20,7 @@ class CurrentSong extends React.Component {
     this.state = {
       isReady: false,
       currentSong: '',
+      currentArtists: [],
       songImg: ''
     };
   }
@@ -50,12 +52,12 @@ class CurrentSong extends React.Component {
           this.setState({
             isReady: true,
             currentSong: res.item.name,
+            currentArtists: res.item.artists.map(artist => artist.name),
             songImg: res.item.album.images[0].url
           });
         } else {
           this.setState({
             isReady: true,
-            currentSong: 'No Song',
             songImg: spotifyIcon
           });
         }
@@ -68,7 +70,7 @@ class CurrentSong extends React.Component {
   }
 
   render() {
-    const { isReady, currentSong, songImg } = this.state;
+    const { isReady, currentSong, currentArtists, songImg } = this.state;
     console.log(this.state);
 
     return (
@@ -78,8 +80,11 @@ class CurrentSong extends React.Component {
             <div className="currentSong-widget">
               <Image src={songImg} wrapped className="currentSong-img" />
               <div className="currentSong-text">
-                <Header>{currentSong}</Header>
+                <div className="songName">{currentSong}</div>
+                <div className="artistNames">{currentArtists[0]}</div>
               </div>
+
+              <TrackArtistsInfo data={this.props.trackInfo} />
             </div>
           ) : (
             ''

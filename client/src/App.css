@@ -43,8 +43,24 @@
   color: var(--text-color-1);
 }
 
+.ui.divider {
+  border-bottom: 5px solid var(--color-theme-indigo-0) !important;
+  background-color: var(--color-theme-indigo-0) !important;
+}
+
 h1 {
-  font-family: var(--font-serif) !important;
+  font-size: 45px !important;
+}
+
+h2 {
+  font-size: 40px !important;
+  padding-bottom: 5px !important;
+  border-bottom: 5px solid var(--color-theme-indigo-0) !important;
+  display: inline-block;
+}
+
+h3 {
+  font-size: 30px !important;
 }
 
 h2,

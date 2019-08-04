@@ -4,11 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-07-28 17:15:43
+ * @last-modified 2019-08-03 23:45:18
  */
 
 import React from 'react';
-import { Image, Container, Grid, Header, Icon } from 'semantic-ui-react';
+import { Image, Container, Divider, Header, Icon } from 'semantic-ui-react';
 import './ArtistInfo.css';
 import { getArtistInfoFromGenius } from '../../actions/geniusActions';
 
@@ -77,15 +77,8 @@ class ArtistInfo extends React.Component {
     console.log(this.state);
     return (
       <div className="artistInfo-panel">
-        <div className="topImages-wrapper">
-          <Grid columns={2}>
-            <Grid.Column>
-              <Image src={this.state.artistMainImg} className="topImage" />
-            </Grid.Column>
-            <Grid.Column>
-              <Image src={this.state.artistMainImg} className="topImage" />
-            </Grid.Column>
-          </Grid>
+        <div className="topImage-wrapper">
+          <Image src={this.state.artistMainImg} className="topImage" />
         </div>
 
         <Container className="artistInfo-container header">
@@ -101,6 +94,7 @@ class ArtistInfo extends React.Component {
             <Icon name="twitter square" size="large" />
             <Icon name="instagram" size="large" />
           </div>
+          <Divider />
         </Container>
 
         <Container className="artistInfo-container summary">
