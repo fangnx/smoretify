@@ -4,10 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-10 22:15:48
+ * @last-modified 2019-08-11 01:41:27
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
 import './CurrentSong.css';
 import { Container, Image, Icon, Header, Divider } from 'semantic-ui-react';
 import WithScrollbar from '../Scrollbar/Scrollbar';
@@ -20,7 +21,7 @@ class CurrentSong extends React.Component {
     super();
     this.state = {
       isReady: false,
-      currentSong: '',
+      currentSongName: '',
       currentArtists: [],
       songImg: ''
     };
@@ -48,12 +49,23 @@ class CurrentSong extends React.Component {
     spotifyApi
       .getMyCurrentPlaybackState()
       .then(res => {
+        const currentSongName = res.item.name;
+        const currentArtists = res.item.artists.map(artist => artist.name);
+
+        this.props.dispatch({
+          type: 'SONG_INFO',
+          payload: {
+            currentSongName,
+            currentArtists
+          }
+        });
+
         if (res) {
-          console.log(res);
+          // console.log(res);
           this.setState({
             isReady: true,
-            currentSong: res.item.name,
-            currentArtists: res.item.artists.map(artist => artist.name),
+            currentSongName,
+            currentArtists,
             songImg: res.item.album.images[0].url
           });
         } else {
@@ -71,8 +83,7 @@ class CurrentSong extends React.Component {
   }
 
   render() {
-    const { isReady, currentSong, currentArtists, songImg } = this.state;
-    console.log(this.state);
+    const { isReady, currentSongName, currentArtists, songImg } = this.state;
 
     return (
       <div className="currentSong-panel">
@@ -80,7 +91,7 @@ class CurrentSong extends React.Component {
           <div className="currentSong-widget">
             <Image src={songImg} wrapped className="currentSong-img" />
             <div className="currentSong-text">
-              <div className="songName">{currentSong}</div>
+              <div className="songName">{currentSongName}</div>
               <div className="artistNames">{currentArtists[0]}</div>
               {/* <div className="spotifySource">
                   <Image
@@ -108,7 +119,6 @@ class CurrentSong extends React.Component {
           </div>
         ) : (
           ''
-          // <Card className="currentSong-card" />
         )}
       </div>
     );
@@ -117,4 +127,7 @@ class CurrentSong extends React.Component {
 
 CurrentSong = WithScrollbar(CurrentSong);
 
-export default CurrentSong;
+export default connect(
+  null,
+  null
+)(CurrentSong);

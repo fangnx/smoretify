@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-28 15:57:18
- * @last-modified 2019-08-04 00:50:24
+ * @last-modified 2019-08-11 01:38:02
  */
 
 import React from 'react';
@@ -20,7 +20,7 @@ class TrackArtistsInfo extends React.Component {
         <Table compact inverted>
           <Table.Body>
             {this.props.data.map((row, index) => (
-              <Table.Row>
+              <Table.Row key={`trackArtistsInfo-row-${index}`}>
                 <Table.Cell className="name-cell">
                   {/* <Label
                     className={

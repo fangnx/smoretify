@@ -4,10 +4,12 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 11:17:55
- * @last-modified 2019-08-04 11:25:25
+ * @last-modified 2019-08-10 23:05:22
  */
 
 import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from './store';
 import './App.css';
 import MainBoard from './components/MainBoard/MainBoard';
 import Toolbar from './components/Toolbar/Toolbar';
@@ -33,8 +35,10 @@ export const initSpotifyApi = async () => {
 const App = () => {
   return (
     <div className="App">
-      <MainBoard />
-      <Toolbar />
+      <Provider store={store}>
+        <MainBoard />
+        <Toolbar />
+      </Provider>
     </div>
   );
 };

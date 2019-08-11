@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-10 21:41:43
+ * @last-modified 2019-08-11 01:36:02
  */
 
 import React from 'react';
@@ -32,7 +32,7 @@ class ArtistInfo extends React.Component {
     await getArtistInfoFromGenius({ artistId: 21128 })
       .then(async res => {
         if (res.status === 200) {
-          console.log(res);
+          // console.log(res);
           const rawDescription = res.data.description.dom.children;
           let pureTextDescription = '';
           // Note: Genius API returns string literal '?' for non-existing description.

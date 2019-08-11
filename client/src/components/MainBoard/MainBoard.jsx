@@ -4,16 +4,19 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-10 21:53:08
+ * @last-modified 2019-08-11 01:59:18
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { store } from '../../store';
 import { Grid, Transition } from 'semantic-ui-react';
 import './MainBoard.css';
 import CurrentSong from '../CurrentSong/CurrentSong';
 import SongInfo from '../SongInfo/SongInfo';
 import ArtistInfo from '../ArtistInfo/ArtistInfo';
 import {
+  searchFromGenius,
   getSongInfoFromGenius,
   getReferentsBySongFromGenius
 } from '../../actions/geniusActions';
@@ -23,6 +26,7 @@ class MainBoard extends React.Component {
     super();
     this.state = {
       title: 'Tender is the Night',
+      currentSongName: '',
       geniusDescription: '',
       geniusTrackInfo: [],
       annotations: [],
@@ -31,8 +35,21 @@ class MainBoard extends React.Component {
     };
   }
 
+  async searchCurrentSong(searchTerm) {
+    return await searchFromGenius({ searchTerm }).then(async res => {
+      console.log(res);
+      if (res && res.status === 200 && res.data.length > 0) {
+        return res.data[0].result;
+      }
+      return {};
+    });
+  }
+
   async getSongInfo() {
-    await getSongInfoFromGenius({ songId: 74885 })
+    const song = await this.searchCurrentSong(this.state.currentSongName);
+    console.log('SONG TOP RESULT:');
+    console.log(song);
+    await getSongInfoFromGenius({ songId: song.id })
       .then(async res => {
         if (res.status === 200) {
           console.log(res);
@@ -70,23 +87,25 @@ class MainBoard extends React.Component {
           }
           // Parse track info (artist relations).
           const trackInfo = this.parseTrackInfo(res.data.custom_performances);
-
           await this.setState({
             geniusDescription: pureTextDescription,
             geniusTrackInfo: trackInfo,
             geniusPageUrl: res.data.url,
             youtubeUrl: youtubeUrl
           });
+          console.log(this.state.geniusPageUrl);
+          console.log('notdone');
         }
       })
       .catch();
+    console.log('Done');
   }
 
   async getAnnotations() {
     await getReferentsBySongFromGenius({ songId: 74885 })
       .then(async res => {
         if (res.status === 200 && res.data.length > 0) {
-          console.log(res);
+          // console.log(res);
           const annotations = this.parseReferents(res.data);
           await this.setState({
             annotations: annotations
@@ -114,12 +133,19 @@ class MainBoard extends React.Component {
     });
   }
 
-  async componentWillMount() {
+  async componentWillReceiveProps(nextProps) {
+    await this.setState({ currentSongName: nextProps.currentSongName });
     await this.getSongInfo();
-    await this.getAnnotations();
+
+    // await this.searchCurrentSong(nextProps);
+    // await this.getAnnotations();
   }
 
+  async componentWillMount() {}
+
   render() {
+    console.log('GLOBAL REDUX STATE:');
+    console.log(store.getState());
     return (
       <div className="mainBoard">
         <div className="mainBoard-scrollable">
@@ -146,4 +172,12 @@ class MainBoard extends React.Component {
   }
 }
 
-export default MainBoard;
+const mapStateToProps = state => {
+  const { songInfo } = state;
+  return { currentSongName: songInfo.currentSongName };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(MainBoard);
