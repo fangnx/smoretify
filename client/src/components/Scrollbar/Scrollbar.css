@@ -4,11 +4,20 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-10 21:30:33
-* @last-modified 2019-08-10 21:45:34
+* @last-modified 2019-08-10 22:31:07
 */
 
+.scrollbar {
+  width: 100% !important;
+  height: 100vh !important;
+}
+
+.ScrollbarsCustom-TrackY {
+  background: transparent !important;
+}
+
 .ScrollbarsCustom-ThumbY {
-  background-color: rgb(20, 20, 21) !important;
+  background-color: rgba(20, 20, 21, 0.75) !important;
 }
 
 .ScrollbarsCustom-ThumbY:active {
