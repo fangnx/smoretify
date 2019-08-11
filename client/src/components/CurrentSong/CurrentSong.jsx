@@ -4,14 +4,14 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-04 14:16:25
+ * @last-modified 2019-08-10 21:43:57
  */
 
 import React from 'react';
 import './CurrentSong.css';
 import { Container, Image, Icon, Header, Divider } from 'semantic-ui-react';
+import WithScrollbar from '../Scrollbar/Scrollbar';
 import spotifyGreenIcon from '../../assets/Spotify_Icon_CMYK_Green.png';
-import spotifyWhiteIcon from '../../assets/Spotify_Icon_CMYK_White.png';
 import TrackArtistsInfo from './TrackArtistsInfo/TrackArtistsInfo';
 import { initSpotifyApi } from '../../App';
 
@@ -76,14 +76,13 @@ class CurrentSong extends React.Component {
 
     return (
       <div className="currentSong-panel">
-        <React.Fragment>
-          {isReady ? (
-            <div className="currentSong-widget">
-              <Image src={songImg} wrapped className="currentSong-img" />
-              <div className="currentSong-text">
-                <div className="songName">{currentSong}</div>
-                <div className="artistNames">{currentArtists[0]}</div>
-                {/* <div className="spotifySource">
+        {isReady ? (
+          <div className="currentSong-widget">
+            <Image src={songImg} wrapped className="currentSong-img" />
+            <div className="currentSong-text">
+              <div className="songName">{currentSong}</div>
+              <div className="artistNames">{currentArtists[0]}</div>
+              {/* <div className="spotifySource">
                   <Image
                     as={Icon}
                     src={spotifyWhiteIcon}
@@ -92,29 +91,30 @@ class CurrentSong extends React.Component {
                   />
                 </div> */}
 
-                <Container className="currentSong-container aboutTheSong">
-                  <Header as="h3" className="aboutTheSong-header">
-                    About the Song
-                  </Header>
-                  <div>{this.props.description}</div>
-                </Container>
+              <Container className="currentSong-container aboutTheSong">
+                <Header as="h3" className="aboutTheSong-header">
+                  About the Song
+                </Header>
+                <div>{this.props.description}</div>
+              </Container>
 
-                <Container className="currentSong-container trackInfo">
-                  <Header as="h3" className="trackInfo-header">
-                    Track Info
-                  </Header>
-                  <TrackArtistsInfo data={this.props.trackInfo} />
-                </Container>
-              </div>
+              <Container className="currentSong-container trackInfo">
+                <Header as="h3" className="trackInfo-header">
+                  Track Info
+                </Header>
+                <TrackArtistsInfo data={this.props.trackInfo} />
+              </Container>
             </div>
-          ) : (
-            ''
-            // <Card className="currentSong-card" />
-          )}
-        </React.Fragment>
+          </div>
+        ) : (
+          ''
+          // <Card className="currentSong-card" />
+        )}
       </div>
     );
   }
 }
+
+CurrentSong = WithScrollbar(CurrentSong);
 
 export default CurrentSong;

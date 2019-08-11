@@ -4,12 +4,13 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-08-04 15:05:39
+ * @last-modified 2019-08-10 21:41:05
  */
 
 import React from 'react';
 import './SongInfo.css';
-import { Container, Header, Divider } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
+import WithScrollbar from '../Scrollbar/Scrollbar';
 import SongLyrics from './SongLyrics/SongLyrics';
 import MiniYoutube from './MiniYoutube/MiniYoutube';
 import {
@@ -41,5 +42,7 @@ class SongInfo extends React.Component {
     );
   }
 }
+
+SongInfo = WithScrollbar(SongInfo);
 
 export default SongInfo;

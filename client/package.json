@@ -8,6 +8,7 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-scripts": "3.0.1",
+    "react-scrollbars-custom": "^4.0.16",
     "react-youtube": "^7.9.0",
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",

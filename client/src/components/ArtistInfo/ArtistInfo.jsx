@@ -4,12 +4,13 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-04 15:34:49
+ * @last-modified 2019-08-10 21:41:43
  */
 
 import React from 'react';
-import { Image, Container, Header, Icon, Placeholder } from 'semantic-ui-react';
 import './ArtistInfo.css';
+import { Image, Container, Header, Icon, Placeholder } from 'semantic-ui-react';
+import WithScrollbar from '../Scrollbar/Scrollbar';
 import { getArtistInfoFromGenius } from '../../actions/geniusActions';
 
 class ArtistInfo extends React.Component {
@@ -106,5 +107,7 @@ class ArtistInfo extends React.Component {
     );
   }
 }
+
+ArtistInfo = WithScrollbar(ArtistInfo);
 
 export default ArtistInfo;

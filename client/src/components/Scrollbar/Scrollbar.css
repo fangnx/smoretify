@@ -1,0 +1,16 @@
+/**
+* Scrollbar.css
+*
+* @author nxxinf
+* @github https://github.com/fangnx
+* @created 2019-08-10 21:30:33
+* @last-modified 2019-08-10 21:45:34
+*/
+
+.ScrollbarsCustom-ThumbY {
+  background-color: rgb(20, 20, 21) !important;
+}
+
+.ScrollbarsCustom-ThumbY:active {
+  background-color: var(--color-theme-indigo-0) !important;
+}
