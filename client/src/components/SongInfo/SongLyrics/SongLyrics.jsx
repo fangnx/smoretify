@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-02 00:22:19
- * @last-modified 2019-08-11 01:48:40
+ * @last-modified 2019-08-11 02:04:17
  */
 
 import React from 'react';
@@ -21,8 +21,8 @@ class SongLyrics extends React.Component {
     };
   }
 
-  async componentWillReceiveProps() {
-    await this.getLyrics(this.props.url);
+  async componentWillReceiveProps(nextProps) {
+    await this.getLyrics(nextProps.url);
   }
 
   async getLyrics(pageUrl) {
@@ -41,7 +41,6 @@ class SongLyrics extends React.Component {
   }
 
   render() {
-    console.log(this.state.lines);
     const { isReady } = this.state;
     const fillArr = new Array(30).fill(0);
     return (
