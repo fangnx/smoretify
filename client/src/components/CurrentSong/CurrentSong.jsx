@@ -4,13 +4,14 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-11 01:41:27
+ * @last-modified 2019-08-16 18:01:43
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { store } from '../../store';
 import './CurrentSong.css';
-import { Container, Image, Icon, Header, Divider } from 'semantic-ui-react';
+import { Container, Image, Icon, Header } from 'semantic-ui-react';
 import WithScrollbar from '../Scrollbar/Scrollbar';
 import spotifyGreenIcon from '../../assets/Spotify_Icon_CMYK_Green.png';
 import TrackArtistsInfo from './TrackArtistsInfo/TrackArtistsInfo';
@@ -46,36 +47,44 @@ class CurrentSong extends React.Component {
   async getCurrentSong() {
     const spotifyApi = await initSpotifyApi();
 
-    spotifyApi
-      .getMyCurrentPlaybackState()
-      .then(res => {
-        const currentSongName = res.item.name;
-        const currentArtists = res.item.artists.map(artist => artist.name);
-
-        this.props.dispatch({
-          type: 'SONG_INFO',
-          payload: {
-            currentSongName,
-            currentArtists
+    setInterval(async () => {
+      spotifyApi
+        .getMyCurrentPlaybackState()
+        .then(res => {
+          const spotifySongName = res.item.name;
+          const spotifyArtists = res.item.artists.map(artist => artist.name);
+          const { currentSongName, currentArtists } = store.getState().songInfo;
+          if (
+            spotifySongName === currentSongName &&
+            spotifyArtists === currentArtists
+          ) {
+            return;
           }
-        });
 
-        if (res) {
-          // console.log(res);
-          this.setState({
-            isReady: true,
-            currentSongName,
-            currentArtists,
-            songImg: res.item.album.images[0].url
+          this.props.dispatch({
+            type: 'SONG_INFO',
+            payload: {
+              currentSongName: spotifySongName,
+              currentArtists: spotifyArtists
+            }
           });
-        } else {
-          this.setState({
-            isReady: true,
-            songImg: spotifyGreenIcon
-          });
-        }
-      })
-      .catch(err => console.log(err));
+          if (res) {
+            // console.log(res);
+            this.setState({
+              isReady: true,
+              currentSongName: spotifySongName,
+              currentArtists: spotifyArtists,
+              songImg: res.item.album.images[0].url
+            });
+          } else {
+            this.setState({
+              isReady: true,
+              songImg: spotifyGreenIcon
+            });
+          }
+        })
+        .catch(err => console.log(err));
+    }, 5000);
   }
 
   componentWillMount() {

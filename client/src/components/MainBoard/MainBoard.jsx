@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-16 01:06:37
+ * @last-modified 2019-08-16 17:04:44
  */
 
 import React from 'react';
@@ -91,10 +91,13 @@ class MainBoard extends React.Component {
           }
           // Parse track info (artist relations).
           const trackInfo = this.parseTrackInfo(res.data.custom_performances);
+          // Update states.
           await this.setState({
             geniusDescription: pureTextDescription,
             geniusTrackInfo: trackInfo,
             geniusPageUrl: res.data.url,
+            searchedSongName: song.title,
+            searchedArtistName: song.primary_artist.name,
             youtubeUrl: youtubeUrl
           });
         }
@@ -161,6 +164,8 @@ class MainBoard extends React.Component {
               <SongInfo
                 description={this.state.geniusDescription}
                 url={this.state.geniusPageUrl}
+                searchedSongName={this.state.searchedSongName}
+                searchedArtistName={this.state.searchedArtistName}
               />
             </Grid.Column>
             <Grid.Column width={4} className="panel mainBoard-right">

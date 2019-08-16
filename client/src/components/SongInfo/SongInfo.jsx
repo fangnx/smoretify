@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-08-10 21:41:05
+ * @last-modified 2019-08-16 01:33:58
  */
 
 import React from 'react';
@@ -13,10 +13,6 @@ import { Container, Header } from 'semantic-ui-react';
 import WithScrollbar from '../Scrollbar/Scrollbar';
 import SongLyrics from './SongLyrics/SongLyrics';
 import MiniYoutube from './MiniYoutube/MiniYoutube';
-import {
-  getSongInfoFromGenius,
-  getReferentsBySongFromGenius
-} from '../../actions/geniusActions';
 
 class SongInfo extends React.Component {
   render() {
@@ -24,16 +20,16 @@ class SongInfo extends React.Component {
       <div className="songInfo-panel">
         {/* <MiniYoutube /> */}
 
-        {/* <Container className="songInfo-container title">
-          <Header as="h1" className="songInfo-title">
-            {this.state.title}
-          </Header>
-        </Container> */}
-
         <Container className="songInfo-container lyrics">
           <Header as="h2" className="songInfo-title">
             Lyrics
           </Header>
+          <div className="lyrics-search-result">
+            {`(${this.props.searchedSongName} - ${
+              this.props.searchedArtistName
+            })`}
+          </div>
+
           <SongLyrics url={this.props.url} />
         </Container>
 
