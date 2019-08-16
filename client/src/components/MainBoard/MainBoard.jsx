@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-11 02:02:37
+ * @last-modified 2019-08-16 01:06:37
  */
 
 import React from 'react';
@@ -27,6 +27,7 @@ class MainBoard extends React.Component {
     this.state = {
       title: 'Tender is the Night',
       currentSongName: '',
+      currentArtists: [''],
       geniusDescription: '',
       geniusTrackInfo: [],
       annotations: [],
@@ -46,7 +47,10 @@ class MainBoard extends React.Component {
   }
 
   async getSongInfo() {
-    const song = await this.searchCurrentSong(this.state.currentSongName);
+    const searchTerm = `${this.state.currentSongName} by ${
+      this.state.currentArtists[0]
+    }`;
+    const song = await this.searchCurrentSong(searchTerm);
     console.log('SONG TOP RESULT:');
     console.log(song);
     await getSongInfoFromGenius({ songId: song.id })
@@ -93,12 +97,9 @@ class MainBoard extends React.Component {
             geniusPageUrl: res.data.url,
             youtubeUrl: youtubeUrl
           });
-          console.log(this.state.geniusPageUrl);
-          console.log('notdone');
         }
       })
       .catch();
-    console.log('Done');
   }
 
   async getAnnotations() {
@@ -134,11 +135,11 @@ class MainBoard extends React.Component {
   }
 
   async componentWillReceiveProps(nextProps) {
-    await this.setState({ currentSongName: nextProps.currentSongName });
+    await this.setState({
+      currentSongName: nextProps.currentSongName,
+      currentArtists: nextProps.currentArtists
+    });
     await this.getSongInfo();
-
-    // await this.searchCurrentSong(nextProps);
-    // await this.getAnnotations();
   }
 
   async componentWillMount() {}
@@ -146,7 +147,6 @@ class MainBoard extends React.Component {
   render() {
     console.log('GLOBAL REDUX STATE:');
     console.log(store.getState());
-    console.log(this.state.geniusPageUrl);
     return (
       <div className="mainBoard">
         <div className="mainBoard-scrollable">
@@ -175,7 +175,10 @@ class MainBoard extends React.Component {
 
 const mapStateToProps = state => {
   const { songInfo } = state;
-  return { currentSongName: songInfo.currentSongName };
+  return {
+    currentSongName: songInfo.currentSongName,
+    currentArtists: songInfo.currentArtists
+  };
 };
 
 export default connect(
