@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-16 17:04:44
+ * @last-modified 2019-08-16 21:01:39
  */
 
 import React from 'react';
@@ -36,27 +36,45 @@ class MainBoard extends React.Component {
     };
   }
 
-  async searchCurrentSong(searchTerm) {
+  async searchCurrentSong(trimmedCurrentSongName, currentArtists) {
+    // Song name + primary artist name.
+    // Tested to yield the most accurate result in Genius.
+    const searchTerm = `${trimmedCurrentSongName} ${currentArtists[0]}`;
+
     return await searchFromGenius({ searchTerm }).then(async res => {
-      console.log(res);
       if (res && res.status === 200 && res.data.length > 0) {
-        return res.data[0].result;
+        // console.log(res);
+        const withMatchedName = res.data.filter(
+          songRes => songRes.result.title === trimmedCurrentSongName
+        );
+
+        if (withMatchedName.length === 0) {
+          return res.data[0].result;
+        } else if (withMatchedName.length === 1) {
+          return withMatchedName[0].result;
+        }
+        const withMatchedArtist = withMatchedName.filter(
+          songRes =>
+            currentArtists.indexOf(songRes.result.primary_artist.name) >= 0
+        );
+        return withMatchedArtist.length > 0
+          ? withMatchedArtist[0].result
+          : withMatchedName[0].result;
       }
       return {};
     });
   }
 
   async getSongInfo() {
-    const searchTerm = `${this.state.currentSongName} by ${
-      this.state.currentArtists[0]
-    }`;
-    const song = await this.searchCurrentSong(searchTerm);
-    console.log('SONG TOP RESULT:');
-    console.log(song);
+    // const searchTerm = this.state.trimmedCurrentSongName;
+    const song = await this.searchCurrentSong(
+      this.state.trimmedCurrentSongName,
+      this.state.currentArtists
+    );
     await getSongInfoFromGenius({ songId: song.id })
       .then(async res => {
         if (res.status === 200) {
-          console.log(res);
+          // console.log(res);
           const rawDescription = res.data.description.dom.children;
           let pureTextDescription = '';
           // Note: Genius API returns string literal '?' for non-existing description.
@@ -98,6 +116,7 @@ class MainBoard extends React.Component {
             geniusPageUrl: res.data.url,
             searchedSongName: song.title,
             searchedArtistName: song.primary_artist.name,
+            searchedArtistId: song.primary_artist.id,
             youtubeUrl: youtubeUrl
           });
         }
@@ -140,6 +159,7 @@ class MainBoard extends React.Component {
   async componentWillReceiveProps(nextProps) {
     await this.setState({
       currentSongName: nextProps.currentSongName,
+      trimmedCurrentSongName: nextProps.trimmedCurrentSongName,
       currentArtists: nextProps.currentArtists
     });
     await this.getSongInfo();
@@ -169,7 +189,7 @@ class MainBoard extends React.Component {
               />
             </Grid.Column>
             <Grid.Column width={4} className="panel mainBoard-right">
-              <ArtistInfo />
+              <ArtistInfo searchedArtistId={this.state.searchedArtistId} />
             </Grid.Column>
           </Grid>
         </div>
@@ -182,6 +202,7 @@ const mapStateToProps = state => {
   const { songInfo } = state;
   return {
     currentSongName: songInfo.currentSongName,
+    trimmedCurrentSongName: songInfo.trimmedCurrentSongName,
     currentArtists: songInfo.currentArtists
   };
 };

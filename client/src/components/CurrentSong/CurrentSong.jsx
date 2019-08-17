@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-16 18:01:43
+ * @last-modified 2019-08-16 20:31:27
  */
 
 import React from 'react';
@@ -16,6 +16,7 @@ import WithScrollbar from '../Scrollbar/Scrollbar';
 import spotifyGreenIcon from '../../assets/Spotify_Icon_CMYK_Green.png';
 import TrackArtistsInfo from './TrackArtistsInfo/TrackArtistsInfo';
 import { initSpotifyApi } from '../../App';
+import { trimSongName } from '../../utils/commonUtils';
 
 class CurrentSong extends React.Component {
   constructor() {
@@ -61,15 +62,8 @@ class CurrentSong extends React.Component {
             return;
           }
 
-          this.props.dispatch({
-            type: 'SONG_INFO',
-            payload: {
-              currentSongName: spotifySongName,
-              currentArtists: spotifyArtists
-            }
-          });
           if (res) {
-            // console.log(res);
+            console.log(res);
             this.setState({
               isReady: true,
               currentSongName: spotifySongName,
@@ -82,6 +76,15 @@ class CurrentSong extends React.Component {
               songImg: spotifyGreenIcon
             });
           }
+
+          this.props.dispatch({
+            type: 'SONG_INFO',
+            payload: {
+              currentSongName: spotifySongName,
+              trimmedCurrentSongName: trimSongName(spotifySongName),
+              currentArtists: spotifyArtists
+            }
+          });
         })
         .catch(err => console.log(err));
     }, 5000);
@@ -102,14 +105,6 @@ class CurrentSong extends React.Component {
             <div className="currentSong-text">
               <div className="songName">{currentSongName}</div>
               <div className="artistNames">{currentArtists[0]}</div>
-              {/* <div className="spotifySource">
-                  <Image
-                    as={Icon}
-                    src={spotifyWhiteIcon}
-                    wrapped
-                    className="spotify-icon"
-                  />
-                </div> */}
 
               <Container className="currentSong-container aboutTheSong">
                 <Header as="h3" className="aboutTheSong-header">
