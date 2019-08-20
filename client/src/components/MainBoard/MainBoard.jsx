@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-16 21:01:39
+ * @last-modified 2019-08-16 21:09:18
  */
 
 import React from 'react';
@@ -43,13 +43,14 @@ class MainBoard extends React.Component {
 
     return await searchFromGenius({ searchTerm }).then(async res => {
       if (res && res.status === 200 && res.data.length > 0) {
-        // console.log(res);
+        console.log(res);
         const withMatchedName = res.data.filter(
           songRes => songRes.result.title === trimmedCurrentSongName
         );
 
         if (withMatchedName.length === 0) {
           return res.data[0].result;
+          // return {};
         } else if (withMatchedName.length === 1) {
           return withMatchedName[0].result;
         }
