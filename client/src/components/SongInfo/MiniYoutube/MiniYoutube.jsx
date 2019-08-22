@@ -4,28 +4,30 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-28 17:27:18
- * @last-modified 2019-07-28 17:40:00
+ * @last-modified 2019-08-21 23:14:05
  */
 
 import React from 'react';
+import './MiniYoutube.css';
 import Youtube from 'react-youtube';
-import { Label } from 'semantic-ui-react';
+import { getYoutubeVideoID } from '../../../utils/commonUtils';
 
 class MiniYoutube extends React.Component {
-  componentWillReceiveProps() {}
-
   render() {
+    const videoId = getYoutubeVideoID(this.props.url);
+    console.log(videoId);
+
     const opts = {
-      height: '250',
-      width: '400',
+      height: '270',
+      width: '480',
       playerVars: {
         // https://developers.google.com/youtube/player_parameters
-        autoplay: 1
+        autoplay: 0
       }
     };
     return (
       <div className="miniYoutube-widget">
-        <Youtube videoId="NMD0XB2XfLM" opts={opts} onReady={this._onReady} />
+        <Youtube videoId={videoId} opts={opts} onReady={this._onReady} />
       </div>
     );
   }

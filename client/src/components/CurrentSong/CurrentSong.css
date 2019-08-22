@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-06-16 13:27:10
-* @last-modified 2019-08-10 22:28:47
+* @last-modified 2019-08-21 22:46:29
 */
 
 .currentSong-panel {
@@ -21,13 +21,6 @@
   padding: 0 !important;
   margin-top: 25px;
   margin-bottom: 25px;
-}
-
-.currentSong-img {
-}
-
-.currentSong-img img {
-  /* border-radius: 5px !important; */
 }
 
 .currentSong-text {

@@ -1,0 +1,14 @@
+/**
+* MiniYoutube.css
+*
+* @author nxxinf
+* @github https://github.com/fangnx
+* @created 2019-08-21 23:11:18
+* @last-modified 2019-08-21 23:12:30
+*/
+
+iframe {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

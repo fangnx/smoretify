@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-21 21:54:11
+ * @last-modified 2019-08-21 22:53:58
  */
 
 import React from 'react';
@@ -171,6 +171,7 @@ class MainBoard extends React.Component {
   render() {
     console.log('GLOBAL REDUX STATE:');
     console.log(store.getState());
+    console.log(this.state);
     return (
       <div className="mainBoard">
         <div className="mainBoard-scrollable">
@@ -185,6 +186,7 @@ class MainBoard extends React.Component {
               <SongInfo
                 description={this.state.geniusDescription}
                 url={this.state.geniusPageUrl}
+                youtubeUrl={this.state.youtubeUrl}
                 searchedSongName={this.state.searchedSongName}
                 searchedArtistName={this.state.searchedArtistName}
               />

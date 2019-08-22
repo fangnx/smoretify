@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-08-16 01:33:58
+ * @last-modified 2019-08-21 23:16:13
  */
 
 import React from 'react';
@@ -18,7 +18,9 @@ class SongInfo extends React.Component {
   render() {
     return (
       <div className="songInfo-panel">
-        {/* <MiniYoutube /> */}
+        <div className="miniYoutube-wrapper">
+          <MiniYoutube url={this.props.youtubeUrl} />
+        </div>
 
         <Container className="songInfo-container lyrics">
           <Header as="h2" className="songInfo-title">
