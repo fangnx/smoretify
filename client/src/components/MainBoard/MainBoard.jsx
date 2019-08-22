@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-16 21:09:18
+ * @last-modified 2019-08-21 21:54:11
  */
 
 import React from 'react';
@@ -150,7 +150,7 @@ class MainBoard extends React.Component {
 
   parseReferents(rawData) {
     return rawData.map(referent => {
-      // For simplicity and display, get the fisrt annotation of a referent.
+      // For simplicity and display, get the first annotation of a referent.
       const anno = referent.annotations[0];
       const map = new Map();
       return map.set(anno.url, anno.body.html);

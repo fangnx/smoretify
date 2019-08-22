@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-10 21:30:33
-* @last-modified 2019-08-10 22:31:07
+* @last-modified 2019-08-21 22:34:27
 */
 
 .scrollbar {
@@ -12,14 +12,20 @@
   height: 100vh !important;
 }
 
+.ScrollbarsCustom-Wrapper {
+  left: 0px !important;
+  right: 0px !important;
+}
+
 .ScrollbarsCustom-TrackY {
+  display: none;
   background: transparent !important;
 }
 
 .ScrollbarsCustom-ThumbY {
-  background-color: rgba(20, 20, 21, 0.75) !important;
+  /* background-color: rgba(20, 20, 21, 0.75) !important; */
 }
 
 .ScrollbarsCustom-ThumbY:active {
-  background-color: var(--color-theme-indigo-0) !important;
+  /* background-color: var(--color-theme-indigo-0) !important; */
 }

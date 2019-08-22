@@ -5,12 +5,20 @@
   --text-color-1: rgb(213, 213, 213);
   --text-color-2: rgb(180, 180, 180);
   --text-color-3: rgb(160, 160, 160);
+
+  --mainBoard-left-color: rgb(23, 23, 24);
+  --mainBoard-mid-color: rgb(27, 27, 28);
+  --mainBoard-right-color: rgb(23, 23, 24);
+  --mainBoard-shade-color: rgb(20, 20, 21);
+
   --background-color-grey: rgb(45, 45, 45);
+
   --color-spotify-green: #1db954;
   --color-theme-indigo-0: #7986cb;
   --color-theme-indigo-1: #9fa8da;
   --color-theme-indigo-2: #c5cae9;
   --color-theme-indigo-3: #e8eaf6;
+
   --svg-filter-white: invert(100%) sepia(4%) saturate(339%) hue-rotate(210deg)
     brightness(113%) contrast(83%);
   --svg-filter-indigo: invert(64%) sepia(9%) saturate(2180%) hue-rotate(194deg)
