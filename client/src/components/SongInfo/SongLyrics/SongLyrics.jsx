@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-02 00:22:19
- * @last-modified 2019-08-11 02:04:17
+ * @last-modified 2019-08-22 00:11:44
  */
 
 import React from 'react';
@@ -30,8 +30,10 @@ class SongLyrics extends React.Component {
       url: pageUrl
     })
       .then(async res => {
-        const lines = this.parseLyrics(res.data.songLyrics);
-        await this.setState({ lines: lines, isReady: true });
+        if (res.data) {
+          const lines = this.parseLyrics(res.data.songLyrics);
+          await this.setState({ lines: lines, isReady: true });
+        }
       })
       .catch();
   }
