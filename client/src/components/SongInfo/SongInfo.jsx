@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-08-21 23:16:13
+ * @last-modified 2019-08-21 23:22:46
  */
 
 import React from 'react';
@@ -23,7 +23,7 @@ class SongInfo extends React.Component {
         </div>
 
         <Container className="songInfo-container lyrics">
-          <Header as="h2" className="songInfo-title">
+          <Header as="h3" className="songInfo-title">
             Lyrics
           </Header>
           <div className="lyrics-search-result">

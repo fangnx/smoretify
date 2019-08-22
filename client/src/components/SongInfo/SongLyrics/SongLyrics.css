@@ -4,12 +4,12 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-02 00:50:08
-* @last-modified 2019-08-16 20:36:53
+* @last-modified 2019-08-21 23:37:22
 */
 
 .songLyrics-widget {
   font-size: 1.1em;
-  /* font-family: var(--font-stylish); */
+  font-family: var(--font-stylish);
 }
 
 a {

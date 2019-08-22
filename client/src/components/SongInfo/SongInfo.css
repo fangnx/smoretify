@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-14 16:12:07
-* @last-modified 2019-08-21 23:16:50
+* @last-modified 2019-08-21 23:22:15
 */
 
 .songInfo-panel {
@@ -28,5 +28,5 @@
 
 .lyrics-search-result {
   color: var(--text-color-1);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }

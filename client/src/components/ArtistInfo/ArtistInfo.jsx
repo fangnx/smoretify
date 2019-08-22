@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-16 20:18:05
+ * @last-modified 2019-08-21 23:25:34
  */
 
 import React from 'react';
@@ -32,7 +32,6 @@ class ArtistInfo extends React.Component {
     await getArtistInfoFromGenius({ artistId })
       .then(async res => {
         if (res.status === 200) {
-          console.log(res);
           const rawDescription = res.data.description.dom.children;
           let pureTextDescription = '';
           // Note: Genius API returns string literal '?' for non-existing description.
@@ -78,16 +77,6 @@ class ArtistInfo extends React.Component {
     const { isReady } = this.state;
     return (
       <div className="artistInfo-panel">
-        <div className="topImage-wrapper">
-          {isReady ? (
-            <Image src={this.state.artistMainImg} className="topImage" />
-          ) : (
-            <Placeholder inverted>
-              <Placeholder.Image style={{ height: 275, width: 275 }} />
-            </Placeholder>
-          )}
-        </div>
-
         <Container className="artistInfo-container title">
           <Header as="h1" className="artistInfo-name">
             {this.state.name}
@@ -98,6 +87,16 @@ class ArtistInfo extends React.Component {
             <Icon name="instagram" />
           </div>
         </Container>
+
+        <div className="topImage-wrapper">
+          {isReady ? (
+            <Image src={this.state.artistMainImg} className="topImage" />
+          ) : (
+            <Placeholder inverted>
+              <Placeholder.Image style={{ height: 275, width: 275 }} />
+            </Placeholder>
+          )}
+        </div>
 
         <Container className="artistInfo-container summary">
           <Header as="h3">Bio</Header>
