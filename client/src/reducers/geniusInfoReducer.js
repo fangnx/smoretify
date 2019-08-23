@@ -1,18 +1,18 @@
 /**
- * songInfoReducer.js
+ * geniusInfoReducer.js
  *
  * @author nxxinf
  * @github https://github.com/fangnx
- * @created 2019-07-14 17:07:21
- * @last-modified 2019-08-22 23:32:03
+ * @created 2019-08-22 23:31:28
+ * @last-modified 2019-08-22 23:32:26
  */
 
 const initialState = {};
 
-export const songInfoActionType = 'SONG_INFO';
+export const geniusInfoActionType = 'GENIUS_INFO';
 
 export default (state = initialState, action) => {
-  if (action.type === songInfoActionType) {
+  if (action.type === geniusInfoActionType) {
     return action.payload;
   }
   return state;
