@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-22 22:21:34
+ * @last-modified 2019-08-22 23:38:29
  */
 
 import React from 'react';
@@ -14,7 +14,7 @@ import { Grid, Transition } from 'semantic-ui-react';
 import './MainBoard.css';
 import PlayerPanel from '../PlayerPanel';
 import SongInfoPanel from '../SongInfoPanel';
-import ArtistInfoPanel from '../ArtistInfo/ArtistInfo';
+import ArtistInfoPanel from '../ArtistInfoPanel';
 import {
   searchFromGenius,
   getSongInfoFromGenius,
@@ -109,6 +109,14 @@ class MainBoard extends React.Component {
           }
           // Parse track info (artist relations).
           const trackInfo = this.parseTrackInfo(res.data.custom_performances);
+
+          this.props.dispatch({
+            type: 'GENIUS_INFO',
+            payload: {
+              songSummary: pureTextDescription
+            }
+          });
+
           // Update states.
           await this.setState({
             geniusDescription: pureTextDescription,
@@ -171,6 +179,7 @@ class MainBoard extends React.Component {
     console.log('GLOBAL REDUX STATE:');
     console.log(store.getState());
     console.log(this.state);
+
     return (
       <div className="mainBoard">
         <div className="mainBoard-scrollable">

@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-22 22:17:26
+ * @last-modified 2019-08-22 23:53:23
  */
 
 import React from 'react';
@@ -17,6 +17,8 @@ import spotifyGreenIcon from '../../assets/Spotify_Icon_CMYK_Green.png';
 import TrackArtistsInfo from './TrackArtistsInfo/TrackArtistsInfo';
 import { initSpotifyApi } from '../../App';
 import { trimSongName } from '../../utils/commonUtils';
+import PlayerWidget from './PlayerWidget';
+import SongSummaryWidget from './SongSummaryWidget';
 
 class LeftPanel extends React.Component {
   constructor() {
@@ -29,22 +31,6 @@ class LeftPanel extends React.Component {
     };
   }
 
-  /**
-   * @deprecated
-   */
-  getHashParams() {
-    var hashParams = {};
-    var e,
-      r = /([^&;=]+)=?([^&;]*)/g,
-      q = window.location.hash.substring(1);
-    e = r.exec(q);
-    while (e) {
-      hashParams[e[1]] = decodeURIComponent(e[2]);
-      e = r.exec(q);
-    }
-    return hashParams;
-  }
-
   async getCurrentSong() {
     const spotifyApi = await initSpotifyApi();
 
@@ -55,27 +41,16 @@ class LeftPanel extends React.Component {
           const spotifySongName = res.item.name;
           const spotifyArtists = res.item.artists.map(artist => artist.name);
           const { currentSongName, currentArtists } = store.getState().songInfo;
-          if (
-            spotifySongName === currentSongName &&
-            spotifyArtists.every(e => currentArtists.indexOf(e) > -1)
-          ) {
-            console.log('NOT');
-            return;
-          }
+          // if (
+          //   spotifySongName === currentSongName &&
+          //   spotifyArtists.every(e => currentArtists.indexOf(e) > -1)
+          // ) {
+          //   return;
+          // }
 
           if (res) {
-            console.log('a');
             this.setState({
-              isReady: true,
-              currentSongName: spotifySongName,
-              currentArtists: spotifyArtists,
-              songImg: res.item.album.images[0].url,
-              externalSpotifyUrl: res.item.external_urls.spotify
-            });
-          } else {
-            this.setState({
-              isReady: true,
-              songImg: spotifyGreenIcon
+              isReady: true
             });
           }
 
@@ -84,7 +59,9 @@ class LeftPanel extends React.Component {
             payload: {
               currentSongName: spotifySongName,
               trimmedCurrentSongName: trimSongName(spotifySongName),
-              currentArtists: spotifyArtists
+              currentSongImg: res.item.album.images[0].url,
+              currentArtists: spotifyArtists,
+              externalSpotifyUrl: res.item.external_urls.spotify
             }
           });
         })
@@ -103,43 +80,26 @@ class LeftPanel extends React.Component {
   }
 
   render() {
-    console.log('!!!!');
     return (
-      <div className="currentSong-panel">
+      <div className="playerPanel">
         {this.state.isReady ? (
-          <div className="currentSong-widget">
-            <Image
-              src={this.state.songImg}
-              wrapped
-              className="currentSong-img"
-            />
-            <div className="currentSong-text">
-              <div className="songName">{this.state.currentSongName}</div>
-              <div className="artistNames">{this.state.currentArtists[0]}</div>
-              <div className="links">
-                <Icon
-                  name="spotify"
-                  onClick={() => this.onClickUrl('spotify')}
-                />
-              </div>
+          <div>
+            <PlayerWidget />
 
-              <Container className="currentSong-container aboutTheSong">
-                <Header as="h3" className="aboutTheSong-header">
-                  About the Song
-                </Header>
-                <div>{this.props.description}</div>
+            <div className="playerPanel-text">
+              <Container className="playerPanel-container">
+                <Header as="h3">About the Song</Header>
+                <SongSummaryWidget />
               </Container>
 
-              <Container className="currentSong-container trackInfo">
-                <Header as="h3" className="trackInfo-header">
-                  Track Info
-                </Header>
+              <Container className="playerPanel-container">
+                <Header as="h3">Track Info</Header>
                 <TrackArtistsInfo data={this.props.trackInfo} />
               </Container>
             </div>
           </div>
         ) : (
-          ''
+          <></>
         )}
       </div>
     );
