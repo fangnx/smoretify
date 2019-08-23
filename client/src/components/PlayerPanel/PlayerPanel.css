@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-06-16 13:27:10
-* @last-modified 2019-08-21 22:46:29
+* @last-modified 2019-08-22 00:51:32
 */
 
 .currentSong-panel {
@@ -46,15 +46,7 @@
   color: var(--text-color-2);
 }
 
-.spotifySource {
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
-
-.spotify-icon {
-  font-size: 1.4em !important;
-}
-
-.spotify-icon:before {
-  display: none;
+.links {
+  margin-top: 1rem;
+  font-size: 1.4em;
 }

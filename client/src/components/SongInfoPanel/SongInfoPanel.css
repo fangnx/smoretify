@@ -1,10 +1,10 @@
 /**
-* SongInfo.css
+* SongInfoPanel.css
 *
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-14 16:12:07
-* @last-modified 2019-08-21 23:54:57
+* @last-modified 2019-08-22 22:19:04
 */
 
 .songInfo-panel {
@@ -16,14 +16,18 @@
   padding-bottom: 30px;
 }
 
-.miniYoutube-wrapper {
-  margin: 15px 0px 30px 0px;
-}
-
 .songInfo-container {
   font-size: 1em;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.songInfo-topMenu {
+  background: transparent !important;
+}
+
+.miniYoutube-wrapper {
+  margin: 0px 0px 30px 0px;
 }
 
 .lyrics-search-result {

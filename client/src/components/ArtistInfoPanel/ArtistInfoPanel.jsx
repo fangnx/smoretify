@@ -1,10 +1,10 @@
 /**
- * ArtistInfo.jsx
+ * ArtistInfoPanel.jsx
  *
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-21 23:25:34
+ * @last-modified 2019-08-22 22:22:27
  */
 
 import React from 'react';
@@ -13,7 +13,7 @@ import { Image, Container, Header, Icon, Placeholder } from 'semantic-ui-react';
 import WithScrollbar from '../Scrollbar/Scrollbar';
 import { getArtistInfoFromGenius } from '../../actions/geniusActions';
 
-class ArtistInfo extends React.Component {
+class ArtistInfoPanel extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -107,6 +107,6 @@ class ArtistInfo extends React.Component {
   }
 }
 
-ArtistInfo = WithScrollbar(ArtistInfo);
+ArtistInfoPanel = WithScrollbar(ArtistInfoPanel);
 
-export default ArtistInfo;
+export default ArtistInfoPanel;

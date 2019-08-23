@@ -1,10 +1,10 @@
 /**
-* ArtistInfo.css
+* ArtistInfoPanel.css
 *
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-27 21:01:25
-* @last-modified 2019-08-21 23:27:59
+* @last-modified 2019-08-22 22:22:40
 */
 
 .artistInfo-panel {
@@ -47,10 +47,7 @@
 }
 
 .ui.grid {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+  margin: 0 0 0 0 !important;
 }
 
 .ui.grid > * {

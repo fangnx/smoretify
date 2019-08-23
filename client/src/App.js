@@ -4,15 +4,15 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 11:17:55
- * @last-modified 2019-08-10 23:05:22
+ * @last-modified 2019-08-22 22:24:26
  */
 
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import './App.css';
-import MainBoard from './components/MainBoard/MainBoard';
-import Toolbar from './components/Toolbar/Toolbar';
+import MainBoard from './components/MainBoard';
+import Toolbar from './components/Toolbar';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { getUserSpotifyInfo } from './actions/authActions';
 

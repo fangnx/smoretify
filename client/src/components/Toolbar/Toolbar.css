@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-04 11:21:26
-* @last-modified 2019-08-21 22:14:35
+* @last-modified 2019-08-22 00:16:00
 */
 
 .toolbar {
@@ -13,6 +13,7 @@
   width: 100%;
   bottom: 0;
   left: 0;
+  box-shadow: 0px -1px 16px 5px var(--mainBoard-shade-color);
 }
 
 .toolbar-logo {

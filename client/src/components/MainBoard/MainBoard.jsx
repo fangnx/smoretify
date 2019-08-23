@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-21 22:53:58
+ * @last-modified 2019-08-22 22:21:34
  */
 
 import React from 'react';
@@ -12,9 +12,9 @@ import { connect } from 'react-redux';
 import { store } from '../../store';
 import { Grid, Transition } from 'semantic-ui-react';
 import './MainBoard.css';
-import CurrentSong from '../CurrentSong/CurrentSong';
-import SongInfo from '../SongInfo/SongInfo';
-import ArtistInfo from '../ArtistInfo/ArtistInfo';
+import PlayerPanel from '../PlayerPanel';
+import SongInfoPanel from '../SongInfoPanel';
+import ArtistInfoPanel from '../ArtistInfo/ArtistInfo';
 import {
   searchFromGenius,
   getSongInfoFromGenius,
@@ -75,7 +75,6 @@ class MainBoard extends React.Component {
     await getSongInfoFromGenius({ songId: song.id })
       .then(async res => {
         if (res.status === 200) {
-          // console.log(res);
           const rawDescription = res.data.description.dom.children;
           let pureTextDescription = '';
           // Note: Genius API returns string literal '?' for non-existing description.
@@ -177,13 +176,13 @@ class MainBoard extends React.Component {
         <div className="mainBoard-scrollable">
           <Grid columns={3} className="mainBoard-grid">
             <Grid.Column width={4} className="panel mainBoard-left">
-              <CurrentSong
+              <PlayerPanel
                 description={this.state.geniusDescription}
                 trackInfo={this.state.geniusTrackInfo}
               />
             </Grid.Column>
             <Grid.Column width={8} className="panel mainBoard-mid">
-              <SongInfo
+              <SongInfoPanel
                 description={this.state.geniusDescription}
                 url={this.state.geniusPageUrl}
                 youtubeUrl={this.state.youtubeUrl}
@@ -192,7 +191,7 @@ class MainBoard extends React.Component {
               />
             </Grid.Column>
             <Grid.Column width={4} className="panel mainBoard-right">
-              <ArtistInfo searchedArtistId={this.state.searchedArtistId} />
+              <ArtistInfoPanel searchedArtistId={this.state.searchedArtistId} />
             </Grid.Column>
           </Grid>
         </div>
