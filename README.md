@@ -1,1 +1,3 @@
 # Smoretify
+## Installation
+## Usage
