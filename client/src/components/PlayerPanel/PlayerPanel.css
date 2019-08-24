@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-06-16 13:27:10
-* @last-modified 2019-08-24 01:39:44
+* @last-modified 2019-08-24 01:43:04
 */
 
 .playerPanel {
@@ -67,7 +67,7 @@
 }
 
 .playerPanel a {
-  color: var(--color-theme-indigo-1);
+  color: var(--color-theme-indigo-2);
   font-weight: bold;
   font-style: italic;
 }

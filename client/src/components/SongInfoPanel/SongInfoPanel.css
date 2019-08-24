@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-14 16:12:07
-* @last-modified 2019-08-23 00:50:28
+* @last-modified 2019-08-24 02:09:03
 */
 
 .songInfoPanel {
@@ -43,18 +43,16 @@
   background-color: var(--mainBoard-mid-color) !important;
 }
 
-.songLyricsWidget {
-  font-size: 1.1em;
-}
-
 .songLyricsWidget a {
-  font-weight: normal;
+  font-family: var(--font-dynamic);
+  font-size: 1.2em;
   color: var(--text-color-0) !important;
   padding-bottom: 0.5em !important;
 }
 
 .songLyricsWidget a:hover {
-  /* font-size: 1.15em; */
+  font-size: 1.5em;
   font-weight: bold;
+  font-style: italic;
   color: var(--color-theme-indigo-0) !important;
 }

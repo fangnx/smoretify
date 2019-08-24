@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-24 00:39:37
+ * @last-modified 2019-08-24 01:45:00
  */
 
 import React from 'react';
@@ -75,30 +75,6 @@ class MainBoard extends React.Component {
     await getSongInfoFromGenius({ songId: song.id })
       .then(async res => {
         if (res.status === 200) {
-          // const rawDescription = res.data.description.dom.children;
-          // let pureTextDescription = '';
-          // // Note: Genius API returns string literal '?' for non-existing description.
-          // if (rawDescription.length > 0 && rawDescription.indexOf('?') === -1) {
-          //   const flattenDom = arr => {
-          //     const tempArr = arr
-          //       .flat()
-          //       .filter(node => !!node)
-          //       .map(node => {
-          //         if (node.children) {
-          //           return node.children;
-          //         } else {
-          //           return node;
-          //         }
-          //       });
-          //     return tempArr.some(e => Array.isArray(e))
-          //       ? flattenDom(tempArr)
-          //       : tempArr;
-          //   };
-          //   pureTextDescription = flattenDom(rawDescription).reduce(
-          //     (str0, str1) => str0 + ' ' + str1
-          //   );
-          // }
-          const description = res.data.description.html;
           // Check if there are available media links.
           let youtubeUrl = '';
           if (res.data.media) {
@@ -108,20 +84,21 @@ class MainBoard extends React.Component {
               }
             });
           }
+
           // Parse track info (artist relations).
           const trackInfo = this.parseTrackInfo(res.data.custom_performances);
 
           this.props.dispatch({
             type: 'GENIUS_INFO',
             payload: {
-              songSummary: description,
+              songSummary: res.data.description.html,
               songLyricsUrl: res.data.url
             }
           });
 
           // Update states.
           await this.setState({
-            geniusDescription: description,
+            geniusDescription: res.data.description.html,
             geniusTrackInfo: trackInfo,
             geniusPageUrl: res.data.url,
             searchedSongName: song.title,

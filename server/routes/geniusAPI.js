@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 15:51:33
- * @last-modified 2019-08-24 00:26:04
+ * @last-modified 2019-08-24 01:46:17
  */
 
 import express from 'express';
@@ -20,7 +20,7 @@ const genius = new geniusApi(TOKEN);
 // Get Artist by id.
 router.post('/getArtist', (req, res) => {
   genius
-    .artist(req.body.artistId)
+    .artist(req.body.artistId, { text_format: 'html' })
     .then(value => res.send(value.artist))
     .catch(err => res.status(400).json(err));
 });

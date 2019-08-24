@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-22 22:25:35
+ * @last-modified 2019-08-24 01:50:59
  */
 
 import React from 'react';
@@ -32,36 +32,13 @@ class ArtistInfoPanel extends React.Component {
     await getArtistInfoFromGenius({ artistId })
       .then(async res => {
         if (res.status === 200) {
-          const rawDescription = res.data.description.dom.children;
-          let pureTextDescription = '';
-          // Note: Genius API returns string literal '?' for non-existing description.
-          if (rawDescription.length > 0 && rawDescription.indexOf('?') === -1) {
-            const flattenDom = arr => {
-              const tempArr = arr
-                .flat()
-                .filter(node => !!node)
-                .map(node => {
-                  if (node.children) {
-                    return node.children;
-                  } else {
-                    return node;
-                  }
-                });
-              return tempArr.some(e => Array.isArray(e))
-                ? flattenDom(tempArr)
-                : tempArr;
-            };
-            pureTextDescription = flattenDom(rawDescription).reduce(
-              (str0, str1) => str0 + ' ' + str1
-            );
-            await this.setState({
-              name: res.data.name,
-              altNames: res.data.alternate_names,
-              artistMainImg: res.data.image_url,
-              summary: pureTextDescription,
-              isReady: true
-            });
-          }
+          await this.setState({
+            name: res.data.name,
+            altNames: res.data.alternate_names,
+            artistMainImg: res.data.image_url,
+            summary: res.data.description.html,
+            isReady: true
+          });
         }
       })
       .catch(err => console.log(err));
@@ -76,7 +53,7 @@ class ArtistInfoPanel extends React.Component {
   render() {
     const { isReady } = this.state;
     return (
-      <div className="artistInfo-panel">
+      <div className="artistInfoPanel">
         <Container className="artistInfo-container title">
           <Header as="h1" className="artistInfo-name">
             {this.state.name}
@@ -100,7 +77,7 @@ class ArtistInfoPanel extends React.Component {
 
         <Container className="artistInfo-container summary">
           <Header as="h3">Bio</Header>
-          <div>{this.state.summary}</div>
+          <div dangerouslySetInnerHTML={{ __html: this.state.summary }} />
         </Container>
       </div>
     );

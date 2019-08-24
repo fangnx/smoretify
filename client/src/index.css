@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cairo|Merriweather|Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cairo|Merriweather|Muli|Alegreya+Sans:400,400i&display=swap');
 
 :root {
   --text-color-0: rgb(233, 233, 233);
@@ -27,6 +27,7 @@
   --font-serif: 'Merriweather', serif;
   --font-sansserif: 'Muli', sans-serif;
   --font-stylish: 'Cairo', sans-serif;
+  --font-dynamic: 'Alegreya Sans', sans-serif;
 }
 
 body {
