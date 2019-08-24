@@ -4,21 +4,21 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-22 23:53:23
+ * @last-modified 2019-08-23 01:07:10
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../store';
 import './PlayerPanel.css';
-import { Container, Image, Icon, Header } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 import WithScrollbar from '../Scrollbar/Scrollbar';
 import spotifyGreenIcon from '../../assets/Spotify_Icon_CMYK_Green.png';
 import TrackArtistsInfo from './TrackArtistsInfo/TrackArtistsInfo';
 import { initSpotifyApi } from '../../App';
 import { trimSongName } from '../../utils/commonUtils';
-import PlayerWidget from './PlayerWidget';
-import SongSummaryWidget from './SongSummaryWidget';
+import SpotifySongWidget from './SpotifySongWidget/SpotifySongWidget';
+import SongSummaryWidget from './SongSummaryWidget/SongSummaryWidget';
 
 class LeftPanel extends React.Component {
   constructor() {
@@ -41,12 +41,12 @@ class LeftPanel extends React.Component {
           const spotifySongName = res.item.name;
           const spotifyArtists = res.item.artists.map(artist => artist.name);
           const { currentSongName, currentArtists } = store.getState().songInfo;
-          // if (
-          //   spotifySongName === currentSongName &&
-          //   spotifyArtists.every(e => currentArtists.indexOf(e) > -1)
-          // ) {
-          //   return;
-          // }
+          if (
+            spotifySongName === currentSongName &&
+            spotifyArtists.every(e => currentArtists.indexOf(e) > -1)
+          ) {
+            return;
+          }
 
           if (res) {
             this.setState({
@@ -62,6 +62,13 @@ class LeftPanel extends React.Component {
               currentSongImg: res.item.album.images[0].url,
               currentArtists: spotifyArtists,
               externalSpotifyUrl: res.item.external_urls.spotify
+            }
+          });
+          this.props.dispatch({
+            type: 'GENIUS_INFO',
+            payload: {
+              songSummary: '',
+              songLyricsUrl: ''
             }
           });
         })
@@ -84,7 +91,7 @@ class LeftPanel extends React.Component {
       <div className="playerPanel">
         {this.state.isReady ? (
           <div>
-            <PlayerWidget />
+            <SpotifySongWidget />
 
             <div className="playerPanel-text">
               <Container className="playerPanel-container">

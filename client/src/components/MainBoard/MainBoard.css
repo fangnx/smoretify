@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-27 20:48:17
-* @last-modified 2019-08-22 00:54:34
+* @last-modified 2019-08-23 23:40:58
 */
 
 .mainBoard {
@@ -23,7 +23,7 @@
 .mainBoard-left {
   z-index: 1;
   background: var(--mainBoard-left-color);
-  box-shadow: 1px 0px 16px 10px var(--mainBoard-shade-color);
+  box-shadow: 1px 0px 16px 8px var(--mainBoard-shade-color);
 }
 
 .mainBoard-mid {
@@ -34,5 +34,5 @@
 .mainBoard-right {
   z-index: 1;
   background: var(--mainBoard-right-color);
-  box-shadow: -1px 0px 16px 10px var(--mainBoard-shade-color) !important;
+  box-shadow: -1px 0px 16px 8px var(--mainBoard-shade-color) !important;
 }

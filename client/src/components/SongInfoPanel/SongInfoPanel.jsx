@@ -4,21 +4,21 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-08-22 22:18:50
+ * @last-modified 2019-08-23 01:22:50
  */
 
 import React from 'react';
 import './SongInfoPanel.css';
 import { Button, Container, Header, Icon, Menu } from 'semantic-ui-react';
 import WithScrollbar from '../Scrollbar/Scrollbar';
-import SongLyrics from './SongLyrics/SongLyrics';
+import SongLyricsWidget from './SongLyricsWidget/SongLyricsWidget';
 import MiniYoutube from './MiniYoutube/MiniYoutube';
 
 class SongInfoPanel extends React.Component {
   constructor() {
     super();
     this.state = {
-      showYoutube: true
+      showYoutube: false
     };
   }
 
@@ -30,14 +30,14 @@ class SongInfoPanel extends React.Component {
 
   render() {
     return (
-      <div className="songInfo-panel">
+      <div className="songInfoPanel">
         {/* <Icon name="youtube" /> */}
-        <Menu inverted className="songInfo-topMenu">
+        {/* <Menu inverted className="songInfo-topMenu">
           <Menu.Item
             name="Toggle Youtube"
             onClick={this.onClickToggleYoutube}
           />
-        </Menu>
+        </Menu> */}
         {this.state.showYoutube ? (
           <div className="miniYoutube-wrapper">
             <MiniYoutube url={this.props.youtubeUrl} />
@@ -50,13 +50,13 @@ class SongInfoPanel extends React.Component {
           <Header as="h3" className="songInfo-title">
             Lyrics
           </Header>
-          <div className="lyrics-search-result">
+          {/* <div className="lyrics-search-result">
             {`(${this.props.searchedSongName} - ${
               this.props.searchedArtistName
             })`}
-          </div>
+          </div> */}
 
-          <SongLyrics url={this.props.url} />
+          <SongLyricsWidget />
         </Container>
 
         <Container className="songInfo-container annotations" />

@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 15:51:33
- * @last-modified 2019-08-02 00:16:03
+ * @last-modified 2019-08-24 00:26:04
  */
 
 import express from 'express';
@@ -28,12 +28,12 @@ router.post('/getArtist', (req, res) => {
 // Get Song by id.
 router.post('/getSong', (req, res) => {
   genius
-    .song(req.body.songId)
+    .song(req.body.songId, { text_format: 'html' })
     .then(value => res.send(value.song))
     .catch(err => res.status(400).json(err));
 });
 
-// Get Referentes by songId.
+// Get Referents by songId.
 router.post('/getReferentsBySong', (req, res) => {
   genius
     .referents({ song_id: req.body.songId }, { text_format: 'html' })

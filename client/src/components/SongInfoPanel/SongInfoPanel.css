@@ -4,10 +4,10 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-14 16:12:07
-* @last-modified 2019-08-22 22:19:04
+* @last-modified 2019-08-23 00:50:28
 */
 
-.songInfo-panel {
+.songInfoPanel {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -33,4 +33,28 @@
 .lyrics-search-result {
   color: var(--text-color-1);
   margin-bottom: 20px;
+}
+
+.songInfoPanel .ui.inverted.placeholder .line {
+  background-color: var(--mainBoard-mid-color) !important;
+}
+
+.songInfoPanel .ui.inverted.placeholder .line:after {
+  background-color: var(--mainBoard-mid-color) !important;
+}
+
+.songLyricsWidget {
+  font-size: 1.1em;
+}
+
+.songLyricsWidget a {
+  font-weight: normal;
+  color: var(--text-color-0) !important;
+  padding-bottom: 0.5em !important;
+}
+
+.songLyricsWidget a:hover {
+  /* font-size: 1.15em; */
+  font-weight: bold;
+  color: var(--color-theme-indigo-0) !important;
 }
