@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-28 16:16:05
+ * @last-modified 2019-08-28 16:40:09
  */
 
 import React from 'react';
@@ -49,7 +49,6 @@ class MainBoard extends React.Component {
 
         if (withMatchedName.length === 0) {
           return res.data[0].result;
-          // return {};
         } else if (withMatchedName.length === 1) {
           return withMatchedName[0].result;
         }
@@ -150,8 +149,6 @@ class MainBoard extends React.Component {
     });
     await this.getSongInfo();
   }
-
-  async componentWillMount() {}
 
   render() {
     console.log('GLOBAL REDUX STATE:');

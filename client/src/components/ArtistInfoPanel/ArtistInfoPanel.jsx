@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-28 16:11:43
+ * @last-modified 2019-08-28 16:51:42
  */
 
 import React from 'react';
@@ -60,7 +60,13 @@ class ArtistInfoPanel extends React.Component {
   }
 
   render() {
+    let artistSummary = this.state.summary;
+
+    if (artistSummary.match(/<p>(\?)<\/p>/g)) {
+      artistSummary = '<p>No artist info available.</p>';
+    }
     const fillArr = new Array(20).fill(0);
+
     return (
       <div className="artistInfoPanel">
         <Container className="artistInfo-container title">
@@ -98,7 +104,7 @@ class ArtistInfoPanel extends React.Component {
         <Container className="artistInfo-container summary">
           <Header as="h3">Bio</Header>
           {this.state.isReady ? (
-            <div dangerouslySetInnerHTML={{ __html: this.state.summary }} />
+            <div dangerouslySetInnerHTML={{ __html: artistSummary }} />
           ) : (
             <Placeholder fluid inverted>
               {fillArr.map((_, index) => (
