@@ -21,6 +21,7 @@
     "passport-spotify": "^1.0.1",
     "querystring": "^0.2.0",
     "request": "^2.88.0",
+    "socket.io": "^2.2.0",
     "spotify-web-api-js": "^1.2.0",
     "spotify-web-api-node": "^4.0.0",
     "url-parse": "^1.4.7"

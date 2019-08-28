@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-27 21:01:25
-* @last-modified 2019-08-24 01:49:35
+* @last-modified 2019-08-28 15:29:24
 */
 
 .artistInfoPanel {
@@ -63,4 +63,12 @@
 .artistInfoPanel a:hover {
   color: var(--color-genius-yellow);
   font-weight: bold;
+}
+
+.artistInfoPanel .ui.inverted.placeholder .line {
+  background-color: var(--mainBoard-right-color) !important;
+}
+
+.artistInfoPanel .ui.inverted.placeholder .line:after {
+  background-color: var(--mainBoard-right-color) !important;
 }

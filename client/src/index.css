@@ -6,9 +6,10 @@
   --text-color-2: rgb(180, 180, 180);
   --text-color-3: rgb(160, 160, 160);
 
-  --mainBoard-left-color: rgb(23, 23, 24);
-  --mainBoard-mid-color: rgb(27, 27, 28);
-  --mainBoard-right-color: rgb(23, 23, 24);
+  --mainBoard-left-color: rgb(25, 25, 26);
+  --mainBoard-mid-color: rgb(29, 29, 30);
+  /* --mainBoard-mid-color: var(--color-theme-indigo-0); */
+  --mainBoard-right-color: rgb(25, 25, 26);
   --mainBoard-shade-color: rgb(19, 19, 20);
 
   --background-color-grey: rgb(45, 45, 45);

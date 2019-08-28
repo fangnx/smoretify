@@ -4,14 +4,15 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-24 01:50:59
+ * @last-modified 2019-08-28 16:11:43
  */
 
 import React from 'react';
-import './ArtistInfoPanel.css';
-import { Image, Container, Header, Icon, Placeholder } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import WithScrollbar from '../Scrollbar/Scrollbar';
 import { getArtistInfoFromGenius } from '../../actions/geniusActions';
+import { Image, Container, Header, Icon, Placeholder } from 'semantic-ui-react';
+import './ArtistInfoPanel.css';
 
 class ArtistInfoPanel extends React.Component {
   constructor() {
@@ -37,6 +38,9 @@ class ArtistInfoPanel extends React.Component {
             altNames: res.data.alternate_names,
             artistMainImg: res.data.image_url,
             summary: res.data.description.html,
+            facebookName: res.data.facebook_name,
+            twitterName: res.data.twitterName,
+            insName: res.data.instagram_name,
             isReady: true
           });
         }
@@ -47,11 +51,16 @@ class ArtistInfoPanel extends React.Component {
   directToSocialMedia() {}
 
   async componentWillReceiveProps(nextProps) {
-    await this.getArtistInfo(nextProps.searchedArtistId);
+    if (nextProps.artistId !== this.props.artistId) {
+      this.setState({ isReady: false });
+      if (nextProps.artistId >= 0) {
+        await this.getArtistInfo(nextProps.artistId);
+      }
+    }
   }
 
   render() {
-    const { isReady } = this.state;
+    const fillArr = new Array(20).fill(0);
     return (
       <div className="artistInfoPanel">
         <Container className="artistInfo-container title">
@@ -59,14 +68,25 @@ class ArtistInfoPanel extends React.Component {
             {this.state.name}
           </Header>
           <div className="socialMedia">
-            <Icon name="facebook square" onClick={this.directToSocialMedia} />
-            <Icon name="twitter square" />
-            <Icon name="instagram" />
+            {this.state.isReady ? (
+              <>
+                <Icon
+                  name="facebook square"
+                  onClick={this.directToSocialMedia}
+                />
+                <Icon name="twitter square" />
+                <Icon name="instagram" />
+              </>
+            ) : (
+              <Placeholder fluid inverted>
+                <Placeholder.Line />
+              </Placeholder>
+            )}
           </div>
         </Container>
 
         <div className="topImage-wrapper">
-          {isReady ? (
+          {this.state.isReady ? (
             <Image src={this.state.artistMainImg} className="topImage" />
           ) : (
             <Placeholder inverted>
@@ -77,13 +97,33 @@ class ArtistInfoPanel extends React.Component {
 
         <Container className="artistInfo-container summary">
           <Header as="h3">Bio</Header>
-          <div dangerouslySetInnerHTML={{ __html: this.state.summary }} />
+          {this.state.isReady ? (
+            <div dangerouslySetInnerHTML={{ __html: this.state.summary }} />
+          ) : (
+            <Placeholder fluid inverted>
+              {fillArr.map((_, index) => (
+                <Placeholder.Line
+                  key={`artistSummary-placeholderLine-${index}`}
+                />
+              ))}
+            </Placeholder>
+          )}
         </Container>
       </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+  const { geniusInfo } = state;
+  return {
+    artistId: geniusInfo.primaryArtistId
+  };
+};
+
 ArtistInfoPanel = WithScrollbar(ArtistInfoPanel);
 
-export default ArtistInfoPanel;
+export default connect(
+  mapStateToProps,
+  null
+)(ArtistInfoPanel);

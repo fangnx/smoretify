@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-08-23 01:22:50
+ * @last-modified 2019-08-24 02:22:30
  */
 
 import React from 'react';
@@ -47,9 +47,9 @@ class SongInfoPanel extends React.Component {
         )}
 
         <Container className="songInfo-container lyrics">
-          <Header as="h3" className="songInfo-title">
+          {/* <Header as="h3" className="songInfo-title">
             Lyrics
-          </Header>
+          </Header> */}
           {/* <div className="lyrics-search-result">
             {`(${this.props.searchedSongName} - ${
               this.props.searchedArtistName

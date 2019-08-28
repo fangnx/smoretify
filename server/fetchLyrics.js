@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-01 21:38:16
- * @last-modified 2019-08-02 00:16:31
+ * @last-modified 2019-08-28 16:16:05
  */
 
 import request from 'request';
@@ -24,7 +24,6 @@ const doRequest = page => {
       });
       const lyrics = $('.lyrics').text();
       resolve(lyrics);
-      // console.log(lyrics);
     });
   });
 };

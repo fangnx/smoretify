@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-22 22:51:58
- * @last-modified 2019-08-23 00:42:34
+ * @last-modified 2019-08-28 14:28:31
  */
 
 import React from 'react';
@@ -24,7 +24,9 @@ class SpotifySongWidget extends React.Component {
         <Image src={this.props.songImg} wrapped className="currentSong-img" />
         <div className="playerWidget-text">
           <div className="songName">{this.props.songName}</div>
-          <div className="artistNames">{this.props.artists[0]}</div>
+          <div className="artistNames">
+            {this.props.artists ? this.props.artists.join(', ') : ''}
+          </div>
           <div className="links">
             <Icon name="spotify" onClick={() => this.onClickUrl('spotify')} />
           </div>

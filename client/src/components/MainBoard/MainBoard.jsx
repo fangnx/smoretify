@@ -4,13 +4,13 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-24 01:45:00
+ * @last-modified 2019-08-28 16:16:05
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../store';
-import { Grid, Transition } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import './MainBoard.css';
 import PlayerPanel from '../PlayerPanel';
 import SongInfoPanel from '../SongInfoPanel';
@@ -25,7 +25,7 @@ class MainBoard extends React.Component {
   constructor() {
     super();
     this.state = {
-      title: 'Tender is the Night',
+      title: '',
       currentSongName: '',
       currentArtists: [''],
       geniusDescription: '',
@@ -43,7 +43,6 @@ class MainBoard extends React.Component {
 
     return await searchFromGenius({ searchTerm }).then(async res => {
       if (res && res.status === 200 && res.data.length > 0) {
-        console.log(res);
         const withMatchedName = res.data.filter(
           songRes => songRes.result.title === trimmedCurrentSongName
         );
@@ -92,7 +91,8 @@ class MainBoard extends React.Component {
             type: 'GENIUS_INFO',
             payload: {
               songSummary: res.data.description.html,
-              songLyricsUrl: res.data.url
+              songLyricsUrl: res.data.url,
+              primaryArtistId: song.primary_artist.id
             }
           });
 
@@ -115,7 +115,6 @@ class MainBoard extends React.Component {
     await getReferentsBySongFromGenius({ songId: 74885 })
       .then(async res => {
         if (res.status === 200 && res.data.length > 0) {
-          // console.log(res);
           const annotations = this.parseReferents(res.data);
           await this.setState({
             annotations: annotations
@@ -164,10 +163,7 @@ class MainBoard extends React.Component {
         <div className="mainBoard-scrollable">
           <Grid columns={3} className="mainBoard-grid">
             <Grid.Column width={4} className="panel mainBoard-left">
-              <PlayerPanel
-                description={this.state.geniusDescription}
-                trackInfo={this.state.geniusTrackInfo}
-              />
+              <PlayerPanel trackInfo={this.state.geniusTrackInfo} />
             </Grid.Column>
             <Grid.Column width={8} className="panel mainBoard-mid">
               <SongInfoPanel
@@ -179,7 +175,7 @@ class MainBoard extends React.Component {
               />
             </Grid.Column>
             <Grid.Column width={4} className="panel mainBoard-right">
-              <ArtistInfoPanel searchedArtistId={this.state.searchedArtistId} />
+              <ArtistInfoPanel />
             </Grid.Column>
           </Grid>
         </div>

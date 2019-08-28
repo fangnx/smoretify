@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-06-16 13:27:10
-* @last-modified 2019-08-24 01:43:04
+* @last-modified 2019-08-28 14:52:49
 */
 
 .playerPanel {
@@ -13,22 +13,10 @@
   padding-bottom: 30px;
 }
 
-.playerWidget {
-  background: transparent !important;
-}
-
-.playerWidget-text {
-  font-size: 0.9em;
-  width: 85%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
-
 .songName {
   font-family: var(--font-stylish);
   font-size: 30px;
+  /* font-weight: bold; */
   line-height: 2.5rem;
   padding-bottom: 10px;
 }
@@ -75,4 +63,53 @@
 .playerPanel a:hover {
   color: var(--color-genius-yellow);
   font-weight: bold;
+}
+
+.playerPanel img,
+iframe {
+  width: 100%;
+  height: auto;
+}
+
+.playerWidget {
+  background: transparent !important;
+}
+
+.playerWidget-text {
+  font-size: 0.9em;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.trackInfoWidget {
+}
+
+.trackInfoWidget .ui.table {
+  color: var(--text-color-1) !important;
+  background-color: rgba(20, 20, 20, 0.1) !important;
+}
+
+.trackInfoWidget .ui.table td {
+  padding: 0.25em 0.5em 0.25em 0 !important;
+  border: none !important;
+  border-color: var(--color-theme-indigo-3) !important;
+}
+
+.trackInfoWidget .row-0 {
+  color: var(--text-color-0) !important;
+}
+
+.trackInfoWidget .row-1 {
+  color: var(--text-color-1) !important;
+}
+
+.trackInfoWidget .label-cell {
+  font-style: italic;
+}
+
+.trackInfoWidget .name-cell {
+  font-style: normal;
 }

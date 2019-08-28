@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-22 23:23:43
- * @last-modified 2019-08-24 00:48:26
+ * @last-modified 2019-08-28 16:12:26
  */
 
 import React from 'react';
@@ -25,8 +25,8 @@ class SongSummaryWidget extends React.Component {
           <div dangerouslySetInnerHTML={{ __html: songSummary }} />
         ) : (
           <Placeholder fluid inverted>
-            {fillArr.map(num => (
-              <Placeholder.Line />
+            {fillArr.map((_, index) => (
+              <Placeholder.Line key={`songSummary-placeholderLine-${index}`} />
             ))}
           </Placeholder>
         )}
