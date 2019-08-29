@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-02 00:22:19
- * @last-modified 2019-08-29 15:09:16
+ * @last-modified 2019-08-29 15:20:31
  */
 
 import React from 'react';
@@ -22,7 +22,6 @@ class SongLyricsWidget extends React.Component {
   }
 
   async componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     if (nextProps.url !== this.props.url) {
       this.setState({ isReady: false });
       if (nextProps.url !== '') {
