@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-16 20:23:35
- * @last-modified 2019-08-28 16:14:24
+ * @last-modified 2019-08-29 01:21:59
  */
 
 export const trimSongName = songName => {

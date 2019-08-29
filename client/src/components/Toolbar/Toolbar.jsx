@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-08-28 16:39:51
+ * @last-modified 2019-08-28 17:08:43
  */
 
 import React from 'react';
@@ -21,7 +21,7 @@ class Toolbar extends React.Component {
             <Menu inverted className="toolbar-left-menu">
               <Menu.Item>
                 <Image src={biscuitIcon} className="toolbar-logo" />
-                Smoretify
+                <div className="toolbar-appName">Smoretify</div>
               </Menu.Item>
             </Menu>
           </Grid.Column>
@@ -41,7 +41,16 @@ class Toolbar extends React.Component {
           </Grid.Column>
 
           <Grid.Column width={4}>
-            <Menu inverted className="toolbar-right-menu"></Menu>
+            <Menu inverted className="toolbar-right-menu">
+              <Menu.Item>
+                Built by fangnx
+                <Icon
+                  name="github"
+                  size="large"
+                  style={{ padding: '0 5px 0 5px' }}
+                ></Icon>
+              </Menu.Item>
+            </Menu>
           </Grid.Column>
         </Grid>
       </div>

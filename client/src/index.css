@@ -8,7 +8,6 @@
 
   --mainBoard-left-color: rgb(25, 25, 26);
   --mainBoard-mid-color: rgb(29, 29, 30);
-  /* --mainBoard-mid-color: var(--color-theme-indigo-0); */
   --mainBoard-right-color: rgb(25, 25, 26);
   --mainBoard-shade-color: rgb(19, 19, 20);
 
@@ -16,6 +15,7 @@
 
   --color-spotify-green: #1db954;
   --color-genius-yellow: #ffff64;
+  --color-genius-yellow-lighter: #ffff97;
   --color-theme-indigo-0: #7986cb;
   --color-theme-indigo-1: #9fa8da;
   --color-theme-indigo-2: #c5cae9;

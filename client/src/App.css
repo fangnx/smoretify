@@ -66,10 +66,6 @@ h1 {
   font-size: 40px !important;
 }
 
-h1:hover {
-  color: var(--color-theme-indigo-0) !important;
-}
-
 h2 {
   font-size: 36px !important;
 }
