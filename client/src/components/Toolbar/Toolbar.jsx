@@ -4,17 +4,17 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-08-29 15:45:54
+ * @last-modified 2019-08-29 19:26:38
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { store } from '../../store';
-import { Button, Grid, Icon, Image, Menu } from 'semantic-ui-react';
+import { Grid, Icon, Image, Menu, Popup } from 'semantic-ui-react';
 import biscuitIcon from '../../assets/biscuit.svg';
-import React_Icon from '../../assets/React_Icon.svg';
+// import React_Icon from '../../assets/React_Icon.svg';
 import Spotify_Icon_Green from '../../assets/Spotify_Icon_Green.png';
 import Genius_Icon from '../../assets/Genius_Icon.png';
+import GitHub_Icon from '../../assets/GitHub_Icon.png';
 import './Toolbar.css';
 
 class Toolbar extends React.Component {
@@ -55,21 +55,45 @@ class Toolbar extends React.Component {
           <Grid.Column width={8}>
             <Menu inverted className="toolbar-mid-menu">
               <Menu.Item>
-                <Icon
-                  name="youtube"
-                  onClick={this.toggleYoutube}
-                  size="large"
-                ></Icon>
-              </Menu.Item>
-              <Menu.Item>
-                <Icon
-                  name={
-                    this.props.lyricsLeftAligned ? 'align center' : 'align left'
+                <Popup
+                  content={
+                    this.props.showYoutube ? 'Hide YouTube' : 'Show YouTube'
                   }
-                  onClick={this.toggleLyricsLeftAligned}
-                  size="large"
-                ></Icon>
+                  inverted
+                  on="hover"
+                  trigger={
+                    <Icon
+                      name="youtube"
+                      onClick={this.toggleYoutube}
+                      size="large"
+                    ></Icon>
+                  }
+                ></Popup>
               </Menu.Item>
+
+              <Menu.Item>
+                <Popup
+                  content={
+                    this.props.lyricsLeftAligned
+                      ? 'Align lyrics to center'
+                      : 'Align lyrics to left'
+                  }
+                  inverted
+                  on="hover"
+                  trigger={
+                    <Icon
+                      name={
+                        this.props.lyricsLeftAligned
+                          ? 'align center'
+                          : 'align left'
+                      }
+                      onClick={this.toggleLyricsLeftAligned}
+                      size="large"
+                    ></Icon>
+                  }
+                ></Popup>
+              </Menu.Item>
+
               <Menu.Item>
                 <Icon name="font" size="large"></Icon>
               </Menu.Item>
@@ -78,19 +102,20 @@ class Toolbar extends React.Component {
 
           <Grid.Column width={4}>
             <Menu inverted className="toolbar-right-menu">
-              <Menu.Item>
+              <Menu.Item position="right">
                 Built with
                 <Image
-                  src={React_Icon}
-                  style={{ width: '1.5em', margin: '0 0 0 4px' }}
-                ></Image>
-                <Image
                   src={Spotify_Icon_Green}
-                  style={{ width: '1.1em', margin: '0 4px 0 4px' }}
+                  style={{ width: '1.1em', margin: '0 4px 0 6px' }}
                 ></Image>
                 <Image
                   src={Genius_Icon}
-                  style={{ width: '1.1em', margin: '0 4px 0 4px' }}
+                  style={{ width: '1.1em', margin: '0 12px 0 4px' }}
+                ></Image>
+                View Source
+                <Image
+                  src={GitHub_Icon}
+                  style={{ width: '1.1em', margin: '0 4px 0 6px' }}
                 ></Image>
               </Menu.Item>
             </Menu>

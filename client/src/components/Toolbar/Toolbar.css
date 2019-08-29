@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-04 11:21:26
-* @last-modified 2019-08-28 17:14:04
+* @last-modified 2019-08-29 19:02:30
 */
 
 .toolbar {
@@ -47,12 +47,16 @@
   padding-left: 0 !important;
 }
 
+.toolbar-mid-menu > .item :hover {
+  background-color: var(--color-theme-indigo-1);
+}
+
 .toolbar-right-menu {
   width: 85%;
 }
 
-.toolbar-right-menu .item {
-  padding-left: 0 !important;
+.toolbar-right-menu > :last-child {
+  padding-right: 0 !important;
 }
 
 .ui.inverted.menu {
