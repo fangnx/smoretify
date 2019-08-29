@@ -4,11 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-22 23:31:28
- * @last-modified 2019-08-28 14:34:16
+ * @last-modified 2019-08-29 14:23:39
  */
 import { resetAppActionType } from './rootReducer';
 
-const initialState = {};
+export const initialState = {};
 
 export const geniusInfoActionType = 'GENIUS_INFO';
 

@@ -4,41 +4,22 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 16:11:56
- * @last-modified 2019-08-24 02:22:30
+ * @last-modified 2019-08-29 15:08:20
  */
 
 import React from 'react';
-import './SongInfoPanel.css';
-import { Button, Container, Header, Icon, Menu } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import WithScrollbar from '../Scrollbar/Scrollbar';
 import SongLyricsWidget from './SongLyricsWidget/SongLyricsWidget';
 import MiniYoutube from './MiniYoutube/MiniYoutube';
+import { Container } from 'semantic-ui-react';
+import './SongInfoPanel.css';
 
 class SongInfoPanel extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      showYoutube: false
-    };
-  }
-
-  onClickToggleYoutube = () => {
-    this.setState(prevState => ({
-      showYoutube: !prevState.showYoutube
-    }));
-  };
-
   render() {
     return (
       <div className="songInfoPanel">
-        {/* <Icon name="youtube" /> */}
-        {/* <Menu inverted className="songInfo-topMenu">
-          <Menu.Item
-            name="Toggle Youtube"
-            onClick={this.onClickToggleYoutube}
-          />
-        </Menu> */}
-        {this.state.showYoutube ? (
+        {this.props.showYoutube ? (
           <div className="miniYoutube-wrapper">
             <MiniYoutube url={this.props.youtubeUrl} />
           </div>
@@ -65,6 +46,16 @@ class SongInfoPanel extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  const { layout } = state;
+  return {
+    showYoutube: layout.showYoutube
+  };
+};
+
 SongInfoPanel = WithScrollbar(SongInfoPanel);
 
-export default SongInfoPanel;
+export default connect(
+  mapStateToProps,
+  null
+)(SongInfoPanel);

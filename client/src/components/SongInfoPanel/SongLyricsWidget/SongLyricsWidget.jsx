@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-02 00:22:19
- * @last-modified 2019-08-28 16:13:21
+ * @last-modified 2019-08-29 15:09:16
  */
 
 import React from 'react';
@@ -22,9 +22,12 @@ class SongLyricsWidget extends React.Component {
   }
 
   async componentWillReceiveProps(nextProps) {
-    this.setState({ isReady: false });
-    if (nextProps.url !== '') {
-      this.getLyrics(nextProps.url);
+    console.log(nextProps);
+    if (nextProps.url !== this.props.url) {
+      this.setState({ isReady: false });
+      if (nextProps.url !== '') {
+        this.getLyrics(nextProps.url);
+      }
     }
   }
 
@@ -52,7 +55,13 @@ class SongLyricsWidget extends React.Component {
         {this.state.isReady ? (
           <List>
             {this.state.lines.map((row, index) => (
-              <List.Item as="a" key={`lyrics-line-${index}`}>
+              <List.Item
+                as="a"
+                key={`lyrics-line-${index}`}
+                style={{
+                  textAlign: this.props.leftAligned ? 'left' : 'center'
+                }}
+              >
                 {row}
               </List.Item>
             ))}
@@ -70,9 +79,10 @@ class SongLyricsWidget extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { geniusInfo } = state;
+  const { geniusInfo, layout } = state;
   return {
-    url: geniusInfo.songLyricsUrl
+    url: geniusInfo.songLyricsUrl,
+    leftAligned: layout.lyricsLeftAligned
   };
 };
 

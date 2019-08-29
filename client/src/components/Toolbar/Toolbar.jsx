@@ -4,15 +4,37 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-08-28 17:08:43
+ * @last-modified 2019-08-29 15:08:28
  */
 
 import React from 'react';
-import { Grid, Icon, Image, Menu } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { store } from '../../store';
+import { Button, Grid, Icon, Image, Menu } from 'semantic-ui-react';
 import biscuitIcon from '../../assets/biscuit.svg';
 import './Toolbar.css';
 
 class Toolbar extends React.Component {
+  toggleYoutube = e => {
+    e.preventDefault();
+    this.props.dispatch({
+      type: 'LAYOUT',
+      payload: {
+        showYoutube: !this.props.showYoutube
+      }
+    });
+  };
+
+  toggleLyricsLeftAligned = e => {
+    e.preventDefault();
+    this.props.dispatch({
+      type: 'LAYOUT',
+      payload: {
+        lyricsLeftAligned: !this.props.lyricsLeftAligned
+      }
+    });
+  };
+
   render() {
     return (
       <div className="toolbar">
@@ -29,10 +51,18 @@ class Toolbar extends React.Component {
           <Grid.Column width={8}>
             <Menu inverted className="toolbar-mid-menu">
               <Menu.Item>
-                <Icon name="youtube" size="large"></Icon>
+                <Icon
+                  name="youtube"
+                  onClick={this.toggleYoutube}
+                  size="large"
+                ></Icon>
               </Menu.Item>
               <Menu.Item>
-                <Icon name="align center" size="large"></Icon>
+                <Icon
+                  name="align center"
+                  onClick={this.toggleLyricsLeftAligned}
+                  size="large"
+                ></Icon>
               </Menu.Item>
               <Menu.Item>
                 <Icon name="font" size="large"></Icon>
@@ -58,4 +88,16 @@ class Toolbar extends React.Component {
   }
 }
 
-export default Toolbar;
+const mapStateToProps = state => {
+  const { layout } = state;
+  return {
+    showYoutube: layout.showYoutube,
+    lyricsLeftAligned: layout.lyricsLeftAligned,
+    lyricsFontFamily: layout.lyricsFontFamily
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Toolbar);

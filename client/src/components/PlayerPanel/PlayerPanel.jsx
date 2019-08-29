@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-28 16:14:43
+ * @last-modified 2019-08-29 15:05:30
  */
 
 import React from 'react';
@@ -55,6 +55,7 @@ class LeftPanel extends React.Component {
 
           currentSongName = spotifySongName;
           currentArtists = spotifyArtists;
+
           this.props.dispatch({
             type: 'SONG_INFO',
             payload: {
@@ -97,7 +98,7 @@ class LeftPanel extends React.Component {
 
             <div className="playerPanel-text">
               <Container className="playerPanel-container">
-                <Header as="h3">About the Song</Header>
+                <Header as="h3">About</Header>
                 <SongSummaryWidget />
               </Container>
 
