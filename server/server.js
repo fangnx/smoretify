@@ -18,15 +18,15 @@ app.use(
 app.use(bodyParser.json());
 
 // Passport.js session setup.
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-passport.deserializeUser(function(obj, done) {
+passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
-// Passport.js Spotify authentification
+// Passport.js Spotify authentication
 passport.use(
   new SpotifyStrategy(
     {
@@ -47,8 +47,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Directs to the authentification page of Spotify.com.
-// Redirects back to /callback on successful login.
+// Direct to the authentification page of Spotify.com.
+// On successful login, redirect back to /callback.
 app.get(
   '/auth/spotify',
   passport.authenticate('spotify', {
@@ -63,14 +63,12 @@ app.get(
     ],
     showDialog: true
   }),
-  (req, res) => {
-    res.redirect('/');
-  }
+  (req, res) => {}
 );
 
 app.get(
   '/callback',
-  passport.authenticate('spotify', { failureRedirect: '/' }),
+  passport.authenticate('spotify', { failureRedirect: '/auth/spotify' }),
   (req, res) => {
     res.redirect('/');
   }
@@ -80,19 +78,21 @@ app.get('/user/spotify', (req, res) => {
   if (req.isAuthenticated()) {
     res.json(req.user);
   } else {
-    res.json({ error: 'Not Authentificated yet.' });
+    res.json({ error: 'Not Authenticated yet.' });
   }
 });
 
-function isSpotifyAuthenticated(req, res, next) {
+const isSpotifyAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/auth');
-}
+  res.redirect('/auth/spotify');
+};
 
 // API routes.
 app.use('/api/genius', geniusRouter);
 
 const port = config.port;
-app.listen(port, () => console.log(`App listening on port ${port} !`));
+app.listen(port, () =>
+  console.log(`Smoretify is listening on port ${port} :)`)
+);

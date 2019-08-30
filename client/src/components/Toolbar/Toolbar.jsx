@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-08-29 19:26:38
+ * @last-modified 2019-08-29 20:13:58
  */
 
 import React from 'react';
@@ -17,7 +17,19 @@ import Genius_Icon from '../../assets/Genius_Icon.png';
 import GitHub_Icon from '../../assets/GitHub_Icon.png';
 import './Toolbar.css';
 
+const PROJECT_GITHUB_LINK = 'https://github.com/fangnx/smoretify';
+
+const popupStyle = {
+  backgroundColor: 'var(--mainBoard-shade-color)'
+};
+
 class Toolbar extends React.Component {
+  onClickUrl(type) {
+    if (type === 'github') {
+      window.open(PROJECT_GITHUB_LINK);
+    }
+  }
+
   toggleYoutube = e => {
     e.preventDefault();
     this.props.dispatch({
@@ -61,11 +73,17 @@ class Toolbar extends React.Component {
                   }
                   inverted
                   on="hover"
+                  style={popupStyle}
                   trigger={
                     <Icon
                       name="youtube"
                       onClick={this.toggleYoutube}
                       size="large"
+                      style={
+                        this.props.showYoutube
+                          ? {}
+                          : { color: 'var(--text-color-1)' }
+                      }
                     ></Icon>
                   }
                 ></Popup>
@@ -80,6 +98,7 @@ class Toolbar extends React.Component {
                   }
                   inverted
                   on="hover"
+                  style={popupStyle}
                   trigger={
                     <Icon
                       name={
@@ -112,6 +131,8 @@ class Toolbar extends React.Component {
                   src={Genius_Icon}
                   style={{ width: '1.1em', margin: '0 12px 0 4px' }}
                 ></Image>
+              </Menu.Item>
+              <Menu.Item onClick={() => this.onClickUrl('github')}>
                 View Source
                 <Image
                   src={GitHub_Icon}

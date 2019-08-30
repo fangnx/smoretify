@@ -4,20 +4,20 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-29 15:05:30
+ * @last-modified 2019-08-30 14:08:50
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../store';
 import './PlayerPanel.css';
-import { Container, Header } from 'semantic-ui-react';
 import WithScrollbar from '../Scrollbar/Scrollbar';
 import TrackInfoWidget from './TrackInfoWidget/TrackInfoWidget';
-import { initSpotifyApi } from '../../App';
+import { initSpotifyApi } from '../../init-spotify';
 import { trimSongName } from '../../utils/commonUtils';
 import SpotifySongWidget from './SpotifySongWidget/SpotifySongWidget';
 import SongSummaryWidget from './SongSummaryWidget/SongSummaryWidget';
+import { Container, Header } from 'semantic-ui-react';
 
 class LeftPanel extends React.Component {
   constructor() {

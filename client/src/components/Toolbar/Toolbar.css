@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-04 11:21:26
-* @last-modified 2019-08-29 19:02:30
+* @last-modified 2019-08-29 20:08:46
 */
 
 .toolbar {
@@ -55,8 +55,10 @@
   width: 85%;
 }
 
-.toolbar-right-menu > :last-child {
-  padding-right: 0 !important;
+.toolbar-right-menu > .item {
+  padding: 0 4px 0 4px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ui.inverted.menu {

@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-14 16:12:07
-* @last-modified 2019-08-29 14:14:49
+* @last-modified 2019-08-29 20:33:36
 */
 
 .songInfoPanel {
@@ -55,4 +55,14 @@
   font-weight: bold;
   font-style: italic;
   color: var(--color-theme-indigo-0) !important;
+}
+
+.ui.embed > .icon:after {
+  background-color: var(--color-theme-indigo-0);
+  opacity: 0.6;
+}
+
+.ui.embed > .icon:hover {
+  background-color: var(--color-theme-indigo-0);
+  opacity: 0.8;
 }

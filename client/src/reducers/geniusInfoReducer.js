@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-22 23:31:28
- * @last-modified 2019-08-29 14:23:39
+ * @last-modified 2019-08-30 14:37:01
  */
 import { resetAppActionType } from './rootReducer';
 
