@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-30 15:13:22
+ * @last-modified 2019-08-30 16:10:45
  */
 
 import React from 'react';
@@ -13,7 +13,7 @@ import { store } from '../../store';
 import './PlayerPanel.css';
 import WithScrollbar from '../Scrollbar/Scrollbar';
 import TrackInfoWidget from './TrackInfoWidget';
-import { initSpotifyApi } from '../../init-spotify';
+import { initSpotifyApi } from '../../connect-to-spotify';
 import { trimSongName } from '../../utils/commonUtils';
 import SpotifySongWidget from './SpotifySongWidget';
 import SongSummaryWidget from './SongSummaryWidget';
@@ -75,7 +75,15 @@ class LeftPanel extends React.Component {
             }
           });
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          this.props.dispatch({
+            type: 'SPOTIFY',
+            payload: {
+              connected: true,
+              tokenExpired: true
+            }
+          });
+        });
     }, 5000);
   }
 

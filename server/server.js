@@ -36,6 +36,7 @@ passport.use(
     },
     (accessToken, refreshToken, expires_in, profile, done) => {
       profile.accessToken = accessToken;
+      profile.refreshToken = refreshToken;
       return done(null, profile);
     }
   )

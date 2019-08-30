@@ -4,11 +4,12 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-08-29 20:13:58
+ * @last-modified 2019-08-30 15:47:46
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
+import SpotifyStatus from './SpotifyStatus';
 import { Grid, Icon, Image, Menu, Popup } from 'semantic-ui-react';
 import biscuitIcon from '../../assets/biscuit.svg';
 // import React_Icon from '../../assets/React_Icon.svg';
@@ -59,7 +60,8 @@ class Toolbar extends React.Component {
             <Menu inverted className="toolbar-left-menu">
               <Menu.Item>
                 <Image src={biscuitIcon} className="toolbar-logo" />
-                <div className="toolbar-appName">Smoretify</div>
+                <SpotifyStatus />
+                {/* <div className="toolbar-appName">Smoretify</div> */}
               </Menu.Item>
             </Menu>
           </Grid.Column>
@@ -148,11 +150,15 @@ class Toolbar extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { layout } = state;
+  const { layout, spotify } = state;
   return {
     showYoutube: layout.showYoutube,
     lyricsLeftAligned: layout.lyricsLeftAligned,
-    lyricsFontFamily: layout.lyricsFontFamily
+    lyricsFontFamily: layout.lyricsFontFamily,
+    connected: spotify.connected,
+    displayName: spotify.displayName,
+    country: spotify.country,
+    profilePhotoUrl: spotify.profilePhotoUrl
   };
 };
 
