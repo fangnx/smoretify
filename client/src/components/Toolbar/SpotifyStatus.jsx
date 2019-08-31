@@ -4,18 +4,21 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-30 15:12:22
- * @last-modified 2019-08-30 16:02:25
+ * @last-modified 2019-08-31 01:43:17
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Flag, Icon, Image, Label } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 
 class SpotifyStatus extends React.PureComponent {
   render() {
+    // TODO: remove opening window.
     return (
-      <div className="spotifyStatus">
-        {/* <Label image> */}
+      <div
+        className="spotifyStatus"
+        onClick={() => window.open('http://localhost:8888/auth/spotify')}
+      >
         {this.props.connected ? 'Connected' : 'Not Connected'}
         <Icon
           name={this.props.connected ? 'spotify' : 'close'}
@@ -24,7 +27,6 @@ class SpotifyStatus extends React.PureComponent {
             color: this.props.connected ? 'var(--color-spotify-green)' : 'red'
           }}
         />
-        {/* </Label> */}
       </div>
     );
   }

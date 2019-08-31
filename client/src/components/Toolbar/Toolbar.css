@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-04 11:21:26
-* @last-modified 2019-08-30 15:58:01
+* @last-modified 2019-08-31 01:52:45
 */
 
 .toolbar {
@@ -35,6 +35,8 @@
 
 .toolbar-left-menu > .item {
   color: var(--text-color-1);
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
@@ -45,10 +47,12 @@
 
 .toolbar-mid-menu > .item {
   padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-right: 2em;
 }
 
-.toolbar-mid-menu > .item :hover {
-  background-color: var(--color-theme-indigo-1);
+.toolbar-mid-menu > .item > .icon {
+  margin: 0 !important;
 }
 
 .toolbar-right-menu {
@@ -72,8 +76,15 @@
 
 .ui.inverted.menu > .item {
   font-weight: bold;
+  height: 75%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .ui.inverted.menu .item:before {
   display: none;
+}
+
+.ui.inverted.menu .item:hover {
+  background-color: var(--color-theme-indigo-1);
 }

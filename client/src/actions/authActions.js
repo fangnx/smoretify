@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 13:22:45
- * @last-modified 2019-08-30 22:04:09
+ * @last-modified 2019-08-31 01:40:31
  */
 
 import axios from 'axios';
@@ -15,9 +15,9 @@ import { store } from '../store';
  */
 export const getUserSpotifyInfo = async () => {
   return axios
-    .get('/user/spotify')
+    .get('/api/spotify/auth_info')
     .then(res => {
-      if (res.status === 200) {
+      if (res && !res.data.error) {
         store.dispatch({
           type: 'SPOTIFY',
           payload: {
@@ -41,6 +41,10 @@ export const getUserSpotifyInfo = async () => {
     .catch(err => console.log(err));
 };
 
+/**
+ * Get a refreshed access token (which expires in 3600 seconds) from the Spotify web API server.
+ * @param {*} refresh_token refresh token used to make the request.
+ */
 export const refreshSpotifyToken = async refresh_token => {
   return axios
     .get(`/api/spotify/refresh_token?token=${refresh_token}`)

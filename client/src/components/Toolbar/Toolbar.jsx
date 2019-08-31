@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-08-30 15:47:46
+ * @last-modified 2019-08-31 01:43:33
  */
 
 import React from 'react';
@@ -24,7 +24,7 @@ const popupStyle = {
   backgroundColor: 'var(--mainBoard-shade-color)'
 };
 
-class Toolbar extends React.Component {
+class Toolbar extends React.PureComponent {
   onClickUrl(type) {
     if (type === 'github') {
       window.open(PROJECT_GITHUB_LINK);
@@ -61,7 +61,6 @@ class Toolbar extends React.Component {
               <Menu.Item>
                 <Image src={biscuitIcon} className="toolbar-logo" />
                 <SpotifyStatus />
-                {/* <div className="toolbar-appName">Smoretify</div> */}
               </Menu.Item>
             </Menu>
           </Grid.Column>

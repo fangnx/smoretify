@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 15:51:33
- * @last-modified 2019-08-31 00:00:27
+ * @last-modified 2019-08-31 00:04:12
  */
 
 import express from 'express';
@@ -50,7 +50,7 @@ router.post('/search', (req, res) => {
 });
 
 // Get lyrics fetched from Genius by page URL.
-router.post('/getLyrics', async (req, res) => {
+router.post('/get_lyrics', async (req, res) => {
   const lyrics = await fetchLyricsFromSource(req.body.url);
   if (lyrics) {
     res.send({ songLyrics: lyrics });

@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-30 17:48:38
- * @last-modified 2019-08-31 00:00:30
+ * @last-modified 2019-08-31 01:31:46
  */
 
 import express from 'express';
@@ -14,6 +14,15 @@ import spotifyAuthInfo from '../../config/spotifyAuthInfo';
 const router = express.Router();
 const CLIENT_ID = spotifyAuthInfo.CLIENT_ID;
 const CLIENT_SECRET = spotifyAuthInfo.CLIENT_SECRET;
+
+//
+router.get('/auth_info', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.json(req.user);
+  } else {
+    res.json({ error: 'Not Authenticated yet.' });
+  }
+});
 
 router.get('/refresh_token', (req, res) => {
   const token = req.query.token;
@@ -33,6 +42,8 @@ router.get('/refresh_token', (req, res) => {
 
   request.post(options, (err, response, body) => {
     if (!err && response.statusCode === 200) {
+      // Update user's access token.
+      req.user.accessToken = body.access_token;
       res.send({
         access_token: body.access_token
       });

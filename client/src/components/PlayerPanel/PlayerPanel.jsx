@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-30 22:42:28
+ * @last-modified 2019-08-31 01:33:53
  */
 
 import React from 'react';
@@ -13,12 +13,11 @@ import { store } from '../../store';
 import './PlayerPanel.css';
 import WithScrollbar from '../Scrollbar/Scrollbar';
 import TrackInfoWidget from './TrackInfoWidget';
-import { initSpotifyApi, refreshSpotifyApi } from '../../connect-to-spotify';
+import { initSpotifyApi, refreshSpotifyApi } from '../../connectToSpotify';
 import { trimSongName } from '../../utils/commonUtils';
 import SpotifySongWidget from './SpotifySongWidget';
 import SongSummaryWidget from './SongSummaryWidget';
 import { Container, Header } from 'semantic-ui-react';
-import { refreshSpotifyToken } from '../../actions/authActions';
 
 let spotifyApi = async () => await initSpotifyApi();
 
@@ -101,12 +100,6 @@ class LeftPanel extends React.Component {
 
   componentWillMount() {
     this.getCurrentTrack();
-  }
-
-  onClickUrl(type) {
-    if (type === 'spotify') {
-      window.open(this.state.externalSpotifyUrl);
-    }
   }
 
   render() {

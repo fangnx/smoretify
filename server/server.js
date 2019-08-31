@@ -27,7 +27,7 @@ passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
-// Passport.js Spotify authentication
+// Passport.js Spotify authentication.
 passport.use(
   new SpotifyStrategy(
     {
@@ -38,6 +38,7 @@ passport.use(
     (accessToken, refreshToken, expires_in, profile, done) => {
       profile.accessToken = accessToken;
       profile.refreshToken = refreshToken;
+      profile.expiresIn = expires_in;
       return done(null, profile);
     }
   )
@@ -49,7 +50,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Direct to the authentification page of Spotify.com.
+// Direct to the authentication page of Spotify.
 // On successful login, redirect back to /callback.
 app.get(
   '/auth/spotify',
@@ -75,14 +76,6 @@ app.get(
     res.redirect('/');
   }
 );
-
-app.get('/user/spotify', (req, res) => {
-  if (req.isAuthenticated()) {
-    res.json(req.user);
-  } else {
-    res.json({ error: 'Not Authenticated yet.' });
-  }
-});
 
 const isSpotifyAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {

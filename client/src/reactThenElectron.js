@@ -1,10 +1,10 @@
 /**
- * react-then-electron.js
+ * reactThenElectron.js
  *
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-15 17:05:42
- * @last-modified 2019-08-28 14:53:37
+ * @last-modified 2019-08-31 01:34:52
  */
 
 const net = require('net');
