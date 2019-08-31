@@ -1,10 +1,10 @@
 /**
- * geniusActions.js
+ * geniusAPI.js
  *
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 15:30:28
- * @last-modified 2019-08-31 16:25:22
+ * @last-modified 2019-08-31 18:02:01
  */
 
 import axios from 'axios';

@@ -1,10 +1,10 @@
 /**
- * spotifyAPI.js
+ * spotifyRoutes.js
  *
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-30 17:48:38
- * @last-modified 2019-08-31 14:58:39
+ * @last-modified 2019-08-31 18:00:25
  */
 
 import express from 'express';

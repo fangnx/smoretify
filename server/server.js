@@ -5,8 +5,8 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import config from '../config/config';
 import spotifyAuthInfo from '../config/spotifyAuthInfo';
-import { spotifyRouter } from './routes/spotifyAPI';
-import { geniusRouter } from './routes/geniusAPI';
+import { spotifyRouter } from './routes/spotifyRoutes';
+import { geniusRouter } from './routes/geniusRoutes';
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
 const app = new express();

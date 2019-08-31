@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-31 17:42:26
+ * @last-modified 2019-08-31 18:01:18
  */
 
 import React from 'react';
@@ -14,15 +14,15 @@ import {
   searchFromGenius,
   getSongInfoFromGenius,
   getReferentsBySongFromGenius
-} from '../../api/geniusActions';
+} from '../../api/geniusAPI';
 import MainBoard from './MainBoard';
 import './MainBoard.css';
 
 class MainBoardContainer extends React.Component {
   /**
    * Search for the currently played track from the Genius web API.
-   * @param {*} song - Name of the currently played track.
-   * @param {*} artists - Names of the artists of the currently played track.
+   * @param {*} song - name of the currently played track.
+   * @param {*} artists - names of the artists of the currently played track.
    * @returns The top matched search result (the most likely track match).
    */
   async searchForCurrentTrack(song, artists) {
@@ -90,7 +90,7 @@ class MainBoardContainer extends React.Component {
 
   /**
    * Parse the track performers data
-   * @param {*} rawData Raw track performers data.
+   * @param {*} rawData raw track performers data.
    * @returns Array of [performer role, performer name] pairs.
    */
   parseTrackInfo(rawData) {

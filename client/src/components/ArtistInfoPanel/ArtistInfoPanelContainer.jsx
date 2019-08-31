@@ -4,13 +4,13 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-31 17:53:33
+ * @last-modified 2019-08-31 18:01:43
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import withScrollbar from '../Scrollbar/Scrollbar';
-import { getArtistInfoFromGenius } from '../../api/geniusActions';
+import { getArtistInfoFromGenius } from '../../api/geniusAPI';
 import ArtistInfoPanel from './ArtistInfoPanel';
 
 class ArtistInfoPanelContainer extends React.Component {
