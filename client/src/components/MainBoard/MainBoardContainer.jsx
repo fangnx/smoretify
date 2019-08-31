@@ -4,18 +4,18 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-31 16:59:46
+ * @last-modified 2019-08-31 17:26:25
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../store';
-import { MainBoard } from './MainBoard';
 import {
   searchFromGenius,
   getSongInfoFromGenius,
   getReferentsBySongFromGenius
 } from '../../api/geniusActions';
+import MainBoard from './MainBoard';
 import './MainBoard.css';
 
 class MainBoardContainer extends React.Component {

@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-31 15:59:17
- * @last-modified 2019-08-31 16:21:15
+ * @last-modified 2019-08-31 17:26:24
  */
 
 import React from 'react';
@@ -14,7 +14,7 @@ import ArtistInfoPanel from '../ArtistInfoPanel';
 import { Grid } from 'semantic-ui-react';
 import './MainBoard.css';
 
-export const MainBoard = () => (
+const MainBoard = () => (
   <div className="mainBoard">
     <div className="mainBoard-scrollable">
       <Grid columns={3} className="mainBoard-grid">
@@ -31,3 +31,5 @@ export const MainBoard = () => (
     </div>
   </div>
 );
+
+export default MainBoard;

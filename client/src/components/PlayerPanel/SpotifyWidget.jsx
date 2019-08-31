@@ -1,17 +1,17 @@
 /**
- * PlayerWidget.jsx
+ * SpotifyWidget.jsx
  *
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-22 22:51:58
- * @last-modified 2019-08-31 17:03:51
+ * @last-modified 2019-08-31 17:18:22
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import { Image } from 'semantic-ui-react';
 
-class SpotifySongWidget extends React.Component {
+class SpotifyWidget extends React.Component {
   onClickUrl(type) {
     if (type === 'spotify') {
       window.open(this.props.externalSpotifyUrl);
@@ -49,4 +49,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   null
-)(SpotifySongWidget);
+)(SpotifyWidget);
