@@ -4,14 +4,14 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-08 00:49:49
- * @last-modified 2019-08-21 22:33:14
+ * @last-modified 2019-08-31 17:52:34
  */
 
 import React from 'react';
 import { Scrollbar as CustomizableScrollbar } from 'react-scrollbars-custom';
 import './Scrollbar.css';
 
-const WithScrollbar = Content => {
+const withScrollbar = Content => {
   return class Scrollbar extends React.Component {
     render() {
       return (
@@ -23,4 +23,4 @@ const WithScrollbar = Content => {
   };
 };
 
-export default WithScrollbar;
+export default withScrollbar;

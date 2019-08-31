@@ -4,16 +4,14 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-31 17:30:33
+ * @last-modified 2019-08-31 17:53:33
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
-import WithScrollbar from '../Scrollbar/Scrollbar';
+import withScrollbar from '../Scrollbar/Scrollbar';
 import { getArtistInfoFromGenius } from '../../api/geniusActions';
-import { Image, Container, Header, Icon, Placeholder } from 'semantic-ui-react';
 import ArtistInfoPanel from './ArtistInfoPanel';
-import './ArtistInfoPanel.css';
 
 class ArtistInfoPanelContainer extends React.Component {
   constructor() {
@@ -84,7 +82,7 @@ const mapStateToProps = state => {
   };
 };
 
-ArtistInfoPanelContainer = WithScrollbar(ArtistInfoPanelContainer);
+ArtistInfoPanelContainer = withScrollbar(ArtistInfoPanelContainer);
 
 export default connect(
   mapStateToProps,

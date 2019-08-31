@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-31 17:25:22
+ * @last-modified 2019-08-31 17:53:38
  */
 
 import React from 'react';
@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { store } from '../../store';
 import { initSpotifyApi, refreshSpotifyApi } from '../../connectToSpotify';
 import { trimSongName } from '../../utils/commonUtils';
-import WithScrollbar from '../Scrollbar/Scrollbar';
+import withScrollbar from '../Scrollbar/Scrollbar';
 import PlayerPanel from './PlayerPanel';
 
 let spotifyApi = async () => await initSpotifyApi();
@@ -91,7 +91,7 @@ class PlayerPanelContainer extends React.Component {
   }
 }
 
-PlayerPanelContainer = WithScrollbar(PlayerPanelContainer);
+PlayerPanelContainer = withScrollbar(PlayerPanelContainer);
 
 export default connect(
   null,

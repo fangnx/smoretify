@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-31 17:26:25
+ * @last-modified 2019-08-31 17:42:26
  */
 
 import React from 'react';
@@ -29,9 +29,7 @@ class MainBoardContainer extends React.Component {
     // Search term: song + primary artist name.
     // This is tested to yield the most accurate result.
     const searchTerm = `${song} ${artists[0]}`;
-    console.log(searchTerm);
     return await searchFromGenius({ searchTerm }).then(async res => {
-      console.log(res);
       if (res && res.status === 200 && res.data.length > 0) {
         const withMatchedName = res.data.filter(
           songRes => songRes.result.title === song
@@ -56,7 +54,7 @@ class MainBoardContainer extends React.Component {
   /**
    * Get the track info from a Genius search result.
    *
-   * Dispatch `UPDATE-GENIUS_INFO` event to update the global track info.
+   * Dispatch `UPDATE_GENIUS_INFO` event to update the global track info.
    */
   async getTrackInfo(trimmedSongName, artists) {
     const song = await this.searchForCurrentTrack(trimmedSongName, artists);
@@ -81,7 +79,8 @@ class MainBoardContainer extends React.Component {
               trackPerformers: this.parseTrackInfo(
                 res.data.custom_performances
               ),
-              primaryArtistId: song.primary_artist.id
+              primaryArtistId: song.primary_artist.id,
+              youtubeUrl
             }
           });
         }

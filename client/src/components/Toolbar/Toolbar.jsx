@@ -4,15 +4,19 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-08-31 01:56:40
+ * @last-modified 2019-08-31 17:51:06
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
+import {
+  TOGGLE_YOUTUBE,
+  CHANGE_LYRICS_ALIGNMENT,
+  CHANGE_LYRICS_FONT
+} from '../../redux/actionTypes';
 import SpotifyStatus from './SpotifyStatus';
 import { Grid, Icon, Image, Menu, Popup } from 'semantic-ui-react';
 import biscuitIcon from '../../assets/biscuit.svg';
-// import React_Icon from '../../assets/React_Icon.svg';
 import Spotify_Icon_Green from '../../assets/Spotify_Icon_Green.png';
 import Genius_Icon from '../../assets/Genius_Icon.png';
 import GitHub_Icon from '../../assets/GitHub_Icon.png';
@@ -34,10 +38,9 @@ class Toolbar extends React.PureComponent {
   toggleYoutube = e => {
     e.preventDefault();
     this.props.dispatch({
-      type: 'LAYOUT',
+      type: TOGGLE_YOUTUBE,
       payload: {
-        showYoutube: !this.props.showYoutube,
-        lyricsLeftAligned: this.props.lyricsLeftAligned
+        showYoutube: !this.props.showYoutube
       }
     });
   };
@@ -45,7 +48,7 @@ class Toolbar extends React.PureComponent {
   toggleLyricsLeftAligned = e => {
     e.preventDefault();
     this.props.dispatch({
-      type: 'LAYOUT',
+      type: CHANGE_LYRICS_ALIGNMENT,
       payload: {
         lyricsLeftAligned: !this.props.lyricsLeftAligned
       }
