@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 17:03:21
- * @last-modified 2019-08-29 14:39:46
+ * @last-modified 2019-08-30 22:44:02
  */
 
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -30,7 +30,6 @@ const persistConfig = {
   // whitelist: ['layout']
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-console.log(initialState);
 const store = createStore(
   persistedReducer,
   initialState,

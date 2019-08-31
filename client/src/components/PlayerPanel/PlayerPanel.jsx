@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-30 16:10:45
+ * @last-modified 2019-08-30 22:42:28
  */
 
 import React from 'react';
@@ -13,11 +13,14 @@ import { store } from '../../store';
 import './PlayerPanel.css';
 import WithScrollbar from '../Scrollbar/Scrollbar';
 import TrackInfoWidget from './TrackInfoWidget';
-import { initSpotifyApi } from '../../connect-to-spotify';
+import { initSpotifyApi, refreshSpotifyApi } from '../../connect-to-spotify';
 import { trimSongName } from '../../utils/commonUtils';
 import SpotifySongWidget from './SpotifySongWidget';
 import SongSummaryWidget from './SongSummaryWidget';
 import { Container, Header } from 'semantic-ui-react';
+import { refreshSpotifyToken } from '../../actions/authActions';
+
+let spotifyApi = async () => await initSpotifyApi();
 
 class LeftPanel extends React.Component {
   constructor() {
@@ -27,16 +30,25 @@ class LeftPanel extends React.Component {
     };
   }
 
-  async getCurrentSong() {
-    const spotifyApi = await initSpotifyApi();
+  /**
+   * Get the currently played track from the Spotify API.
+   *
+   * Since Spotify Web API does not support watching the current track status,
+   * not does it emit any event on change,
+   * the method sends a request every 5 seconds to detect if the currently played tracked has change.
+   */
+  async getCurrentTrack() {
+    const api = await spotifyApi();
 
     setInterval(async () => {
-      spotifyApi
+      api
         .getMyCurrentPlaybackState()
         .then(res => {
           const spotifySongName = res.item.name;
           const spotifyArtists = res.item.artists.map(artist => artist.name);
           let { currentSongName, currentArtists } = store.getState().songInfo;
+          // If the responded song name & artist names are both the same,
+          // the track played has not changed.
           if (
             currentSongName &&
             currentArtists &&
@@ -47,14 +59,15 @@ class LeftPanel extends React.Component {
             }
           }
 
+          // Since the track played has changed, update the song name and artist names.
+          currentSongName = spotifySongName;
+          currentArtists = spotifyArtists;
+
           if (res) {
             this.setState({
               isReady: true
             });
           }
-
-          currentSongName = spotifySongName;
-          currentArtists = spotifyArtists;
 
           this.props.dispatch({
             type: 'SONG_INFO',
@@ -75,20 +88,19 @@ class LeftPanel extends React.Component {
             }
           });
         })
-        .catch(err => {
-          this.props.dispatch({
-            type: 'SPOTIFY',
-            payload: {
-              connected: true,
-              tokenExpired: true
-            }
-          });
+        // If the Spotify API session has expired,
+        // dispatch an event to trigger requesting a refreshed access token.
+        .catch(async () => {
+          const refreshToken = store.getState().spotify.refreshToken;
+          if (refreshToken) {
+            spotifyApi = await refreshSpotifyApi(api, refreshToken);
+          }
         });
     }, 5000);
   }
 
   componentWillMount() {
-    this.getCurrentSong();
+    this.getCurrentTrack();
   }
 
   onClickUrl(type) {

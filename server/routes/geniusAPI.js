@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 15:51:33
- * @last-modified 2019-08-24 01:46:17
+ * @last-modified 2019-08-31 00:00:27
  */
 
 import express from 'express';
@@ -18,7 +18,7 @@ const TOKEN = geniusAuthInfo.ACCESS_TOKEN;
 const genius = new geniusApi(TOKEN);
 
 // Get Artist by id.
-router.post('/getArtist', (req, res) => {
+router.post('/get_artist', (req, res) => {
   genius
     .artist(req.body.artistId, { text_format: 'html' })
     .then(value => res.send(value.artist))
@@ -26,7 +26,7 @@ router.post('/getArtist', (req, res) => {
 });
 
 // Get Song by id.
-router.post('/getSong', (req, res) => {
+router.post('/get_song', (req, res) => {
   genius
     .song(req.body.songId, { text_format: 'html' })
     .then(value => res.send(value.song))
@@ -34,7 +34,7 @@ router.post('/getSong', (req, res) => {
 });
 
 // Get Referents by songId.
-router.post('/getReferentsBySong', (req, res) => {
+router.post('/get_referents_by_song', (req, res) => {
   genius
     .referents({ song_id: req.body.songId }, { text_format: 'html' })
     .then(value => res.send(value.referents))

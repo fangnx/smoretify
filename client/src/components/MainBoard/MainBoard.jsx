@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-28 16:40:09
+ * @last-modified 2019-08-30 22:43:01
  */
 
 import React from 'react';
@@ -151,9 +151,9 @@ class MainBoard extends React.Component {
   }
 
   render() {
-    console.log('GLOBAL REDUX STATE:');
-    console.log(store.getState());
-    console.log(this.state);
+    // console.log('GLOBAL REDUX STATE:');
+    // console.log(store.getState());
+    // console.log(this.state);
 
     return (
       <div className="mainBoard">

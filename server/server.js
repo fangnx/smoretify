@@ -5,6 +5,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import config from '../config/config';
 import spotifyAuthInfo from '../config/spotifyAuthInfo';
+import { spotifyRouter } from './routes/spotifyAPI';
 import { geniusRouter } from './routes/geniusAPI';
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
@@ -91,6 +92,7 @@ const isSpotifyAuthenticated = (req, res, next) => {
 };
 
 // API routes.
+app.use('/api/spotify', spotifyRouter);
 app.use('/api/genius', geniusRouter);
 
 const port = config.port;

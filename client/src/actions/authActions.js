@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 13:22:45
- * @last-modified 2019-08-30 16:26:15
+ * @last-modified 2019-08-30 22:04:09
  */
 
 import axios from 'axios';
@@ -41,13 +41,13 @@ export const getUserSpotifyInfo = async () => {
     .catch(err => console.log(err));
 };
 
-export const refreshSpotifyToken = async refreshToken => {
+export const refreshSpotifyToken = async refresh_token => {
   return axios
-    .post('https://accounts.spotify.com/api/token', {
-      grant_type: 'refresh_token',
-      refresh_token: refreshToken
-    })
+    .get(`/api/spotify/refresh_token?token=${refresh_token}`)
     .then(res => {
-      return res.data.access_token;
-    });
+      if (res && res.status === 200) {
+        return res.data.access_token;
+      }
+    })
+    .catch(err => console.log(err));
 };
