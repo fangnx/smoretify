@@ -4,26 +4,26 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 17:03:21
- * @last-modified 2019-08-31 01:33:42
+ * @last-modified 2019-08-31 15:38:54
  */
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import rootReducer from './reducers/rootReducer';
-import { initialState as songInfoInitialState } from './reducers/songInfoReducer';
-import { initialState as geniusInfoInitialState } from './reducers/geniusInfoReducer';
-import { initialState as layoutInitialState } from './reducers/layoutReducer';
+import rootReducer from './redux';
+import { initialState as layoutInitialState } from './redux/layoutReducer';
 
 const initialState = {
-  songInfo: songInfoInitialState,
-  geniusInfo: geniusInfoInitialState,
-  layout: layoutInitialState,
-  spotify: {}
+  songInfo: {},
+  geniusInfo: {},
+  spotify: {},
+  layout: layoutInitialState
 };
+
 const middleware = [thunk];
 
+// Persist the layout preferences.
 const persistConfig = {
   key: 'root',
   storage,

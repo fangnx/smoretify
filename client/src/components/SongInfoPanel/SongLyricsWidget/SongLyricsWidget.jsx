@@ -4,13 +4,13 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-02 00:22:19
- * @last-modified 2019-08-29 19:26:42
+ * @last-modified 2019-08-31 16:06:50
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import { List, Placeholder } from 'semantic-ui-react';
-import { getLyricsFromGenius } from '../../../actions/geniusActions';
+import { getLyricsFromGenius } from '../../../api/geniusActions';
 
 class SongLyricsWidget extends React.Component {
   constructor() {

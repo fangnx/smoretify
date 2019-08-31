@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-31 01:33:53
+ * @last-modified 2019-08-31 17:00:24
  */
 
 import React from 'react';
@@ -22,13 +22,6 @@ import { Container, Header } from 'semantic-ui-react';
 let spotifyApi = async () => await initSpotifyApi();
 
 class LeftPanel extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isReady: false
-    };
-  }
-
   /**
    * Get the currently played track from the Spotify API.
    *
@@ -62,14 +55,8 @@ class LeftPanel extends React.Component {
           currentSongName = spotifySongName;
           currentArtists = spotifyArtists;
 
-          if (res) {
-            this.setState({
-              isReady: true
-            });
-          }
-
           this.props.dispatch({
-            type: 'SONG_INFO',
+            type: 'UPDATE_SONG_INFO',
             payload: {
               currentSongName,
               trimmedCurrentSongName: trimSongName(currentSongName),
@@ -80,7 +67,7 @@ class LeftPanel extends React.Component {
           });
 
           this.props.dispatch({
-            type: 'GENIUS_INFO',
+            type: 'UPDATE_GENIUS_INFO',
             payload: {
               songSummary: '',
               songLyricsUrl: ''
@@ -91,6 +78,7 @@ class LeftPanel extends React.Component {
         // dispatch an event to trigger requesting a refreshed access token.
         .catch(async () => {
           const refreshToken = store.getState().spotify.refreshToken;
+          console.log(refreshToken);
           if (refreshToken) {
             spotifyApi = await refreshSpotifyApi(api, refreshToken);
           }
@@ -105,25 +93,19 @@ class LeftPanel extends React.Component {
   render() {
     return (
       <div className="playerPanel">
-        {this.state.isReady ? (
-          <div>
-            <SpotifySongWidget />
+        <SpotifySongWidget />
 
-            <div className="playerPanel-text">
-              <Container className="playerPanel-container">
-                <Header as="h3">About</Header>
-                <SongSummaryWidget />
-              </Container>
+        <div className="playerPanel-text">
+          <Container className="playerPanel-container">
+            <Header as="h3">About</Header>
+            <SongSummaryWidget />
+          </Container>
 
-              <Container className="playerPanel-container">
-                <Header as="h3">Track Info</Header>
-                <TrackInfoWidget data={this.props.trackInfo} />
-              </Container>
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
+          {/* <Container className="playerPanel-container">
+            <Header as="h3">Track Info</Header>
+            <TrackInfoWidget />
+          </Container> */}
+        </div>
       </div>
     );
   }

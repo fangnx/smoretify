@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 13:22:45
- * @last-modified 2019-08-31 01:40:31
+ * @last-modified 2019-08-31 15:44:40
  */
 
 import axios from 'axios';
@@ -19,7 +19,7 @@ export const getUserSpotifyInfo = async () => {
     .then(res => {
       if (res && !res.data.error) {
         store.dispatch({
-          type: 'SPOTIFY',
+          type: 'CHANGE_SPOTIFY_STATUS',
           payload: {
             connected: true,
             refreshToken: res.data.refreshToken,
@@ -30,7 +30,7 @@ export const getUserSpotifyInfo = async () => {
         });
       } else {
         store.dispatch({
-          type: 'SPOTIFY',
+          type: 'CHANGE_SPOTIFY_STATUS',
           payload: {
             connected: false
           }

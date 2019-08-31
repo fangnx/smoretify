@@ -4,14 +4,14 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 11:17:55
- * @last-modified 2019-08-30 14:08:32
+ * @last-modified 2019-08-31 16:06:16
  */
 
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { resetAppActionType } from './reducers/rootReducer';
-import MainBoard from './components/MainBoard';
+import MainBoardContainer from './components/MainBoard';
 import Toolbar from './components/Toolbar';
 import './App.css';
 
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <div className="App">
       <Provider store={store}>
-        <MainBoard />
+        <MainBoardContainer />
         <Toolbar />
       </Provider>
     </div>

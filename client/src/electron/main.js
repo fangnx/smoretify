@@ -1,10 +1,10 @@
 /**
- * electronMain.js
+ * main.js
  *
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-15 15:18:20
- * @last-modified 2019-08-31 01:34:13
+ * @last-modified 2019-08-31 14:56:59
  */
 
 const electron = require('electron');

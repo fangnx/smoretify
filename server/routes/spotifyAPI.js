@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-30 17:48:38
- * @last-modified 2019-08-31 01:31:46
+ * @last-modified 2019-08-31 14:58:39
  */
 
 import express from 'express';
@@ -43,7 +43,9 @@ router.get('/refresh_token', (req, res) => {
   request.post(options, (err, response, body) => {
     if (!err && response.statusCode === 200) {
       // Update user's access token.
-      req.user.accessToken = body.access_token;
+      if (req.user) {
+        req.user.accessToken = body.access_token;
+      }
       res.send({
         access_token: body.access_token
       });

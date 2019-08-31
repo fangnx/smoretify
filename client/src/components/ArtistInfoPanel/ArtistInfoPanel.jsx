@@ -4,13 +4,13 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-28 16:51:42
+ * @last-modified 2019-08-31 16:06:46
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import WithScrollbar from '../Scrollbar/Scrollbar';
-import { getArtistInfoFromGenius } from '../../actions/geniusActions';
+import { getArtistInfoFromGenius } from '../../api/geniusActions';
 import { Image, Container, Header, Icon, Placeholder } from 'semantic-ui-react';
 import './ArtistInfoPanel.css';
 

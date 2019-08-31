@@ -43,6 +43,6 @@
       "last 1 safari version"
     ]
   },
-  "main": "src/electron-main.js",
+  "main": "src/electron/main.js",
   "homepage": "./"
 }

@@ -4,11 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-30 14:07:59
- * @last-modified 2019-08-31 01:34:18
+ * @last-modified 2019-08-31 15:41:26
  */
 
 import SpotifyWebApi from 'spotify-web-api-js';
-import { getUserSpotifyInfo, refreshSpotifyToken } from './actions/authActions';
+import { getUserSpotifyInfo, refreshSpotifyToken } from './api/authActions';
 
 /**
  * Initialize Spotify Api in the frontend.
