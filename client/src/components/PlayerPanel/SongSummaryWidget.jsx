@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-22 23:23:43
- * @last-modified 2019-08-28 16:55:37
+ * @last-modified 2019-08-31 19:03:42
  */
 
 import React from 'react';
@@ -15,7 +15,7 @@ class SongSummaryWidget extends React.Component {
   render() {
     let songSummary = this.props.summary;
     if (songSummary && songSummary.match(/<p>(\?)<\/p>/g)) {
-      songSummary = '<p>No song info available.<p>';
+      songSummary = '<p>Song info not available.<p>';
     }
     const fillArr = new Array(10).fill(0);
 

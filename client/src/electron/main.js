@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-15 15:18:20
- * @last-modified 2019-08-31 14:56:59
+ * @last-modified 2019-08-31 18:24:52
  */
 
 const electron = require('electron');
@@ -28,7 +28,7 @@ function createWindow() {
   const startUrl =
     process.env.ELECTRON_START_URL ||
     url.format({
-      pathname: path.join(__dirname, '/../build/index.html'),
+      pathname: path.join(__dirname, '../../build/index.html'),
       protocol: 'file:',
       slashes: true
     });

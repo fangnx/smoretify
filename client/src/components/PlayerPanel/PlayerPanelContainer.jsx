@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-31 18:01:32
+ * @last-modified 2019-08-31 18:56:34
  */
 
 import React from 'react';
@@ -74,7 +74,6 @@ class PlayerPanelContainer extends React.Component {
         // dispatch an event to trigger requesting a refreshed access token.
         .catch(async () => {
           const refreshToken = store.getState().spotify.refreshToken;
-          console.log(refreshToken);
           if (refreshToken) {
             spotifyApi = await refreshSpotifyApi(api, refreshToken);
           }

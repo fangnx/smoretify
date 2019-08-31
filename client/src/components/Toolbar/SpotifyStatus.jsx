@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-30 15:12:22
- * @last-modified 2019-08-31 01:43:17
+ * @last-modified 2019-08-31 18:22:08
  */
 
 import React from 'react';
@@ -17,7 +17,9 @@ class SpotifyStatus extends React.PureComponent {
     return (
       <div
         className="spotifyStatus"
-        onClick={() => window.open('http://localhost:8888/auth/spotify')}
+        onClick={() =>
+          (window.location.href = 'http://localhost:8888/auth/spotify')
+        }
       >
         {this.props.connected ? 'Connected' : 'Not Connected'}
         <Icon

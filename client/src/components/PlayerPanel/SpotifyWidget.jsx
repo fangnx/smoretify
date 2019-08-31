@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-22 22:51:58
- * @last-modified 2019-08-31 17:18:22
+ * @last-modified 2019-08-31 18:09:38
  */
 
 import React from 'react';
@@ -27,9 +27,6 @@ class SpotifyWidget extends React.Component {
           <div className="artistNames">
             {this.props.artists ? this.props.artists.join(', ') : ''}
           </div>
-          {/* <div className="links">
-            <Icon name="spotify" onClick={() => this.onClickUrl('spotify')} />
-          </div> */}
         </div>
       </div>
     );

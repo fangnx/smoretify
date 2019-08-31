@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-31 18:01:18
+ * @last-modified 2019-08-31 19:13:27
  */
 
 import React from 'react';
@@ -35,17 +35,16 @@ class MainBoardContainer extends React.Component {
           songRes => songRes.result.title === song
         );
 
-        if (withMatchedName.length === 0) {
-          return res.data[0].result;
-        } else if (withMatchedName.length === 1) {
+        if (withMatchedName.length === 1) {
           return withMatchedName[0].result;
+        } else if (withMatchedName.length > 1) {
+          const withMatchedArtist = withMatchedName.filter(
+            songRes => artists.indexOf(songRes.result.primary_artist.name) >= 0
+          );
+          return withMatchedArtist.length > 0
+            ? withMatchedArtist[0].result
+            : withMatchedName[0].result;
         }
-        const withMatchedArtist = withMatchedName.filter(
-          songRes => artists.indexOf(songRes.result.primary_artist.name) >= 0
-        );
-        return withMatchedArtist.length > 0
-          ? withMatchedArtist[0].result
-          : withMatchedName[0].result;
       }
       return {};
     });
@@ -58,6 +57,16 @@ class MainBoardContainer extends React.Component {
    */
   async getTrackInfo(trimmedSongName, artists) {
     const song = await this.searchForCurrentTrack(trimmedSongName, artists);
+    if (Object.keys(song).length === 0) {
+      this.props.dispatch({
+        type: 'UPDATE_GENIUS_INFO',
+        payload: {
+          primaryArtistId: -1,
+          songSummary: ''
+        }
+      });
+      return;
+    }
     await getSongInfoFromGenius({ songId: song.id })
       .then(async res => {
         if (res.status === 200) {
@@ -132,6 +141,7 @@ class MainBoardContainer extends React.Component {
   }
 
   render() {
+    console.log(store.getState());
     return <MainBoard />;
   }
 }

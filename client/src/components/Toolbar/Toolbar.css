@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-04 11:21:26
-* @last-modified 2019-08-31 01:52:45
+* @last-modified 2019-08-31 18:19:53
 */
 
 .toolbar {
@@ -35,10 +35,8 @@
 
 .toolbar-left-menu > .item {
   color: var(--text-color-1);
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0 4px 0 4px !important;
+  margin-left: 0.5rem;
 }
 
 .toolbar-mid-menu {
@@ -60,7 +58,8 @@
 }
 
 .toolbar-right-menu > .item {
-  padding: 0 4px 0 4px !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
   overflow: hidden;
   text-overflow: ellipsis;
 }

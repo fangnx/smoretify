@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-08-31 17:51:06
+ * @last-modified 2019-08-31 18:16:24
  */
 
 import React from 'react';
@@ -133,7 +133,7 @@ class Toolbar extends React.PureComponent {
                 ></Image>
                 <Image
                   src={Genius_Icon}
-                  style={{ width: '1.1em', margin: '0 12px 0 4px' }}
+                  style={{ width: '1.1em', margin: '0 4px 0 4px' }}
                 ></Image>
               </Menu.Item>
               <Menu.Item onClick={() => this.onClickUrl('github')}>

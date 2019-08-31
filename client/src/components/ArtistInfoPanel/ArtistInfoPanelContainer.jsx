@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-31 18:01:43
+ * @last-modified 2019-08-31 19:13:19
  */
 
 import React from 'react';
@@ -17,8 +17,6 @@ class ArtistInfoPanelContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: '\u00a0',
-      altNames: [],
       mainImg: '',
       summary: '',
       facebookUrl: '',
@@ -33,8 +31,6 @@ class ArtistInfoPanelContainer extends React.Component {
       .then(async res => {
         if (res.status === 200) {
           await this.setState({
-            name: res.data.name,
-            altNames: res.data.alternate_names,
             mainImg: res.data.image_url,
             summary: res.data.description.html,
             facebookName: res.data.facebook_name,
@@ -50,8 +46,19 @@ class ArtistInfoPanelContainer extends React.Component {
   async componentWillReceiveProps(nextProps) {
     if (nextProps.artistId !== this.props.artistId) {
       this.setState({ isReady: false });
-      if (nextProps.artistId >= 0) {
+      if (nextProps.artistId !== -1) {
         await this.getArtistInfo(nextProps.artistId);
+      }
+    } else {
+      // If different artist & no available search result.
+      if (nextProps.artistId !== -1) {
+        await this.setState({
+          summary: '<p>Artist bio not available.</p>',
+          mainImg: '',
+          facebookName: '',
+          twitterName: '',
+          insName: ''
+        });
       }
     }
   }
@@ -59,7 +66,7 @@ class ArtistInfoPanelContainer extends React.Component {
   render() {
     let summary = this.state.summary;
     if (summary.match(/<p>(\?)<\/p>/g)) {
-      summary = '<p>No artist info available.</p>';
+      summary = '<p>Artist bio not available.</p>';
     }
     const fillArr = new Array(20).fill(0);
 
@@ -68,7 +75,7 @@ class ArtistInfoPanelContainer extends React.Component {
         fillArr={fillArr}
         isReady
         mainImage={this.state.mainImg}
-        name={this.state.name}
+        name={this.props.primaryArtistName}
         summary={summary}
       ></ArtistInfoPanel>
     );
@@ -76,9 +83,10 @@ class ArtistInfoPanelContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { geniusInfo } = state;
+  const { geniusInfo, songInfo } = state;
   return {
-    artistId: geniusInfo.primaryArtistId
+    artistId: geniusInfo.primaryArtistId,
+    primaryArtistName: songInfo.currentArtists ? songInfo.currentArtists[0] : ''
   };
 };
 
