@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "smoretify",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +13,7 @@
     "concurrently": "^4.1.1",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
+    "electron-packager": "^14.0.5",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "foreman": "^3.0.1",
@@ -27,8 +28,10 @@
   },
   "scripts": {
     "client": "cd client && npm start",
+    "electron": "cd client && npm run electron",
     "server": "babel-node server/server.js",
     "start": "npm run server",
+    "start-electron": "concurrently --kill-others-on-fail \"npm run server\" \"npm run electron\"",
     "build": "cd client && npm run build && cd .. ",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "production": "npm run build && npm run server"
