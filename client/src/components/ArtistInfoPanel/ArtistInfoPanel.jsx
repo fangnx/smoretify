@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-31 17:20:43
- * @last-modified 2019-08-31 17:29:50
+ * @last-modified 2019-08-31 21:10:17
  */
 
 import React from 'react';
@@ -15,10 +15,16 @@ const ArtistInfoPanel = props => (
   <div className="artistInfoPanel">
     <Container className="artistInfo-container title">
       <Header as="h1" className="artistInfo-name">
-        {props.name}
+        {props.name ? (
+          props.name
+        ) : (
+          <Placeholder fluid inverted>
+            <Placeholder.Line />
+          </Placeholder>
+        )}
       </Header>
       <div className="socialMedia">
-        {props.isReady ? (
+        {props.name ? (
           <>
             <Icon name="facebook square" />
             <Icon name="twitter square" />

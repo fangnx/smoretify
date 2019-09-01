@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 13:22:45
- * @last-modified 2019-08-31 18:01:47
+ * @last-modified 2019-08-31 20:56:38
  */
 
 import axios from 'axios';
@@ -38,7 +38,7 @@ export const getUserSpotifyInfo = async () => {
       }
       return res;
     })
-    .catch(err => console.log(err));
+    .catch(err => err);
 };
 
 /**
@@ -53,5 +53,5 @@ export const refreshSpotifyToken = async refresh_token => {
         return res.data.access_token;
       }
     })
-    .catch(err => console.log(err));
+    .catch(err => err);
 };

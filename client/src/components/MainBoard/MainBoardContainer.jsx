@@ -4,12 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-08-31 19:13:27
+ * @last-modified 2019-08-31 21:06:32
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { store } from '../../store';
 import {
   searchFromGenius,
   getSongInfoFromGenius,
@@ -57,12 +56,15 @@ class MainBoardContainer extends React.Component {
    */
   async getTrackInfo(trimmedSongName, artists) {
     const song = await this.searchForCurrentTrack(trimmedSongName, artists);
+    // If there is no matched result from Genius,
+    // fire `UPDATE_GENIUS_INFO` action to signal unavailability.
     if (Object.keys(song).length === 0) {
       this.props.dispatch({
         type: 'UPDATE_GENIUS_INFO',
         payload: {
-          primaryArtistId: -1,
-          songSummary: ''
+          primaryArtistId: -404,
+          songSummary: '_',
+          songLyricsUrl: '_'
         }
       });
       return;
@@ -141,7 +143,6 @@ class MainBoardContainer extends React.Component {
   }
 
   render() {
-    console.log(store.getState());
     return <MainBoard />;
   }
 }

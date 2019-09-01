@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-02 00:22:19
- * @last-modified 2019-08-31 18:01:09
+ * @last-modified 2019-08-31 21:26:07
  */
 
 import React from 'react';
@@ -21,7 +21,23 @@ class SongLyricsWidget extends React.Component {
     };
   }
 
+  /**
+   * For url:
+   * '_': no matched search result from Genius, thus cannot conduct the search.
+   * '': signals change in currently placed track.
+   * any non-empty string: should conduct the search (the validity of url will be checked later).
+   */
   async componentWillReceiveProps(nextProps) {
+    if (nextProps.url === '_') {
+      this.setState({
+        lines: [
+          'Lyrics not available.',
+          'The current song is not found on Genius.com'
+        ],
+        isReady: true
+      });
+      return;
+    }
     if (nextProps.url !== this.props.url) {
       this.setState({ isReady: false });
       if (nextProps.url !== '') {
@@ -38,6 +54,11 @@ class SongLyricsWidget extends React.Component {
         if (res.data) {
           const lines = this.parseLyrics(res.data.songLyrics);
           await this.setState({ lines: lines, isReady: true });
+        } else {
+          await this.setState({
+            lines: ['Lyrics not available.'],
+            isReady: true
+          });
         }
       })
       .catch();

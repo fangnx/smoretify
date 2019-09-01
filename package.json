@@ -22,14 +22,16 @@
     "querystring": "^0.2.0",
     "request": "^2.88.0",
     "socket.io": "^2.2.0",
-    "spotify-web-api-js": "^1.2.0",
     "spotify-web-api-node": "^4.0.0",
     "url-parse": "^1.4.7"
   },
   "scripts": {
     "client": "cd client && npm start",
     "server": "babel-node server/server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "start": "npm run server",
+    "build": "cd client && npm run build && cd .. ",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "production": "npm run build && npm run server"
   },
   "eslintConfig": {
     "extends": "react-app"

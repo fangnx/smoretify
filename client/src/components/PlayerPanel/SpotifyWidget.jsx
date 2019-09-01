@@ -4,12 +4,13 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-22 22:51:58
- * @last-modified 2019-08-31 18:09:38
+ * @last-modified 2019-08-31 21:04:18
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Image } from 'semantic-ui-react';
+import Spotify_Icon_White from '../../assets/Spotify_Icon_White.png';
+import { Image, Placeholder } from 'semantic-ui-react';
 
 class SpotifyWidget extends React.Component {
   onClickUrl(type) {
@@ -21,11 +22,29 @@ class SpotifyWidget extends React.Component {
   render() {
     return (
       <div className="playerWidget">
-        <Image src={this.props.songImg} wrapped className="currentSong-img" />
+        <Image
+          src={this.props.songImg || Spotify_Icon_White}
+          wrapped
+          className="currentSong-img"
+        />
         <div className="playerWidget-text">
-          <div className="songName">{this.props.songName}</div>
+          <div className="songName">
+            {this.props.songName ? (
+              this.props.songName
+            ) : (
+              <Placeholder fluid inverted>
+                <Placeholder.Line></Placeholder.Line>
+              </Placeholder>
+            )}
+          </div>
           <div className="artistNames">
-            {this.props.artists ? this.props.artists.join(', ') : ''}
+            {this.props.artists ? (
+              this.props.artists.join(', ')
+            ) : (
+              <Placeholder fluid inverted>
+                <Placeholder.Line></Placeholder.Line>
+              </Placeholder>
+            )}
           </div>
         </div>
       </div>

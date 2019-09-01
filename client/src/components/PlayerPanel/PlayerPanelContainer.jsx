@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-31 18:56:34
+ * @last-modified 2019-08-31 21:05:48
  */
 
 import React from 'react';
@@ -62,11 +62,14 @@ class PlayerPanelContainer extends React.Component {
             }
           });
 
+          // Fire `UPDATE_GENIUS_INFO` event to signal change in currently played track.
+          // This would replace the previous displayed content (song summary, ...) with placeholder lines.
           this.props.dispatch({
             type: 'UPDATE_GENIUS_INFO',
             payload: {
               songSummary: '',
-              songLyricsUrl: ''
+              songLyricsUrl: '',
+              primaryArtistId: -1
             }
           });
         })

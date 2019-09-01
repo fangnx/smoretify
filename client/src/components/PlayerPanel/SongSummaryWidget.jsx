@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-22 23:23:43
- * @last-modified 2019-08-31 19:03:42
+ * @last-modified 2019-08-31 21:29:46
  */
 
 import React from 'react';
@@ -14,14 +14,19 @@ import { Placeholder } from 'semantic-ui-react';
 class SongSummaryWidget extends React.Component {
   render() {
     let songSummary = this.props.summary;
-    if (songSummary && songSummary.match(/<p>(\?)<\/p>/g)) {
-      songSummary = '<p>Song info not available.<p>';
+    if (songSummary) {
+      if (songSummary === '_') {
+        songSummary =
+          '<p>Song info not available.</p><p>The current song is not found on Genius.com</p>';
+      } else if (songSummary.match(/<p>(\?)<\/p>/g)) {
+        songSummary = '<p>Song info not available.</p>';
+      }
     }
     const fillArr = new Array(10).fill(0);
 
     return (
       <div className="songSummaryWidget">
-        {songSummary !== '' ? (
+        {songSummary ? (
           <div dangerouslySetInnerHTML={{ __html: songSummary }} />
         ) : (
           <Placeholder fluid inverted>

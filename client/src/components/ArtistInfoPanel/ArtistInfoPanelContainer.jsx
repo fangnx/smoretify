@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-31 19:13:19
+ * @last-modified 2019-08-31 21:26:54
  */
 
 import React from 'react';
@@ -40,25 +40,33 @@ class ArtistInfoPanelContainer extends React.Component {
           });
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => err);
   }
 
+  /**
+   * For artistId:
+   * -404: no matched search result from Genius, thus cannot conduct the search.
+   * -1: signals change in currently placed track.
+   * >=0: valid artist ID, should begin the search.
+   */
   async componentWillReceiveProps(nextProps) {
+    if (nextProps.artistId === -404) {
+      await this.setState({
+        summary:
+          '<p>Artist bio not available.</p><p>The current song is not found on Genius.com</p>',
+        mainImg: '',
+        facebookName: '',
+        twitterName: '',
+        insName: '',
+        isReady: true
+      });
+      return;
+    }
+
     if (nextProps.artistId !== this.props.artistId) {
       this.setState({ isReady: false });
       if (nextProps.artistId !== -1) {
         await this.getArtistInfo(nextProps.artistId);
-      }
-    } else {
-      // If different artist & no available search result.
-      if (nextProps.artistId !== -1) {
-        await this.setState({
-          summary: '<p>Artist bio not available.</p>',
-          mainImg: '',
-          facebookName: '',
-          twitterName: '',
-          insName: ''
-        });
       }
     }
   }
@@ -73,7 +81,7 @@ class ArtistInfoPanelContainer extends React.Component {
     return (
       <ArtistInfoPanel
         fillArr={fillArr}
-        isReady
+        isReady={this.state.isReady}
         mainImage={this.state.mainImg}
         name={this.props.primaryArtistName}
         summary={summary}
