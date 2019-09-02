@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-30 17:48:38
- * @last-modified 2019-08-31 18:00:25
+ * @last-modified 2019-09-01 21:38:18
  */
 
 import express from 'express';
@@ -15,7 +15,6 @@ const router = express.Router();
 const CLIENT_ID = spotifyAuthInfo.CLIENT_ID;
 const CLIENT_SECRET = spotifyAuthInfo.CLIENT_SECRET;
 
-//
 router.get('/auth_info', (req, res) => {
   if (req.isAuthenticated()) {
     res.json(req.user);
