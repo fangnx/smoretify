@@ -1,8 +1,12 @@
 {
-  "name": "smoretify",
+  "name": "smoretify-server",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "axios": "^0.19.0",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
@@ -29,7 +33,7 @@
   "scripts": {
     "client": "cd client && npm start",
     "electron": "cd client && npm run electron",
-    "server": "babel-node server/server.js",
+    "server": "babel-node server.js",
     "start": "npm run server",
     "start-electron": "concurrently --kill-others-on-fail \"npm run server\" \"npm run electron\"",
     "build": "cd client && npm run build && cd .. ",
@@ -51,6 +55,6 @@
       "last 1 safari version"
     ]
   },
-  "main": "client/src/electron/main.js",
+  "main": "../client/src/electron/main.js",
   "homepage": "./"
 }
