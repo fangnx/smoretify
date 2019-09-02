@@ -31,13 +31,13 @@
   },
   "scripts": {
     "client": "cd client && npm start",
+    "build-client": "cd client && npm run build && cd .. ",
     "electron": "cd client && npm run electron",
     "server": "babel-node server.js",
     "start": "npm run server",
     "start-electron": "concurrently --kill-others-on-fail \"npm run server\" \"npm run electron\"",
-    "build": "cd client && npm run build && cd .. ",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "production": "npm run build && npm run server"
+    "production": "npm run build-client && npm run server"
   },
   "eslintConfig": {
     "extends": "react-app"

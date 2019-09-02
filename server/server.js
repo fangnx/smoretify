@@ -10,7 +10,8 @@ import { geniusRouter } from './routes/geniusRoutes';
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
 const app = new express();
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use('/', express.static('../client/build'));
+app.use('/test', express.static('../client/build'));
 app.use(
   bodyParser.urlencoded({
     extended: true

@@ -1,18 +1,23 @@
 version: '3.1'
 
 services:
-  client:
+  web:
     build: .
-    volumes:
-      - './client:/app'
-    ports:
-      - '3000:3000'
-    depends_on:
-      - server
-
-  server:
-    build: .
-    volumes:
-      - './server:/app'
     ports:
       - '8888:8888'
+    restart: always
+  # client:
+  #   build: ./client
+  #   volumes:
+  #     - './client/src:/app/client/src'
+  #     - './client/public:/app/client/public'
+  #   ports:
+  #     - '3000:3000'
+  # server:
+  #   build: ./server
+  #   volumes:
+  #     - './server:/app/server'
+  #   ports:
+  #     - '8888:8888'
+  #   depends_on:
+  #     - client
