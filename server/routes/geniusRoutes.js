@@ -4,16 +4,15 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 15:51:33
- * @last-modified 2019-08-31 18:00:31
+ * @last-modified 2019-09-02 12:30:08
  */
 
 import express from 'express';
-import geniusAuthInfo from '../../config/geniusAuthInfo';
 import geniusApi from 'genius-api';
 import { fetchLyricsFromSource } from '../fetchLyrics';
+import geniusAuthInfo from '../config/geniusAuthInfo.js';
 
 const router = express.Router();
-const BASE_URL = 'https://api.genius.com/';
 const TOKEN = geniusAuthInfo.ACCESS_TOKEN;
 const genius = new geniusApi(TOKEN);
 

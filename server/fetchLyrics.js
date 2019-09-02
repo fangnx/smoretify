@@ -4,12 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-01 21:38:16
- * @last-modified 2019-08-28 16:16:05
+ * @last-modified 2019-09-02 02:04:20
  */
 
 import request from 'request';
 import cheerio from 'cheerio';
-import URL from 'url-parse';
 
 const doRequest = page => {
   return new Promise((resolve, reject) => {
