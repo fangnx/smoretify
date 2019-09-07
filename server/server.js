@@ -1,17 +1,18 @@
 import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
-import path from 'path';
 import bodyParser from 'body-parser';
-import config from './config/config';
-import spotifyAuthInfo from './config/spotifyAuthInfo';
+import path from 'path';
+import config from '../config/config';
+import spotifyAuthInfo from '../config/spotifyAuthInfo';
 import { spotifyRouter } from './routes/spotifyRoutes';
 import { geniusRouter } from './routes/geniusRoutes';
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
 const app = new express();
-app.use('/', express.static('../client/build'));
-app.use('/test', express.static('../client/build'));
+const port = config.port;
+
+app.use('/', express.static(path.resolve(__dirname + './../client/build')));
 app.use(
   bodyParser.urlencoded({
     extended: true
@@ -34,7 +35,7 @@ passport.use(
     {
       clientID: spotifyAuthInfo.CLIENT_ID,
       clientSecret: spotifyAuthInfo.CLIENT_SECRET,
-      callbackURL: 'http://localhost:8888/callback'
+      callbackURL: `http://localhost:${port}/callback`
     },
     (accessToken, refreshToken, expires_in, profile, done) => {
       profile.accessToken = accessToken;
@@ -89,7 +90,6 @@ const isSpotifyAuthenticated = (req, res, next) => {
 app.use('/api/spotify', spotifyRouter);
 app.use('/api/genius', geniusRouter);
 
-const port = config.port;
 app.listen(port, () =>
   console.log(`Smoretify is listening on port ${port} :)`)
 );

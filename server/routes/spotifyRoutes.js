@@ -4,12 +4,12 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-30 17:48:38
- * @last-modified 2019-09-02 12:29:50
+ * @last-modified 2019-09-07 11:38:28
  */
 
 import express from 'express';
 import request from 'request';
-import spotifyAuthInfo from '../config/spotifyAuthInfo';
+import spotifyAuthInfo from '../../config/spotifyAuthInfo';
 
 const router = express.Router();
 const CLIENT_ID = spotifyAuthInfo.CLIENT_ID;
