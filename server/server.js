@@ -1,3 +1,12 @@
+/**
+ * server.js
+ *
+ * @author nxxinf
+ * @github https://github.com/fangnx
+ * @created 2019-07-14 11:17:55
+ * @last-modified 2019-09-07 18:34:33
+ */
+
 import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
