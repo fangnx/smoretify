@@ -35,7 +35,8 @@ passport.use(
     {
       clientID: spotifyAuthInfo.CLIENT_ID,
       clientSecret: spotifyAuthInfo.CLIENT_SECRET,
-      callbackURL: `http://localhost:${port}/callback`
+      // callbackURL: `http://localhost:${port}/callback`
+      callbackURL: 'https://smoretify.herokuapp.com/callback'
     },
     (accessToken, refreshToken, expires_in, profile, done) => {
       profile.accessToken = accessToken;
