@@ -1,16 +1,14 @@
 import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
-import bodyParser from 'body-parser';
-import path from 'path';
-import config from '../config/config';
-import spotifyAuthInfo from '../config/spotifyAuthInfo';
 import { spotifyRouter } from './routes/spotifyRoutes';
 import { geniusRouter } from './routes/geniusRoutes';
+import bodyParser from 'body-parser';
+import path from 'path';
+require('dotenv').config();
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
 const app = new express();
-const port = config.port;
 
 app.use('/', express.static(path.resolve(__dirname + './../client/build')));
 app.use(
@@ -19,6 +17,16 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
+// App environment config.
+const host = process.env.HOST || 'localhost';
+const port = process.env.PORT || 8888;
+const clientID = process.env.SPOTIFY_CLIENT_ID;
+const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+const callbackURL =
+  process.env.NODE_ENV === 'heroku'
+    ? 'https://smoretify.herokuapp.com/callback'
+    : `http://${host}:${port}/callback`;
 
 // Passport.js session setup.
 passport.serializeUser((user, done) => {
@@ -33,10 +41,9 @@ passport.deserializeUser((obj, done) => {
 passport.use(
   new SpotifyStrategy(
     {
-      clientID: spotifyAuthInfo.CLIENT_ID,
-      clientSecret: spotifyAuthInfo.CLIENT_SECRET,
-      // callbackURL: `http://localhost:${port}/callback`
-      callbackURL: 'https://smoretify.herokuapp.com/callback'
+      clientID,
+      clientSecret,
+      callbackURL
     },
     (accessToken, refreshToken, expires_in, profile, done) => {
       profile.accessToken = accessToken;
@@ -92,5 +99,5 @@ app.use('/api/spotify', spotifyRouter);
 app.use('/api/genius', geniusRouter);
 
 app.listen(port, () =>
-  console.log(`Smoretify is listening on port ${port} :)`)
+  console.log(`Smoretify is running on http://${host}:${port}/\nEnjoy music :)`)
 );
