@@ -1,7 +1,12 @@
 {
   "name": "smoretify-server",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "author": "Naxin Fang",
+  "license": "MIT",
+  "engine": {
+    "node": "10.x"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "babel": "^6.23.0",
@@ -30,9 +35,9 @@
     "@babel/preset-env": "^7.5.5"
   },
   "scripts": {
-    "client": "cd client && npm start",
-    "build-client": "cd client && npm run build && cd .. ",
-    "electron": "cd client && npm run electron",
+    "client": "cd ../client/ && npm start",
+    "build-client": "cd ../client/ && npm run build && cd ../server/ ",
+    "electron": "cd ../client/ && npm run electron",
     "server": "babel-node server.js",
     "start": "npm run server",
     "start-electron": "concurrently --kill-others-on-fail \"npm run server\" \"npm run electron\"",
@@ -54,6 +59,5 @@
       "last 1 safari version"
     ]
   },
-  "main": "../client/src/electron/main.js",
-  "homepage": "./"
+  "electronMain": "../client/src/electron/main.js"
 }
