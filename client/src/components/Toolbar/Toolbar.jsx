@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-09-08 15:28:19
+ * @last-modified 2019-09-08 15:56:35
  */
 
 import React from 'react';
@@ -199,48 +199,36 @@ class Toolbar extends React.PureComponent {
               </Menu.Item>
 
               <Menu.Item>
-                <Popup
-                  basic
-                  content="Change lyrics font style"
-                  inverted
-                  on="hover"
-                  style={popupStyle}
-                  trigger={
-                    <>
-                      <Dropdown
-                        compact
-                        closeOnChange
-                        closeOnEscape
-                        icon={null}
-                        inline
-                        trigger={<Icon name="font" size="large"></Icon>}
-                      >
-                        <Dropdown.Menu>
-                          <Dropdown.Item
-                            disabled
-                            content="Select lyrics font style"
-                          />
-                          <Dropdown.Divider />
-                          {fontOptions.map(opt => (
-                            <Dropdown.Item
-                              key={opt.key}
-                              text={opt.text}
-                              value={opt.value}
-                              onClick={this.handleFontChange}
-                              style={{ fontFamily: opt.value }}
-                            ></Dropdown.Item>
-                          ))}
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </>
-                  }
-                ></Popup>
+                <Dropdown
+                  compact
+                  closeOnChange
+                  icon={null}
+                  inline
+                  openOnFocus
+                  trigger={<Icon name="font" size="large"></Icon>}
+                >
+                  <Dropdown.Menu>
+                    <Dropdown.Item
+                      disabled
+                      content="Select lyrics font style"
+                    />
+                    <Dropdown.Divider />
+                    {fontOptions.map(opt => (
+                      <Dropdown.Item
+                        key={opt.key}
+                        text={opt.text}
+                        value={opt.value}
+                        onClick={this.handleFontChange}
+                        style={{ fontFamily: opt.value }}
+                      ></Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
               </Menu.Item>
 
               <Menu.Item>
                 <Popup
                   basic
-                  content="Change app brightness"
                   inverted
                   on="click"
                   style={{ ...popupStyle, right: 0 }}
