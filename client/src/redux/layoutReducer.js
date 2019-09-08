@@ -4,13 +4,13 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-29 14:01:26
- * @last-modified 2019-08-31 15:14:37
+ * @last-modified 2019-09-08 00:18:26
  */
 
 export const initialState = {
   showYoutube: false,
   lyricsLeftAligned: true,
-  lyricsFontFamily: 'dynamic'
+  lyricsFontFamily: 'var(--font-dynamic)'
 };
 
 export const TOGGLE_YOUTUBE = 'TOGGLE_YOUTUBE';

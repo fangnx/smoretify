@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-02 00:22:19
- * @last-modified 2019-08-31 21:26:07
+ * @last-modified 2019-09-08 00:19:18
  */
 
 import React from 'react';
@@ -71,7 +71,10 @@ class SongLyricsWidget extends React.Component {
   render() {
     const fillArr = new Array(30).fill(0);
     return (
-      <div className="songLyricsWidget">
+      <div
+        className="songLyricsWidget"
+        style={{ fontFamily: this.props.fontFamily }}
+      >
         {this.state.isReady ? (
           <List>
             {this.state.lines.map((row, index) => (
@@ -102,7 +105,8 @@ const mapStateToProps = state => {
   const { geniusInfo, layout } = state;
   return {
     url: geniusInfo.songLyricsUrl,
-    leftAligned: layout.lyricsLeftAligned
+    leftAligned: layout.lyricsLeftAligned,
+    fontFamily: layout.lyricsFontFamily
   };
 };
 

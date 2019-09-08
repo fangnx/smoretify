@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-08-31 18:16:24
+ * @last-modified 2019-09-08 00:44:45
  */
 
 import React from 'react';
@@ -15,7 +15,15 @@ import {
   CHANGE_LYRICS_FONT
 } from '../../redux/actionTypes';
 import SpotifyStatus from './SpotifyStatus';
-import { Grid, Icon, Image, Menu, Popup } from 'semantic-ui-react';
+import {
+  Dropdown,
+  Grid,
+  Icon,
+  Image,
+  Menu,
+  Popup,
+  Select
+} from 'semantic-ui-react';
 import biscuitIcon from '../../assets/biscuit.svg';
 import Spotify_Icon_Green from '../../assets/Spotify_Icon_Green.png';
 import Genius_Icon from '../../assets/Genius_Icon.png';
@@ -25,8 +33,14 @@ import './Toolbar.css';
 const PROJECT_GITHUB_LINK = 'https://github.com/fangnx/smoretify';
 
 const popupStyle = {
-  backgroundColor: 'var(--mainBoard-shade-color)'
+  backgroundColor: 'var(--color-grey-translucent)'
 };
+
+const fontOptions = [
+  { key: 0, text: 'Minimalist', value: 'var(--font-dynamic)' },
+  { key: 1, text: 'Modern', value: 'var(--font-stylish)' },
+  { key: 2, text: 'Classic', value: 'var(--font-serif)' }
+];
 
 class Toolbar extends React.PureComponent {
   onClickUrl(type) {
@@ -55,6 +69,16 @@ class Toolbar extends React.PureComponent {
     });
   };
 
+  handleFontChange = (e, { value }) => {
+    e.preventDefault();
+    this.props.dispatch({
+      type: CHANGE_LYRICS_FONT,
+      payload: {
+        lyricsFontFamily: value
+      }
+    });
+  };
+
   render() {
     return (
       <div className="toolbar">
@@ -72,6 +96,7 @@ class Toolbar extends React.PureComponent {
             <Menu inverted className="toolbar-mid-menu">
               <Menu.Item>
                 <Popup
+                  basic
                   content={
                     this.props.showYoutube ? 'Hide YouTube' : 'Show YouTube'
                   }
@@ -95,6 +120,7 @@ class Toolbar extends React.PureComponent {
 
               <Menu.Item>
                 <Popup
+                  basic
                   content={
                     this.props.lyricsLeftAligned
                       ? 'Align lyrics to center'
@@ -118,7 +144,31 @@ class Toolbar extends React.PureComponent {
               </Menu.Item>
 
               <Menu.Item>
-                <Icon name="font" size="large"></Icon>
+                <Popup
+                  basic
+                  content="Change lyrics font style"
+                  inverted
+                  on="hover"
+                  style={popupStyle}
+                  trigger={
+                    <>
+                      <Icon name="font" size="large"></Icon>
+                      <Dropdown closeOnChange closeOnEscape inline>
+                        <Dropdown.Menu inverted>
+                          {fontOptions.map(opt => (
+                            <Dropdown.Item
+                              key={opt.key}
+                              text={opt.text}
+                              value={opt.value}
+                              onClick={this.handleFontChange}
+                              style={{ fontFamily: opt.value }}
+                            ></Dropdown.Item>
+                          ))}
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </>
+                  }
+                ></Popup>
               </Menu.Item>
             </Menu>
           </Grid.Column>

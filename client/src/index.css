@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-06-15 15:14:20
-* @last-modified 2019-09-07 18:42:15
+* @last-modified 2019-09-08 00:44:02
 */
 
 @import url('https://fonts.googleapis.com/css?family=Cairo|Merriweather|Muli|Alegreya+Sans:400,400i&display=swap');
@@ -20,7 +20,8 @@
   --mainBoard-right-color: rgb(25, 25, 26);
   --mainBoard-shade-color: rgb(19, 19, 20);
 
-  --background-color-grey: rgb(45, 45, 45);
+  --color-grey: rgb(40, 40, 42);
+  --color-grey-translucent: rgba(40, 40, 42, 0.95);
 
   --color-spotify-green: #1db954;
   --color-genius-yellow: #ffff64;

@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-08-31 21:05:48
+ * @last-modified 2019-09-07 23:34:27
  */
 
 import React from 'react';
@@ -32,24 +32,25 @@ class PlayerPanelContainer extends React.Component {
       api
         .getMyCurrentPlaybackState()
         .then(res => {
-          const spotifySongName = res.item.name;
-          const spotifyArtists = res.item.artists.map(artist => artist.name);
+          const resSongName = res.item.name;
+          const resArtists = res.item.artists.map(artist => artist.name);
           let { currentSongName, currentArtists } = store.getState().songInfo;
           // If the responded song name & artist names are both the same,
           // the track played has not changed.
+          const artistsUnchanged =
+            currentArtists &&
+            resArtists.every(e => currentArtists.indexOf(e) > -1);
           if (
             currentSongName &&
-            currentArtists &&
-            spotifyArtists.every(e => currentArtists.indexOf(e) > -1)
+            resSongName === currentSongName &&
+            artistsUnchanged
           ) {
-            if (spotifySongName === currentSongName) {
-              return;
-            }
+            return;
           }
 
           // Since the track played has changed, update the song name and artist names.
-          currentSongName = spotifySongName;
-          currentArtists = spotifyArtists;
+          currentSongName = resSongName;
+          currentArtists = resArtists;
 
           this.props.dispatch({
             type: 'UPDATE_SONG_INFO',
@@ -64,12 +65,17 @@ class PlayerPanelContainer extends React.Component {
 
           // Fire `UPDATE_GENIUS_INFO` event to signal change in currently played track.
           // This would replace the previous displayed content (song summary, ...) with placeholder lines.
+          // If artists are not changed from the previous track, update `primaryArtistID` to -2 to signal it.
+          // Else, update `primaryArtistID` to -1 to toggle the `isReady` state of artistInfo widget.
+          const currentPrimaryArtistId = store.getState().geniusInfo
+            .primaryArtistId;
           this.props.dispatch({
             type: 'UPDATE_GENIUS_INFO',
             payload: {
               songSummary: '',
               songLyricsUrl: '',
-              primaryArtistId: -1
+              primaryArtistId:
+                currentPrimaryArtistId !== -404 && artistsUnchanged ? -2 : -1
             }
           });
         })

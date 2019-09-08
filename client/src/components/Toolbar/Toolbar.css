@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-04 11:21:26
-* @last-modified 2019-08-31 18:19:53
+* @last-modified 2019-09-08 00:42:20
 */
 
 .toolbar {
@@ -86,4 +86,12 @@
 
 .ui.inverted.menu .item:hover {
   background-color: var(--color-theme-indigo-1);
+}
+
+.ui.dropdown .menu {
+  background-color: var(--color-grey-translucent);
+}
+
+.ui.dropdown .menu .item > span {
+  color: var(--text-color-0) !important;
 }

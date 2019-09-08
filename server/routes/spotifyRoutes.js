@@ -4,11 +4,12 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-30 17:48:38
- * @last-modified 2019-09-07 18:13:01
+ * @last-modified 2019-09-07 22:41:36
  */
 
 import express from 'express';
 import request from 'request';
+require('dotenv').config();
 
 const router = express.Router();
 const CLIENT_ID = process.env.CLIENT_ID;

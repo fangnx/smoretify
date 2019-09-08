@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 15:10:48
- * @last-modified 2019-08-31 21:26:54
+ * @last-modified 2019-09-07 23:30:39
  */
 
 import React from 'react';
@@ -46,10 +46,15 @@ class ArtistInfoPanelContainer extends React.Component {
   /**
    * For artistId:
    * -404: no matched search result from Genius, thus cannot conduct the search.
+   * -2: signals the artists are unchanged, thus no need for update/state change.
    * -1: signals change in currently placed track.
    * >=0: valid artist ID, should begin the search.
    */
   async componentWillReceiveProps(nextProps) {
+    if (nextProps.artistId === -2 || this.props.artistId === -2) {
+      return;
+    }
+
     if (nextProps.artistId === -404) {
       await this.setState({
         summary:
