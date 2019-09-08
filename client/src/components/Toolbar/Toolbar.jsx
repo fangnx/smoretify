@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-09-08 00:44:45
+ * @last-modified 2019-09-08 15:28:19
  */
 
 import React from 'react';
@@ -12,17 +12,20 @@ import { connect } from 'react-redux';
 import {
   TOGGLE_YOUTUBE,
   CHANGE_LYRICS_ALIGNMENT,
-  CHANGE_LYRICS_FONT
+  CHANGE_LYRICS_FONT,
+  TOGGLE_LYRICS_ITALICIZED,
+  CHANGE_APP_BRIGHTNESS
 } from '../../redux/actionTypes';
 import SpotifyStatus from './SpotifyStatus';
 import {
+  Button,
   Dropdown,
   Grid,
   Icon,
   Image,
   Menu,
   Popup,
-  Select
+  Progress
 } from 'semantic-ui-react';
 import biscuitIcon from '../../assets/biscuit.svg';
 import Spotify_Icon_Green from '../../assets/Spotify_Icon_Green.png';
@@ -37,9 +40,10 @@ const popupStyle = {
 };
 
 const fontOptions = [
-  { key: 0, text: 'Minimalist', value: 'var(--font-dynamic)' },
-  { key: 1, text: 'Modern', value: 'var(--font-stylish)' },
-  { key: 2, text: 'Classic', value: 'var(--font-serif)' }
+  { key: 0, text: 'Humanist', value: 'var(--font-dynamic)' },
+  { key: 1, text: 'Calligraphic', value: 'var(--font-stylish)' },
+  { key: 2, text: 'Contemporary', value: 'var(--font-contemporary)' },
+  { key: 3, text: 'Classic', value: 'var(--font-serif)' }
 ];
 
 class Toolbar extends React.PureComponent {
@@ -69,12 +73,37 @@ class Toolbar extends React.PureComponent {
     });
   };
 
+  toggleLyricsItalicized = e => {
+    e.preventDefault();
+    this.props.dispatch({
+      type: TOGGLE_LYRICS_ITALICIZED,
+      payload: {
+        lyricsItalicized: !this.props.lyricsItalicized
+      }
+    });
+  };
+
   handleFontChange = (e, { value }) => {
     e.preventDefault();
     this.props.dispatch({
       type: CHANGE_LYRICS_FONT,
       payload: {
         lyricsFontFamily: value
+      }
+    });
+  };
+
+  handleBrightnessChange = shouldIncrease => {
+    let brightness = this.props.appBrightness;
+    if (shouldIncrease) {
+      brightness = brightness + 0.2 >= 1.0 ? 1.0 : brightness + 0.2;
+    } else {
+      brightness = brightness - 0.2 <= 0.2 ? 0.2 : brightness - 0.2;
+    }
+    this.props.dispatch({
+      type: CHANGE_APP_BRIGHTNESS,
+      payload: {
+        appBrightness: brightness
       }
     });
   };
@@ -133,11 +162,37 @@ class Toolbar extends React.PureComponent {
                     <Icon
                       name={
                         this.props.lyricsLeftAligned
-                          ? 'align center'
-                          : 'align left'
+                          ? 'align left'
+                          : 'align center'
                       }
                       onClick={this.toggleLyricsLeftAligned}
                       size="large"
+                    ></Icon>
+                  }
+                ></Popup>
+              </Menu.Item>
+
+              <Menu.Item>
+                <Popup
+                  basic
+                  content={
+                    this.props.lyricsItalicized
+                      ? 'Unitalicize lyrics text'
+                      : 'Italicize lyrics text'
+                  }
+                  inverted
+                  on="hover"
+                  style={popupStyle}
+                  trigger={
+                    <Icon
+                      name="italic"
+                      onClick={this.toggleLyricsItalicized}
+                      size="large"
+                      style={
+                        this.props.lyricsItalicized
+                          ? {}
+                          : { color: 'var(--text-color-1)' }
+                      }
                     ></Icon>
                   }
                 ></Popup>
@@ -152,9 +207,20 @@ class Toolbar extends React.PureComponent {
                   style={popupStyle}
                   trigger={
                     <>
-                      <Icon name="font" size="large"></Icon>
-                      <Dropdown closeOnChange closeOnEscape inline>
-                        <Dropdown.Menu inverted>
+                      <Dropdown
+                        compact
+                        closeOnChange
+                        closeOnEscape
+                        icon={null}
+                        inline
+                        trigger={<Icon name="font" size="large"></Icon>}
+                      >
+                        <Dropdown.Menu>
+                          <Dropdown.Item
+                            disabled
+                            content="Select lyrics font style"
+                          />
+                          <Dropdown.Divider />
                           {fontOptions.map(opt => (
                             <Dropdown.Item
                               key={opt.key}
@@ -169,6 +235,39 @@ class Toolbar extends React.PureComponent {
                     </>
                   }
                 ></Popup>
+              </Menu.Item>
+
+              <Menu.Item>
+                <Popup
+                  basic
+                  content="Change app brightness"
+                  inverted
+                  on="click"
+                  style={{ ...popupStyle, right: 0 }}
+                  trigger={<Icon name="lightbulb" size="large"></Icon>}
+                >
+                  <>
+                    <div className="miniTitle">Change app brightness</div>
+                    <Progress
+                      percent={this.props.appBrightness * 100}
+                      size="large"
+                    />
+                    <div className="controller">
+                      <Button.Group style={{ width: '100%' }}>
+                        <Button
+                          icon="minus"
+                          size="tiny"
+                          onClick={() => this.handleBrightnessChange(false)}
+                        />
+                        <Button
+                          icon="plus"
+                          size="tiny"
+                          onClick={() => this.handleBrightnessChange(true)}
+                        />
+                      </Button.Group>
+                    </div>
+                  </>
+                </Popup>
               </Menu.Item>
             </Menu>
           </Grid.Column>
@@ -207,6 +306,8 @@ const mapStateToProps = state => {
     showYoutube: layout.showYoutube,
     lyricsLeftAligned: layout.lyricsLeftAligned,
     lyricsFontFamily: layout.lyricsFontFamily,
+    lyricsItalicized: layout.lyricsItalicized,
+    appBrightness: layout.appBrightness,
     connected: spotify.connected,
     displayName: spotify.displayName,
     country: spotify.country,

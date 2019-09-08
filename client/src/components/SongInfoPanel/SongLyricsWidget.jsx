@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-02 00:22:19
- * @last-modified 2019-09-08 00:19:18
+ * @last-modified 2019-09-08 13:52:55
  */
 
 import React from 'react';
@@ -73,7 +73,10 @@ class SongLyricsWidget extends React.Component {
     return (
       <div
         className="songLyricsWidget"
-        style={{ fontFamily: this.props.fontFamily }}
+        style={{
+          fontFamily: this.props.fontFamily,
+          fontStyle: this.props.italicized ? 'italic' : 'normal'
+        }}
       >
         {this.state.isReady ? (
           <List>
@@ -106,7 +109,8 @@ const mapStateToProps = state => {
   return {
     url: geniusInfo.songLyricsUrl,
     leftAligned: layout.lyricsLeftAligned,
-    fontFamily: layout.lyricsFontFamily
+    fontFamily: layout.lyricsFontFamily,
+    italicized: layout.lyricsItalicized
   };
 };
 

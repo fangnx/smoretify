@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-08-04 11:21:26
-* @last-modified 2019-09-08 00:42:20
+* @last-modified 2019-09-08 15:30:28
 */
 
 .toolbar {
@@ -53,6 +53,10 @@
   margin: 0 !important;
 }
 
+.toolbar-mid-menu i.icon {
+  margin: 0 !important;
+}
+
 .toolbar-right-menu {
   width: 85%;
 }
@@ -89,9 +93,47 @@
 }
 
 .ui.dropdown .menu {
-  background-color: var(--color-grey-translucent);
+  background-color: var(--color-grey);
+  margin-bottom: 0.75rem !important;
+}
+
+.ui.dropdown .menu .item :hover {
+  color: var(--color-theme-indigo-0) !important;
+  font-weight: bold;
 }
 
 .ui.dropdown .menu .item > span {
   color: var(--text-color-0) !important;
+  font-size: 1.1em;
+}
+
+.ui.dropdown .menu .disabled {
+  opacity: 1 !important;
+}
+
+.ui.dropdown .menu .divider {
+  border-top: 2px solid var(--color-theme-indigo-1) !important;
+}
+
+.ui.progress .bar {
+  background: var(--color-theme-indigo-0) !important;
+}
+
+.ui.progress {
+  margin: 15px 0 15px 0 !important;
+}
+
+.ui.popup {
+  font-family: var(--font-stylish);
+}
+
+.ui.popup .controller {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.miniTitle {
+  text-align: center;
+  font-size: 1.1em;
 }

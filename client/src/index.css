@@ -4,10 +4,10 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-06-15 15:14:20
-* @last-modified 2019-09-08 00:44:02
+* @last-modified 2019-09-08 14:02:36
 */
 
-@import url('https://fonts.googleapis.com/css?family=Cairo|Merriweather|Muli|Alegreya+Sans:400,400i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cairo|Noto+Serif|Crimson+Pro|Muli|Alegreya+Sans:400,400i&display=swap');
 
 :root {
   --text-color-0: rgb(233, 233, 233);
@@ -35,7 +35,8 @@
     brightness(113%) contrast(83%);
   --svg-filter-indigo: invert(64%) sepia(9%) saturate(2180%) hue-rotate(194deg)
     brightness(83%) contrast(90%);
-  --font-serif: 'Merriweather', serif;
+  --font-serif: 'Noto Serif', serif;
+  --font-contemporary: 'Crimson Pro', serif;
   --font-sansserif: 'Muli', sans-serif;
   --font-stylish: 'Cairo', sans-serif;
   --font-dynamic: 'Alegreya Sans', sans-serif;

@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-09-07 23:31:49
+ * @last-modified 2019-09-08 15:01:02
  */
 
 import React from 'react';
@@ -143,16 +143,17 @@ class MainBoardContainer extends React.Component {
   }
 
   render() {
-    return <MainBoard />;
+    return <MainBoard brightness={this.props.appBrightness} />;
   }
 }
 
 const mapStateToProps = state => {
-  const { songInfo } = state;
+  const { songInfo, layout } = state;
   return {
     songName: songInfo.currentSongName,
     trimmedSongName: songInfo.trimmedCurrentSongName,
-    artistNames: songInfo.currentArtists
+    artistNames: songInfo.currentArtists,
+    appBrightness: layout.appBrightness
   };
 };
 

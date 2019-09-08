@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-31 15:59:17
- * @last-modified 2019-08-31 17:26:24
+ * @last-modified 2019-09-08 15:09:36
  */
 
 import React from 'react';
@@ -14,8 +14,11 @@ import ArtistInfoPanel from '../ArtistInfoPanel';
 import { Grid } from 'semantic-ui-react';
 import './MainBoard.css';
 
-const MainBoard = () => (
-  <div className="mainBoard">
+const MainBoard = props => (
+  <div
+    className="mainBoard"
+    style={{ filter: `brightness(${props.brightness})` }}
+  >
     <div className="mainBoard-scrollable">
       <Grid columns={3} className="mainBoard-grid">
         <Grid.Column width={4} className="panel mainBoard-left">
