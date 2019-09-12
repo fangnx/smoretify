@@ -32,12 +32,11 @@ npm run start-electron
 
 ## Built With
 - React
-- Redux
-- Redux-Thunk, Redux-Persist - Middlewares for Redux
+- Redux (redux-thunk, redux-persist) - Managing application states
 - [Semantic UI](https://react.semantic-ui.com/)
-- [React-Youtube](https://github.com/tjallingt/react-youtube) - Mini YouTube player widget
+- [react-youtube](https://github.com/tjallingt/react-youtube) - Mini YouTube player widget
 - Express
-- [Passport](http://www.passportjs.org/), [Passport-Spotify](https://www.npmjs.com/package/passport-spotify) - Authentication with Spotify
+- [Passport](http://www.passportjs.org/), [passport-spotify](https://www.npmjs.com/package/passport-spotify) - Authentication with Spotify
 - [Spotify Web API](https://developer.spotify.com/documentation/web-api/)
 - [Genius API](https://docs.genius.com/#/getting-started-h1)
 
