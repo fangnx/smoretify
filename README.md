@@ -35,7 +35,7 @@ npm run start-electron
 - Redux (redux-thunk, redux-persist) - Managing application states
 - [Semantic UI](https://react.semantic-ui.com/)
 - [react-youtube](https://github.com/tjallingt/react-youtube) - Mini YouTube player widget
-- Express
+- Express - Backend server mainly for API hosting
 - [Passport](http://www.passportjs.org/), [passport-spotify](https://www.npmjs.com/package/passport-spotify) - Authentication with Spotify
 - [Spotify Web API](https://developer.spotify.com/documentation/web-api/)
 - [Genius API](https://docs.genius.com/#/getting-started-h1)
