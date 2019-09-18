@@ -8,6 +8,10 @@ There was no existing app/service that provided exactly what I wanted. So I deci
 ## Deployment
 https://smoretify.herokuapp.com/
 
+## Demo
+![](https://github.com/fangnx/smoretify/blob/master/demo-image.jpg)
+
+
 ## Installation
 ```
 npm install
