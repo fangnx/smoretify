@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-06-15 15:14:20
-* @last-modified 2019-09-09 11:32:02
+* @last-modified 2019-09-17 21:20:28
 */
 
 @import url('https://fonts.googleapis.com/css?family=Cairo|Noto+Serif|Crimson+Pro|Muli|Alegreya+Sans:500,500i&display=swap');
@@ -54,9 +54,4 @@ body {
 
 #root {
   height: 100%;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
