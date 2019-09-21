@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-22 23:23:43
- * @last-modified 2019-08-31 21:29:46
+ * @last-modified 2019-09-20 20:16:45
  */
 
 import React from 'react';
@@ -27,7 +27,10 @@ class SongSummaryWidget extends React.Component {
     return (
       <div className="songSummaryWidget">
         {songSummary ? (
-          <div dangerouslySetInnerHTML={{ __html: songSummary }} />
+          <div
+            className="textFocusAnimation "
+            dangerouslySetInnerHTML={{ __html: songSummary }}
+          />
         ) : (
           <Placeholder fluid inverted>
             {fillArr.map((_, index) => (

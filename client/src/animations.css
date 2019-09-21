@@ -1,0 +1,39 @@
+/**
+* animations.css
+*
+* @author nxxinf
+* @github https://github.com/fangnx
+* @created 2019-09-20 19:58:32
+* @last-modified 2019-09-20 20:27:07
+*/
+
+.textFocusAnimation {
+  -webkit-animation: textFocusIn 0.4s ease-in both;
+  animation: textFocusAnimation 0.4s ease-in both;
+}
+
+@-webkit-keyframes textFocusAnimation {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes textFocusAnimation {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}

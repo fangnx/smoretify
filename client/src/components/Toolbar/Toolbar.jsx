@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-04 11:21:15
- * @last-modified 2019-09-08 15:56:35
+ * @last-modified 2019-09-20 19:59:52
  */
 
 import React from 'react';
@@ -36,7 +36,7 @@ import './Toolbar.css';
 const PROJECT_GITHUB_LINK = 'https://github.com/fangnx/smoretify';
 
 const popupStyle = {
-  backgroundColor: 'var(--color-grey-translucent)'
+  backgroundColor: 'var(--color-grey)'
 };
 
 const fontOptions = [

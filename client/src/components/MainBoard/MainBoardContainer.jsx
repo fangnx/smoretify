@@ -4,10 +4,11 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-27 20:36:15
- * @last-modified 2019-09-08 15:01:02
+ * @last-modified 2019-09-20 22:30:07
  */
 
 import React from 'react';
+import { store } from '../../store';
 import { connect } from 'react-redux';
 import {
   searchFromGenius,
@@ -139,17 +140,25 @@ class MainBoardContainer extends React.Component {
   }
 
   async componentWillReceiveProps(nextProps) {
-    await this.getTrackInfo(nextProps.trimmedSongName, nextProps.artistNames);
+    if (nextProps.trimmedSongName) {
+      await this.getTrackInfo(nextProps.trimmedSongName, nextProps.artistNames);
+    }
   }
 
   render() {
-    return <MainBoard brightness={this.props.appBrightness} />;
+    return (
+      <MainBoard
+        connected={this.props.connected}
+        brightness={this.props.appBrightness}
+      />
+    );
   }
 }
 
 const mapStateToProps = state => {
-  const { songInfo, layout } = state;
+  const { spotify, songInfo, layout } = state;
   return {
+    connected: spotify.connected,
     songName: songInfo.currentSongName,
     trimmedSongName: songInfo.trimmedCurrentSongName,
     artistNames: songInfo.currentArtists,

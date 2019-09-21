@@ -4,10 +4,11 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-07-27 20:48:17
-* @last-modified 2019-09-08 15:09:08
+* @last-modified 2019-09-20 22:10:15
 */
 
 .mainBoard {
+  position: relative;
   height: 100%;
   overflow: hidden;
 }
@@ -35,4 +36,14 @@
   z-index: 1;
   background: var(--mainBoard-right-color);
   box-shadow: -1px 0px 16px 8px var(--mainBoard-shade-color) !important;
+}
+
+.login {
+  z-index: 50;
+  height: 200px;
+  width: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--mainBoard-mid-color);
 }

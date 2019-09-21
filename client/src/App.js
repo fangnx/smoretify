@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-07-14 11:17:55
- * @last-modified 2019-08-31 17:10:03
+ * @last-modified 2019-09-20 21:25:41
  */
 
 import React from 'react';
@@ -13,6 +13,7 @@ import { store } from './store';
 import MainBoardContainer from './components/MainBoard';
 import Toolbar from './components/Toolbar';
 import './App.css';
+import './animations.css';
 
 const App = () => {
   return (

@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-06-16 01:45:13
- * @last-modified 2019-09-07 23:34:27
+ * @last-modified 2019-09-20 21:11:42
  */
 
 import React from 'react';
@@ -23,7 +23,7 @@ class PlayerPanelContainer extends React.Component {
    *
    * Since Spotify Web API does not support watching the current track status,
    * not does it emit any event on change,
-   * the method sends a request every 5 seconds to detect if the currently played tracked has change.
+   * the method sends a request every 4 seconds to detect if the currently played tracked has change.
    */
   async getCurrentTrack() {
     const api = await spotifyApi();
@@ -82,12 +82,13 @@ class PlayerPanelContainer extends React.Component {
         // If the Spotify API session has expired,
         // dispatch an event to trigger requesting a refreshed access token.
         .catch(async () => {
+          console.log('Spotify access token has expired.');
           const refreshToken = store.getState().spotify.refreshToken;
           if (refreshToken) {
             spotifyApi = await refreshSpotifyApi(api, refreshToken);
           }
         });
-    }, 5000);
+    }, 3000);
   }
 
   componentWillMount() {

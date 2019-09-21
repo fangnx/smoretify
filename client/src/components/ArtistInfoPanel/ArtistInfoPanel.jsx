@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-31 17:20:43
- * @last-modified 2019-08-31 21:10:17
+ * @last-modified 2019-09-20 20:20:16
  */
 
 import React from 'react';
@@ -51,7 +51,10 @@ const ArtistInfoPanel = props => (
     <Container className="artistInfo-container summary">
       <Header as="h3">Bio</Header>
       {props.isReady ? (
-        <div dangerouslySetInnerHTML={{ __html: props.summary }} />
+        <div
+          className="textFocusAnimation"
+          dangerouslySetInnerHTML={{ __html: props.summary }}
+        />
       ) : (
         <Placeholder fluid inverted>
           {props.fillArr.map((_, index) => (

@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-31 17:13:05
- * @last-modified 2019-08-31 18:34:13
+ * @last-modified 2019-09-20 20:25:38
  */
 
 import React from 'react';
@@ -19,7 +19,7 @@ const PlayerPanel = () => (
 
     <div className="playerPanel-text">
       <Container className="playerPanel-container">
-        <Header as="h3">About</Header>
+        <Header as="h3">About the Song</Header>
         <SongSummaryWidget />
       </Container>
     </div>

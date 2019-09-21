@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-30 17:48:38
- * @last-modified 2019-09-07 22:41:36
+ * @last-modified 2019-09-20 22:24:12
  */
 
 import express from 'express';
@@ -12,8 +12,8 @@ import request from 'request';
 require('dotenv').config();
 
 const router = express.Router();
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
 router.get('/auth_info', (req, res) => {
   if (req.isAuthenticated()) {

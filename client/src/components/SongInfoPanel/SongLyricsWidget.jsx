@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-02 00:22:19
- * @last-modified 2019-09-08 13:52:55
+ * @last-modified 2019-09-20 20:24:42
  */
 
 import React from 'react';
@@ -32,7 +32,7 @@ class SongLyricsWidget extends React.Component {
       this.setState({
         lines: [
           'Lyrics not available.',
-          'The current song is not found on Genius.com'
+          'The current song is not found on Genius.com 😢'
         ],
         isReady: true
       });
@@ -79,7 +79,7 @@ class SongLyricsWidget extends React.Component {
         }}
       >
         {this.state.isReady ? (
-          <List>
+          <List className="textFocusAnimation">
             {this.state.lines.map((row, index) => (
               <List.Item
                 as="a"

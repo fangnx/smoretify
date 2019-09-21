@@ -4,11 +4,12 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-06-15 15:14:20
-* @last-modified 2019-09-08 14:06:10
+* @last-modified 2019-09-20 21:17:44
 */
 
 .App {
   height: 100%;
+  position: relative;
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
 }

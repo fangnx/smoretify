@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-31 15:59:17
- * @last-modified 2019-09-08 15:09:36
+ * @last-modified 2019-09-20 22:30:15
  */
 
 import React from 'react';
@@ -19,19 +19,17 @@ const MainBoard = props => (
     className="mainBoard"
     style={{ filter: `brightness(${props.brightness})` }}
   >
-    <div className="mainBoard-scrollable">
-      <Grid columns={3} className="mainBoard-grid">
-        <Grid.Column width={4} className="panel mainBoard-left">
-          <PlayerPanel />
-        </Grid.Column>
-        <Grid.Column width={8} className="panel mainBoard-mid">
-          <SongInfoPanel />
-        </Grid.Column>
-        <Grid.Column width={4} className="panel mainBoard-right">
-          <ArtistInfoPanel />
-        </Grid.Column>
-      </Grid>
-    </div>
+    <Grid columns={3} className="mainBoard-grid">
+      <Grid.Column width={4} className="panel mainBoard-left">
+        <PlayerPanel />
+      </Grid.Column>
+      <Grid.Column width={8} className="panel mainBoard-mid">
+        <SongInfoPanel />
+      </Grid.Column>
+      <Grid.Column width={4} className="panel mainBoard-right">
+        <ArtistInfoPanel />
+      </Grid.Column>
+    </Grid>
   </div>
 );
 
