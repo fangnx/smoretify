@@ -4,7 +4,7 @@
 * @author nxxinf
 * @github https://github.com/fangnx
 * @created 2019-06-16 13:27:10
-* @last-modified 2019-08-28 14:52:49
+* @last-modified 2019-10-24 18:41:17
 */
 
 .playerPanel {
@@ -16,7 +16,6 @@
 .songName {
   font-family: var(--font-stylish);
   font-size: 30px;
-  /* font-weight: bold; */
   line-height: 2.5rem;
   padding-bottom: 10px;
 }

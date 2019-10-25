@@ -4,7 +4,7 @@
  * @author nxxinf
  * @github https://github.com/fangnx
  * @created 2019-08-30 15:12:22
- * @last-modified 2019-09-07 19:02:26
+ * @last-modified 2019-10-24 21:46:49
  */
 
 import React from 'react';
@@ -20,12 +20,14 @@ class SpotifyStatus extends React.PureComponent {
           (window.location.href = window.location.origin + '/auth/spotify')
         }
       >
-        {this.props.connected ? 'Connected' : 'Not Connected'}
+        {this.props.connected ? 'Connected' : 'Connect to Spotify'}
         <Icon
-          name={this.props.connected ? 'check' : 'close'}
+          name={this.props.connected ? 'check' : 'music'}
           style={{
             marginLeft: '4px',
-            color: this.props.connected ? 'var(--color-spotify-green)' : 'red'
+            color: this.props.connected
+              ? 'var(--color-spotify-green)'
+              : 'var(--text-color-0)'
           }}
         />
       </div>
