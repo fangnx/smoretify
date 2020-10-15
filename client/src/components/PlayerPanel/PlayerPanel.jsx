@@ -1,12 +1,3 @@
-/**
- * PlayerPanel.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-08-31 17:13:05
- * @last-modified 2019-09-20 20:25:38
- */
-
 import React from 'react';
 import SpotifyWidget from './SpotifyWidget';
 import SongSummaryWidget from './SongSummaryWidget';

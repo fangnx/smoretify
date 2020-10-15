@@ -1,12 +1,3 @@
-/**
- * SongInfoPanelContainer.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-07-14 16:11:56
- * @last-modified 2019-08-31 17:53:09
- */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import withScrollbar from '../Scrollbar';

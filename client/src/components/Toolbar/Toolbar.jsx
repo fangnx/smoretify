@@ -1,12 +1,3 @@
-/**
- * Toolbar.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-08-04 11:21:15
- * @last-modified 2019-10-24 21:48:36
- */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import {
@@ -63,7 +54,7 @@ class Toolbar extends React.PureComponent {
     });
   };
 
-  toggleLyricsLeftAligned = e => {
+   toggleLyricsLeftAligned = e => {
     e.preventDefault();
     this.props.dispatch({
       type: CHANGE_LYRICS_ALIGNMENT,

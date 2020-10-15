@@ -1,12 +1,3 @@
-/**
- * PlayerPanelContainer.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-06-16 01:45:13
- * @last-modified 2019-09-20 21:11:42
- */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../store';

@@ -1,12 +1,3 @@
-/**
- * SpotifyStatus.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-08-30 15:12:22
- * @last-modified 2019-10-24 21:46:49
- */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import { Icon } from 'semantic-ui-react';

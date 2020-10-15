@@ -1,12 +1,3 @@
-/**
- * ArtistInfoPanel.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-08-31 17:20:43
- * @last-modified 2019-10-24 21:50:05
- */
-
 import React from 'react';
 import { Image, Container, Header, Icon, Placeholder } from 'semantic-ui-react';
 import './ArtistInfoPanel.css';

@@ -1,12 +1,3 @@
-/**
- * SpotifyWidget.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-08-22 22:51:58
- * @last-modified 2019-08-31 21:04:18
- */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import Spotify_Icon_White from '../../assets/Spotify_Icon_White.png';

@@ -1,18 +1,9 @@
-/**
- * layoutReducer.js
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-08-29 14:01:26
- * @last-modified 2019-09-08 15:10:42
- */
-
 import {
   TOGGLE_YOUTUBE,
   CHANGE_LYRICS_ALIGNMENT,
   CHANGE_LYRICS_FONT,
   TOGGLE_LYRICS_ITALICIZED,
-  CHANGE_APP_BRIGHTNESS
+  CHANGE_APP_BRIGHTNESS,
 } from './actionTypes';
 
 export const initialState = {
@@ -20,7 +11,7 @@ export const initialState = {
   lyricsLeftAligned: true,
   lyricsFontFamily: 'var(--font-dynamic)',
   lyricsItalicized: false,
-  appBrightness: 1.0
+  appBrightness: 1.0,
 };
 
 export default (state = initialState, action) => {

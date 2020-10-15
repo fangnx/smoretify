@@ -1,12 +1,3 @@
-/**
- * reactThenElectron.js
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-06-15 17:05:42
- * @last-modified 2019-08-31 20:56:55
- */
-
 const net = require('net');
 const port = process.env.PORT ? process.env.PORT - 100 : 3000;
 
@@ -28,6 +19,6 @@ const tryConnection = () =>
 
 tryConnection();
 
-client.on('error', error => {
+client.on('error', (error) => {
   setTimeout(tryConnection, 1000);
 });

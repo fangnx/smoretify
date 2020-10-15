@@ -1,12 +1,3 @@
-/**
- * MainBoard.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-08-31 15:59:17
- * @last-modified 2019-09-20 22:30:15
- */
-
 import React from 'react';
 import PlayerPanel from '../PlayerPanel';
 import SongInfoPanel from '../SongInfoPanel';

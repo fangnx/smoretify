@@ -1,12 +1,3 @@
-/**
- * SongInfoPanel.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-08-31 17:32:41
- * @last-modified 2019-08-31 17:38:27
- */
-
 import React from 'react';
 import MiniYoutubeWidget from './MiniYoutubeWidget';
 import SongLyricsWidget from './SongLyricsWidget';

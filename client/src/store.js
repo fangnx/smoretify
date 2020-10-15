@@ -1,12 +1,3 @@
-/**
- * store.js
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-07-14 17:03:21
- * @last-modified 2019-08-31 15:38:54
- */
-
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
@@ -18,7 +9,7 @@ const initialState = {
   songInfo: {},
   geniusInfo: {},
   spotify: {},
-  layout: layoutInitialState
+  layout: layoutInitialState,
 };
 
 const middleware = [thunk];
@@ -28,7 +19,7 @@ const persistConfig = {
   key: 'root',
   storage,
   blacklist: ['songInfo', 'geniusInfo', 'spotify'],
-  whitelist: ['layout']
+  whitelist: ['layout'],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(

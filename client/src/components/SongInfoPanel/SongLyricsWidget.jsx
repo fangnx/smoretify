@@ -1,12 +1,3 @@
-/**
- * SongLyricsWidget.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-08-02 00:22:19
- * @last-modified 2019-09-20 20:24:42
- */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import { List, Placeholder } from 'semantic-ui-react';

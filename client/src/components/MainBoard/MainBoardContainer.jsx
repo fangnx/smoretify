@@ -1,14 +1,4 @@
-/**
- * MainBoardContainer.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-07-27 20:36:15
- * @last-modified 2019-09-20 22:30:07
- */
-
 import React from 'react';
-import { store } from '../../store';
 import { connect } from 'react-redux';
 import {
   searchFromGenius,

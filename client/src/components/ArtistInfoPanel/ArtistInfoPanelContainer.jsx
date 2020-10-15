@@ -1,12 +1,3 @@
-/**
- * ArtistInfoPanelContainer.jsx
- *
- * @author nxxinf
- * @github https://github.com/fangnx
- * @created 2019-07-27 15:10:48
- * @last-modified 2019-09-07 23:30:39
- */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import withScrollbar from '../Scrollbar/Scrollbar';
